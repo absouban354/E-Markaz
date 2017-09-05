@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_attachment"
+        android:orderInCategory="1"
+        android:title="@string/chat_action_attachment"
+        android:icon="@drawable/ic_attachment_black_24dp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="2"
+        android:title="@string/chat_action_logout"
+        app:showAsAction="never" />
+</menu>

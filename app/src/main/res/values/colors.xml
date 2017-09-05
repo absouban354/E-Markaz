@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0073b5</color>
+    <color name="colorPrimaryDark">#004a80</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="chatSelfBackgroundColor">#EDEDED</color>
+    <color name="textColor">#000</color>
+    <color name="transparentGrey">#55FFFFFF</color>
+    <color name="textColorWhite">#fff</color>
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="primary">#0073b5</color>
+    <color name="primaryDark">#034c81</color>
+    <color name="gridColor">#FFAAAAAA</color>
+    <color name="quranAppBarColor">#DD000000</color>
+    <color name="appBar_subTitle">#FFFAFAFA</color>
+    <color name="text_color">#000</color>
+    <color name="fragment_bg">#C0C0C0</color>
+    <color name="bgForListQuran">#FAFAFA</color>
+    <color name="bgForSearchBar">#E9E9E9</color>
+    <color name="surahMeaning">#AA000000</color>
+    <color name="btnCancelColor">#FF0000</color>
+    <color name="btnQuranColor">#009900</color>
+    <color name="btnSurahColor">#0000FF</color>
+    <color name="darkYellow">#FFCCCC00</color>
+</resources>

@@ -1,0 +1,288 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/institution_details_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/institutionImageHeight"
+        android:onClick="onImgClick"
+        android:background="@color/bgForListQuran"
+         />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <GridView
+                android:id="@+id/institutionDetails_gridView"
+                android:layout_width="match_parent"
+                android:numColumns="4"
+                android:verticalSpacing="0dp"
+                android:horizontalSpacing="0dp"
+                android:stretchMode="columnWidth"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/institutionDetails_instName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/institutionDetails_instLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/institution_details_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:drawableLeft="@drawable/ic_address_icon"
+                android:drawableStart="@drawable/ic_address_icon"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/institution_details_contact_office"
+                    style="@style/institutionDetails_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_contact_icon"
+                    android:drawableLeft="@drawable/ic_contact_icon"
+                    android:text="0964245245" />
+
+                <TextView
+                    android:id="@+id/institution_details_contact_mobile"
+                    style="@style/institutionDetails_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/ic_contact_mobile"
+                    android:drawableStart="@drawable/ic_contact_mobile"
+                    android:text="9964245244" />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/institutionDetails_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:drawableLeft="@drawable/ic_email_icon"
+                android:drawableStart="@drawable/ic_email_icon"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/institutionDetails_website"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:drawableLeft="@drawable/ic_website_icon"
+                android:drawableStart="@drawable/ic_website_icon"
+                android:paddingLeft="16dp"
+                android:paddingStart="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bgForListQuran"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/institutionDetails_principal"
+                    style="@style/institutionDetails_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Principal : " />
+
+                <TextView
+                    android:id="@+id/institutionDetails_principalPhone"
+                    style="@style/institutionDetails_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ph No : " />
+
+                <TextView
+                    android:id="@+id/institutionDetails_ao"
+                    style="@style/institutionDetails_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AO : " />
+
+                <TextView
+                    android:id="@+id/institutionDetails_aoPhone"
+                    style="@style/institutionDetails_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ph No : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/institutionDetails_students"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Students" />
+
+                        <TextView
+                            android:id="@+id/institutionDetails_studentCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/institutionDetails_staff"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Academic Staff" />
+
+                        <TextView
+                            android:id="@+id/institutionDetails_academicStaffCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/institutionDetails_nonTeach"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Non-Teaching Staff" />
+
+                        <TextView
+                            android:id="@+id/institutionDetails_nonTeachingCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingBottom="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/institutionDetails_alumni"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Alumni" />
+
+                        <TextView
+                            android:id="@+id/institutionDetails_alumniCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingBottom="16dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/institutionDetails_description"
+                style="@style/institutionDetails_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/institutionDetails_morepics"
+                    android:onClick="onMorePhotosClick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp"
+                    android:text="More Photos"
+                    android:textColor="@color/text_color"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/institutionDetails_routemap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="16dp"
+                    android:text="Route Map"
+                    android:textColor="@color/text_color"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

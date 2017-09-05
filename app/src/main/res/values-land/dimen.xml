@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="brand_heading_textSize">32dp</dimen>
+    <dimen name="brand_subheading_textSize">15dp</dimen>
+</resources>

@@ -1,0 +1,269 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="AppTheme.Base">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimaryDark</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorAccent">@color/colorPrimary</item>
+  </style>
+
+  <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowActionBar">false</item>
+  </style>
+
+  <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimaryDark</item>
+    <item name="colorPrimaryDark">@color/colorPrimary</item>
+    <item name="colorAccent">@color/colorPrimary</item>
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+  <style name="QuranTheme" parent="ThemeOverlay.AppCompat.Dark">
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorPrimary</item>
+  </style>
+
+  <style name="appBar_Title">
+    <item name="android:textSize">@dimen/appBar_titleSize</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="quranRead_appBar_subTitle">
+    <item name="android:textSize">@dimen/appBar_subTitle</item>
+    <item name="android:textColor">@color/appBar_subTitle</item>
+  </style>
+
+  <style name="chatRoom_MessageLinear">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:padding">10dp</item>
+    <item name="android:paddingTop">5dp</item>
+    <item name="android:paddingBottom">5dp</item>
+    <item name="android:background">@drawable/chat_self_background</item>
+  </style>
+
+  <style name="chatRoom_MessageDate">
+
+    <item name="android:background">@drawable/chat_date_background</item>
+    <item name="android:gravity">center</item>
+    <item name="android:padding">10dp</item>
+    <item name="android:textColor">@color/textColorWhite</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:layout_marginBottom">10dp</item>
+  </style>
+
+  <style name="chatRoom_MessageUser">
+    <item name="android:textColor">@color/textColor</item>
+    <item name="android:textSize">@dimen/chatRoom_messageUser_textSize</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="chatRoom_MessageText">
+    <item name="android:textSize">@dimen/chatRoom_messageText_textSize</item>
+    <item name="android:textColor">@color/textColor</item>
+  </style>
+
+  <style name="chatRoom_MessageTime">
+    <item name="android:textSize">@dimen/chatRoom_messageTime_textSize</item>
+    <item name="android:textColor">@color/textColor</item>
+  </style>
+
+  <style name="grid_title">
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:textSize">@dimen/activityBody_textSize</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:drawablePadding">8dp</item>
+    <item name="android:paddingBottom">16dp</item>
+    <item name="android:typeface">sans</item>
+  </style>
+
+  <style name="grid_title_footer" parent="grid_title">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:clickable">true</item>
+    <item name="android:drawablePadding">4dp</item>
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:paddingBottom">8dp</item>
+    <item name="android:typeface">sans</item>
+  </style>
+
+  <style name="grid_image">
+    <item name="android:minHeight">40dp</item>
+    <item name="android:layout_marginTop">8dp</item>
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="QuranList_SurahAyat">
+    <item name="android:textSize">@dimen/quranList_surahAyatSize</item>
+    <item name="android:layout_marginBottom">@dimen/nullValue</item>
+    <item name="android:layout_marginTop">@dimen/quranList_surahIdPadding</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="QuranList_SurahId">
+    <item name="android:textSize">@dimen/quranList_surahIdSize</item>
+    <item name="android:layout_marginTop">@dimen/nullValue</item>
+    <item name="android:layout_marginBottom">@dimen/quranList_surahIdPadding</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="QuranList_SurahName">
+    <item name="android:paddingStart">10dp</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingRight">10dp</item>
+    <item name="android:paddingEnd">10dp</item>
+    <item name="android:layout_marginBottom">@dimen/quranList_surahIdPadding</item>
+    <item name="android:layout_marginTop">@dimen/nullValue</item>
+    <item name="android:textSize">@dimen/quranList_surahNameSize</item>
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="QuranList_SurahMeaning" parent="QuranList_SurahName">
+    <item name="android:textStyle">normal</item>
+    <item name="android:paddingStart">10dp</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingRight">10dp</item>
+    <item name="android:paddingEnd">10dp</item>
+    <item name="android:layout_marginTop">@dimen/quranList_surahIdPadding</item>
+    <item name="android:layout_marginBottom">@dimen/nullValue</item>
+    <item name="android:textSize">@dimen/quranList_surahMeaningSize</item>
+    <item name="android:textColor">@color/surahMeaning</item>
+  </style>
+
+  <style name="QuranList_SurahPlace" parent="QuranList_SurahName">
+    <item name="android:textSize">@dimen/quranList_surahMeaningSize</item>
+    <item name="android:layout_marginTop">2dp</item>
+    <item name="android:textStyle">italic</item>
+  </style>
+
+  <style name="QuranList_SurahPage">
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+  <!-- dialog styles -->
+  <style name="dialog_title">
+    <item name="android:textColor">@color/white</item>
+    <item name="android:background">@color/primaryDark</item>
+    <item name="android:paddingStart">10dp</item>
+    <item name="android:paddingEnd">10dp</item>
+    <item name="android:paddingRight">10dp</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingTop">10dp</item>
+    <item name="android:paddingBottom">10dp</item>
+    <item name="android:textSize">24sp</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+
+  <style name="dialog_button_style">
+    <item name="android:background">@null</item>
+    <item name="android:layout_marginTop">10dp</item>
+    <item name="android:paddingTop">10dp</item>
+    <item name="android:paddingBottom">10dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+
+  <style name="dialog_textview_style">
+    <item name="android:padding">10dp</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="quranTranslate_arabicText">
+    <item name="android:textSize">@dimen/quranTranslate_arabicTextSize</item>
+    <item name="android:lineSpacingMultiplier">1.8</item>
+    <item name="android:textColor">@color/black</item>
+  </style>
+
+  <style name="quranTranslate_translateText" parent="quranTranslate_arabicText">
+    <item name="android:lineSpacingMultiplier">1.4</item>
+    <item name="android:textColor">@color/primaryDark</item>
+  </style>
+
+  <style name="itemLabel_DarkStyle" parent="ListActivity_Subtitle">
+    <item name="android:textColor">@color/white</item>
+  </style>
+
+  <style name="ListActivity_Subtitle">
+    <item name="android:textSize">@dimen/subTitle_textSize</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:gravity">center</item>
+  </style>
+
+  <style name="QuranStart_button" parent="dialog_button_style">
+    <item name="android:background">@null</item>
+    <item name="android:layout_centerInParent">true</item>
+  </style>
+
+  <style name="quranMushaf_imageview">
+
+  </style>
+
+  <style name="quranTranslate_suraName">
+    <item name="android:textColor">@color/colorPrimaryDark</item>
+  </style>
+
+  <style name="institutionSubCatImage">
+    <item name="android:paddingTop">8dp</item>
+    <item name="android:paddingBottom">8dp</item>
+    <item name="android:paddingRight">10dp</item>
+    <item name="android:paddingLeft">16dp</item>
+  </style>
+
+  <style name="institutionDetails_textView">
+    <item name="android:paddingLeft">16dp</item>
+    <item name="android:paddingTop">16dp</item>
+    <item name="android:textColor">@color/text_color</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+  <style name="adminFragment_title">
+    <item name="android:textSize">@dimen/adminFragment_titleSize</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:paddingBottom">@dimen/adminFragment_titleBottomPadding</item>
+  </style>
+
+  <style name="form_subtitle">
+    <item name="android:textAlignment">center</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:background">@color/primaryDark</item>
+    <item name="android:layout_marginTop">@dimen/form_subtitle_marginTop</item>
+    <item name="android:textSize">@dimen/form_subtitle_textSize</item>
+    <item name="android:padding">@dimen/form_subtitle_padding</item>
+  </style>
+
+  <style name="form_label_style">
+    <item name="android:paddingTop">@dimen/form_label_topPadding</item>
+    <item name="android:textSize">@dimen/form_label_textSize</item>
+    <item name="android:textColor">@color/primaryDark</item>
+  </style>
+
+  <style name="form_editText_style">
+    <item name="android:backgroundTint">@color/primaryDark</item>
+    <item name="android:layout_margin">@dimen/nullValue</item>
+  </style>
+</resources>

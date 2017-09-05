@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:paddingTop="@dimen/listview_topPadding"
+              android:paddingBottom="@dimen/listview_topPadding"
+              android:baselineAligned="false"
+              android:background="@color/bgForListQuran"
+              android:layout_height="wrap_content"
+    >
+  <ImageView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="2"
+      android:id="@+id/listAddPhoto_imageView"
+      android:maxWidth="100dp"
+      android:maxHeight="100dp"
+      />
+  <TextView
+      android:layout_gravity="center"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="8"
+      android:paddingStart="@dimen/form_subtitle_padding"
+      android:paddingLeft="@dimen/form_subtitle_padding"
+      android:id="@+id/listAddPhoto_pathName"
+      />
+  <ImageButton
+      android:id="@+id/listAddPhoto_cancel"
+      android:layout_gravity="center"
+      android:layout_width="0dp"
+      android:layout_height="36dp"
+      android:layout_weight="2"
+      android:background="@color/white"
+      android:src="@drawable/ic_cancel_24dp"
+      />
+</LinearLayout>

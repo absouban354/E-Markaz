@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.tomtontech.markaz.Personal.EventDetails">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/eventDetails_image"
+            android:background="@color/bgForListQuran"
+            />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventName"
+                android:gravity="center"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventPlace"
+                android:layout_gravity="left"
+                android:drawableLeft="@drawable/ic_address_icon"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventDate"
+                android:layout_gravity="left"
+                android:drawableLeft="@drawable/ic_date"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventTime"
+                android:layout_gravity="left"
+                android:drawableLeft="@drawable/ic_time"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/eventDescription"
+                android:layout_gravity="left"
+                android:drawableLeft="@drawable/ic_description"
+                android:paddingLeft="16dp"
+                android:paddingTop="16dp"
+                android:textColor="@color/text_color"
+                android:textSize="17sp" />
+        </LinearLayout>
+    </ScrollView>
+    </LinearLayout>
+</LinearLayout>

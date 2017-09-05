@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/activitySidePadding"
+    android:paddingEnd="@dimen/activitySidePadding"
+    android:paddingRight="@dimen/activitySidePadding"
+    android:paddingLeft="@dimen/activitySidePadding"
+    android:paddingTop="@dimen/activityTopPadding"
+    tools:context="in.tomtontech.markaz.Activity.QuranSettingsActivity"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_quran_dialog_on_list_sura"
+        android:id="@+id/quranSettings_quranDialog"
+        android:layout_alignTop="@+id/quranSettings_quranDialog_checkbox"
+        android:gravity="center"
+        android:layout_alignBottom="@+id/quranSettings_quranDialog_checkbox"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/quranSettings_quranDialog_checkbox"
+        />
+</RelativeLayout>
