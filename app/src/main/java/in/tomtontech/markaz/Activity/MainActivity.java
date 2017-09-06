@@ -65,12 +65,12 @@ public class MainActivity extends AppCompatActivity {
     if (view == findViewById(R.id.main_section_staff)) {
       SharedPreferences sp1 = this.getSharedPreferences(SP_ADDR, 0);
       int privilage = sp1.getInt(SP_PRIVILAGE, 0);
-
-      if (privilage == 2) {
-        Intent intent = new Intent(ctx, StaffLoginActivity.class);
-        startActivity(intent);
-      } else if (privilage == 5) {
+      if (privilage == 5) {
         Intent intent = new Intent(ctx, AdminPanel.class);
+        startActivity(intent);
+      }
+      else {
+        Intent intent = new Intent(ctx, StaffLoginActivity.class);
         startActivity(intent);
       }
     } else if (view == findViewById(R.id.main_section_quran)) {

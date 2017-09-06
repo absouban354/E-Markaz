@@ -6,12 +6,13 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import in.tomtontech.markaz.R;
 
 public class BlankFragment extends Fragment {
 
-
+  private WebView webView;
   public BlankFragment() {
     // Required empty public constructor
   }
@@ -20,7 +21,9 @@ public class BlankFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    return inflater.inflate(R.layout.fragment_blank, container, false);
+    View view= inflater.inflate(R.layout.fragment_admin_blank, container, false);
+    webView=(WebView)view.findViewById(R.id.admin_webView);
+    return view;
   }
 
 }

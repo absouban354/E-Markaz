@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import in.tomtontech.markaz.Admin.Fragment.AdminEventFragment;
 import in.tomtontech.markaz.Admin.Fragment.AdminInstitutionFragment;
@@ -18,9 +21,15 @@ import in.tomtontech.markaz.Admin.Fragment.AdminPhotoFragment;
 import in.tomtontech.markaz.Admin.Fragment.BlankFragment;
 import in.tomtontech.markaz.R;
 
+import static in.tomtontech.markaz.CustomFunction.SERVER_ADDR;
+
 
 public class AdminPanel extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
   DrawerLayout drawer;
+  private WebView webView;
+  private String URL_INST_ADDR=SERVER_ADDR+"admin/web_viewInstitution.php";
+  private String URL_EVENT_ADDR=SERVER_ADDR+"admin/web_viewEvent.php";
+  private String URL_PHOTO_ADDR=SERVER_ADDR+"admin/web_viewPhoto.php";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -28,6 +37,21 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
     drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    webView=(WebView)findViewById(R.id.adminPanel_webView);
+    webView.canGoForward();
+    webView.canGoBack();
+    webView.clearCache(true);
+    webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    webView.clearHistory();
+    webView.getSettings().setJavaScriptEnabled(true);
+    webView.getSettings().setDomStorageEnabled(true);
+    webView.setWebViewClient(new WebViewClient(){
+      @Override
+      public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+        view.loadUrl(request.getUrl().toString());
+        return false;
+      }
+    });
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
         this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
     drawer.setDrawerListener(toggle);
@@ -41,39 +65,21 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
     int id=item.getItemId();
     if(id==R.id.nav_institution)
     {
-      FragmentManager fm=this.getFragmentManager();
-      FragmentTransaction ft=fm.beginTransaction();
-      Fragment fragment=new AdminInstitutionFragment();
-      ft.replace(R.id.adminPanel_fragment,fragment);
-      ft.commit();
+      webView.loadUrl(URL_INST_ADDR);
       drawer.closeDrawers();
     }
     else if(id==R.id.nav_events)
     {
-      FragmentManager fm=this.getFragmentManager();
-      FragmentTransaction ft=fm.beginTransaction();
-      Fragment fragment=new AdminEventFragment();
-      ft.replace(R.id.adminPanel_fragment,fragment);
-      ft.commit();
+      webView.loadUrl(URL_EVENT_ADDR);
       drawer.closeDrawers();
     }
     else if(id==R.id.nav_photo)
     {
-      FragmentManager fm=this.getFragmentManager();
-      FragmentTransaction ft=fm.beginTransaction();
-      Fragment fragment=new AdminPhotoFragment();
-      ft.replace(R.id.adminPanel_fragment,fragment);
-      ft.commit();
+      webView.loadUrl(URL_PHOTO_ADDR);
       drawer.closeDrawers();
     }
     else if(id==R.id.nav_dashBoard)
     {
-      FragmentManager fm=this.getFragmentManager();
-      FragmentTransaction ft=fm.beginTransaction();
-      Fragment fragment=new BlankFragment();
-      ft.replace(R.id.adminPanel_fragment,fragment);
-
-      ft.commit();
       drawer.closeDrawers();
     }
     item.setChecked(true);

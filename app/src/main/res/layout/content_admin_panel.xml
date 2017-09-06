@@ -10,9 +10,8 @@
              tools:showIn="@layout/app_bar_admin_panel"
              tools:context="in.tomtontech.markaz.Admin.AdminPanel"
     >
-    <fragment
+    <WebView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="in.tomtontech.markaz.Admin.Fragment.BlankFragment"
-        android:id="@+id/adminPanel_fragment"/>
+        android:id="@+id/adminPanel_webView"/>
 </FrameLayout>

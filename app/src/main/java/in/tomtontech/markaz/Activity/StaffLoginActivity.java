@@ -136,20 +136,14 @@ public class StaffLoginActivity extends AppCompatActivity {
             }
             try {
                 int response_code = conn.getResponseCode();
-                if (response_code == HttpURLConnection.HTTP_OK) {
-                    Log.v("login", "response code is ok");
-                    InputStream input = conn.getInputStream();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-                    StringBuilder result = new StringBuilder();
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        result.append(line);
-                    }
-                    return (result.toString());
-                } else {
-                    Log.v("login", "error on response code");
-                    return ("unsuccessful");
+                InputStream input = conn.getInputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+                StringBuilder result = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
                 }
+                return (result.toString());
             } catch (IOException e) {
                 e.printStackTrace();
                 return "exception";
