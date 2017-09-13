@@ -74,6 +74,7 @@ public class PhotoFragment extends Fragment {
         @Override
         protected String doInBackground(String... strings) {
             String institution_id = strings[0];
+            Log.v("async","id"+institution_id);
             try {
                 String photoUrl = CustomFunctions.URL_ADDR.concat("photo_view.php");
                 URL url = new URL(photoUrl);

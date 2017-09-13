@@ -1,6 +1,7 @@
 package in.tomtontech.markaz.Personal;
 
 import android.app.Activity;
+import in.tomtontech.markaz.Personal.ExpandableList;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -54,8 +55,9 @@ public class InstitutionDetails extends AppCompatActivity {
     String institution_details_inst_id, cat_sub;
     GridView gridView;
     public Bitmap[] bitmaps = null;
-    TextView textViewName, textViewLabel, textViewAddress, textViewEmail, textViewWebsite, textViewPrincipal, textViewPrincipalNo, textViewAO, textViewAoNo, textViewStudents, textViewTS, textViewNTS, textViewAlumni, textViewDescription;
+    TextView textViewName, textViewLabel, textViewAddress, textViewEmail, textViewWebsite, textViewPrincipal, textViewPrincipalNo, textViewAO, textViewAoNo, textViewStudents, textViewTS, textViewNTS, textViewAlumni, textViewDescription,textViewCourse;
     TextView tvRouteMap,tvMorePhotos;
+    ExpandableList lvIndividual,lvContact;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,15 +78,15 @@ public class InstitutionDetails extends AppCompatActivity {
         textViewAddress = (TextView) findViewById(R.id.institution_details_address);
         textViewEmail = (TextView) findViewById(R.id.institutionDetails_email);
         textViewWebsite = (TextView) findViewById(R.id.institutionDetails_website);
-        textViewPrincipal = (TextView) findViewById(R.id.institutionDetails_principal);
-        //textViewPrincipalNo = (TextView)findViewById(R.id.institutionDetails_principalPhone);
-        textViewAO = (TextView) findViewById(R.id.institutionDetails_ao);
-        textViewAoNo = (TextView) findViewById(R.id.institutionDetails_aoPhone);
         textViewStudents = (TextView) findViewById(R.id.institutionDetails_studentCount);
         textViewTS = (TextView) findViewById(R.id.institutionDetails_academicStaffCount);
         textViewNTS = (TextView) findViewById(R.id.institutionDetails_nonTeachingCount);
         textViewAlumni = (TextView) findViewById(R.id.institutionDetails_alumniCount);
         textViewDescription = (TextView) findViewById(R.id.institutionDetails_description);
+        textViewCourse=(TextView)findViewById(R.id.institutionDetails_course);
+        lvIndividual =(ExpandableList) findViewById(R.id.listView_individual);
+        lvContact =(ExpandableList) findViewById(R.id.listView_contact);
+
         InstDetailsAsync ica = new InstDetailsAsync();
         ica.execute();
 
@@ -203,37 +205,55 @@ public class InstitutionDetails extends AppCompatActivity {
                 Toast.makeText(ctx, "Network Error. Please turn on Mobile data or WiFi and try again", Toast.LENGTH_SHORT).show();
             } else {
                 try {
-                    String institutionDetails_instName, institutionDetails_instLabel, institutionDetails_instAddress, institutionDetails_instEmail, institutionDetails_instWebsite, institutionDetails_principal, institutionDetails_principalNo, institutionDetails_ao, institutionDetails_aoNo, institutionDetails_students, institutionDetails_academicStaff, institutionDetails_nonTeachStaff, institutionDetails_alumni, institutionDetails_description;
-                    JSONArray jsonArray = new JSONArray(result);
-                    JSONObject j = jsonArray.getJSONObject(0);
-                    institutionDetails_instName = j.getString("inst_name");
-                    institutionDetails_instLabel = j.getString("inst_label");
-                    institutionDetails_instAddress = j.getString("address");
-                    institutionDetails_instEmail = j.getString("email");
-                    institutionDetails_instWebsite = j.getString("website");
-                    institutionDetails_principal = "Principal : ".concat(j.getString("principal_name"));
-                    //institutionDetails_principalNo= "Ph No : ".concat(j.getString("principal_number"));
-                    institutionDetails_ao = "AO : ".concat(j.getString("ao_name"));
-                    institutionDetails_aoNo = "Ph No : ".concat(j.getString("ao_number"));
-                    institutionDetails_students = j.getString("std_count");
-                    institutionDetails_academicStaff = j.getString("ts_count");
-                    institutionDetails_nonTeachStaff = j.getString("nts_count");
-                    institutionDetails_alumni = j.getString("alumni_count");
-                    institutionDetails_description = j.getString("description");
+                    String institutionDetails_instName, institutionDetails_instLabel, institutionDetails_instAddress, institutionDetails_instEmail, institutionDetails_instWebsite, institutionDetails_principal, institutionDetails_principalNo, institutionDetails_ao, institutionDetails_aoNo, institutionDetails_students, institutionDetails_academicStaff, institutionDetails_nonTeachStaff, institutionDetails_alumni, institutionDetails_description,institutionDetails_course;
+                    JSONObject j = new JSONObject(result);
+                    JSONObject personal=j.getJSONObject("personal");
+                    institutionDetails_instName = personal.getString("inst_name");
+                    institutionDetails_instLabel = personal.getString("inst_label");
+                    institutionDetails_instAddress = personal.getString("address");
+                    institutionDetails_instEmail = personal.getString("email");
+                    institutionDetails_instWebsite = personal.getString("website");
+                    JSONArray jsonArray1=j.getJSONArray("contact");
+                    String[] contactNumber=new String[jsonArray1.length()];
+                    for(int i=0;i<jsonArray1.length();i++)
+                    {
+                        JSONObject contact=jsonArray1.getJSONObject(i);
+                        contactNumber[i]=contact.getString("contact_number");
+                    }
+                    CustomList_InstitutionDetailsContact customList_institutionDetailsContact=new CustomList_InstitutionDetailsContact(avt,contactNumber);
+                    lvContact.setAdapter(customList_institutionDetailsContact);
+                    lvContact.setExpanded(true);
+                    JSONArray jsonArray=j.getJSONArray("individual");
+                    String[] name=new String[jsonArray.length()];
+                    String[] number=new String[jsonArray.length()];
+                    String[] designation=new String[jsonArray.length()];
+                    for(int i=0;i<jsonArray.length();i++) {
+                        JSONObject individual = jsonArray.getJSONObject(i);
+                        designation[i]=individual.getString("designation");
+                        name[i]=designation[i].concat(" : ").concat(individual.getString("name"));
+                        number[i]="Ph No : ".concat(individual.getString("number"));
+                    }
+                    CustomList_InstitutionDetailsIndividual customList_institutionDetailsIndividual=new CustomList_InstitutionDetailsIndividual(avt,name,number);
+                    lvIndividual.setAdapter(customList_institutionDetailsIndividual);
+                    lvIndividual.setExpanded(true);
+                    institutionDetails_students = personal.getString("std_count");
+                    institutionDetails_academicStaff = personal.getString("ts_count");
+                    institutionDetails_nonTeachStaff = personal.getString("nts_count");
+                    institutionDetails_alumni = personal.getString("alumni_count");
+                    institutionDetails_description = personal.getString("description");
+                    JSONObject course=j.getJSONObject("course");
+                    institutionDetails_course="Courses Offered :\n".concat(course.getString("course_name"));
                     textViewName.setText(institutionDetails_instName);
                     textViewLabel.setText(institutionDetails_instLabel);
                     textViewAddress.setText(institutionDetails_instAddress);
                     textViewEmail.setText(institutionDetails_instEmail);
                     textViewWebsite.setText(institutionDetails_instWebsite);
-                    textViewPrincipal.setText(institutionDetails_principal);
-                    //textViewPrincipalNo.setText(institutionDetails_principalNo);
-                    textViewAO.setText(institutionDetails_ao);
-                    textViewAoNo.setText(institutionDetails_aoNo);
                     textViewStudents.setText(institutionDetails_students);
                     textViewTS.setText(institutionDetails_academicStaff);
                     textViewNTS.setText(institutionDetails_nonTeachStaff);
                     textViewAlumni.setText(institutionDetails_alumni);
                     textViewDescription.setText(institutionDetails_description);
+                    textViewCourse.setText(institutionDetails_course);
                     if (result != null) {
                         try {
                             img1.setImageBitmap(bitmaps[0]);

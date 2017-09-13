@@ -1,85 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="in.tomtontech.markaz">
+    package="in.tomtontech.markaz">
 
-  <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-  <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme">
-    <activity
-        android:name=".Activity.MainActivity"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:windowSoftInputMode="adjustPan">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity android:name=".Activity.ChatRoom"/>
-    <activity android:name=".Activity.StaffLoginActivity"/>
-    <activity android:name=".Personal.NavList"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:screenOrientation="portrait"
-        android:windowSoftInputMode="stateHidden"/>
-    <activity android:name=".Personal.EventDetails"/>
-    <activity android:name=".Personal.InstitutionDetails"/>
-    <activity android:name=".Personal.PhotoDetails"/>
-    <receiver android:name=".ChatBroadcatReceiver">
-      <intent-filter>
-        <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-      </intent-filter>
-    </receiver>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-    <service
-        android:name=".ChatService"
-        android:enabled="true"
-        android:exported="true"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.ChatRoom" />
+        <activity android:name=".Activity.StaffLoginActivity" />
+        <activity
+            android:name=".Personal.NavList"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Personal.EventDetails" />
+        <activity android:name=".Personal.InstitutionDetails" />
+        <activity android:name=".Personal.PhotoDetails" />
 
-    <activity
-        android:name=".Activity.ListQuranActivity"
-        android:label="@string/quranLabel">
-    </activity>
-    <activity
-        android:name=".Activity.QuranReadActivity"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
-    <activity
-        android:name=".Activity.QuranStartActivity"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
-    <activity android:name=".Activity.QuranSettingsActivity">
-    </activity>
-    <activity
-        android:name=".Admin.AdminPanel"
-        android:theme="@style/AppTheme.NoActionBar">
+        <receiver android:name=".ChatBroadcatReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
 
-    </activity>
-    <activity
-        android:name=".Admin.Activity.AddInstitutionActivity"
-        android:windowSoftInputMode="stateHidden">
-    </activity>
-    <activity
-        android:name=".Admin.Activity.AddInstituteContactActivity"
-        android:windowSoftInputMode="stateHidden">
-    </activity>
-    <activity
-        android:name=".Admin.Activity.AddInstituteCourseActivity"
-        android:windowSoftInputMode="stateHidden">
-    </activity>
-    <activity android:name=".Admin.Activity.AddEventActivity">
-    </activity>
-    <activity android:name=".Admin.Activity.AddPhotoActivity">
-    </activity>
-    <activity android:name=".Admin.Activity.AddInstPhoto">
-    </activity>
-  </application>
+        <service
+            android:name=".ChatService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".Activity.ListQuranActivity"
+            android:label="@string/quranLabel" />
+        <activity
+            android:name=".Activity.QuranReadActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activity.QuranStartActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.QuranSettingsActivity" />
+        <activity
+            android:name=".Admin.AdminPanel"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Admin.Activity.AddInstitutionActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Admin.Activity.AddInstituteContactActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Admin.Activity.AddInstituteCourseActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Admin.Activity.AddEventActivity" />
+        <activity android:name=".Admin.Activity.AddPhotoActivity" />
+        <activity android:name=".Admin.Activity.AddInstPhoto" />
+        <activity android:name=".Personal.CustomList_InstitutionDetailsIndividual" />
+        <activity android:name=".Personal.CustomList_InstDetailsContcat" />
+        <activity android:name=".Personal.CustomList_InstitutionDetailsContact"></activity>
+    </application>
 
 </manifest>
