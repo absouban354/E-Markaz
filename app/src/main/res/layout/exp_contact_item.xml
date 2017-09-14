@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingStart="@dimen/activity_horizontal_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingEnd="@dimen/activity_horizontal_margin"
+              android:paddingTop="@dimen/activity_vertical_margin"
+              android:paddingBottom="@dimen/activity_vertical_margin"
+    >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingBottom="5dp"
+      android:orientation="horizontal"
+      >
+    <ImageView
+        android:id="@+id/quickContact_arrowButton"
+        android:clickable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/chat_send"
+        android:background="@null"
+        android:layout_gravity="center"
+        />
+    <TextView
+        android:layout_gravity="center"
+        style="@style/contact_dept_detail"
+        android:id="@+id/quickContact_department"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Asst General Managger"
+        />
+  </LinearLayout>
+  <LinearLayout
+      android:id="@+id/quickContact_llItem"
+
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+    <TextView
+        android:id="@+id/quickContact_personName"
+        android:layout_width="fill_parent"
+        style="@style/contact_details"
+        android:layout_height="wrap_content"
+        android:text="Asst General Managger"
+        />
+    <TextView
+        style="@style/contact_details"
+        android:id="@+id/quickContact_contactNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Asst General Managger"
+        />
+    <TextView
+        style="@style/contact_details"
+        android:id="@+id/quickContact_emailAddress"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Asst General Managger"
+        />
+  </LinearLayout>
+</LinearLayout>

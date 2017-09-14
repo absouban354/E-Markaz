@@ -70,8 +70,7 @@ public class MainActivity extends AppCompatActivity {
       if (privilage == 5) {
         Intent intent = new Intent(ctx, AdminPanel.class);
         startActivity(intent);
-      }
-      else {
+      } else {
         Intent intent = new Intent(ctx, StaffLoginActivity.class);
         startActivity(intent);
       }
@@ -93,42 +92,44 @@ public class MainActivity extends AppCompatActivity {
       startActivity(intent);
     } else if (view == findViewById(R.id.main_section_multimedia)) {
       Toast.makeText(ctx, "This SEction Isnt Available", Toast.LENGTH_SHORT).show();
-    } else if (view == findViewById(R.id.main_section_live)) {
-      Toast.makeText(ctx, "This SEction Isnt Available", Toast.LENGTH_SHORT).show();
     } else if (view == findViewById((R.id.main_section_photo))) {
       String category = "Photos";
       Intent intent = new Intent(ctx, NavList.class);
       intent.putExtra("category", category);
       startActivity(intent);
     } else if (view == findViewById(R.id.main_section_charity)) {
-      Intent intent =new Intent(ctx,CharityActivity.class);
+      Intent intent = new Intent(ctx, CharityActivity.class);
       startActivity(intent);
     } else if (view == findViewById(R.id.main_section_settings)) {
       Intent intent = new Intent(ctx, QuranSettingsActivity.class);
       startActivity(intent);
-    }
-    else {
+    } else if (view == findViewById(R.id.main_section_contact)) {
+      Intent intent = new Intent(ctx, QuickContactActivity.class);
+      startActivity(intent);
+    } else if (view == findViewById(R.id.main_section_routeMap)) {
+      Intent intent = new Intent(ctx, RouteMapListActivity.class);
+      startActivity(intent);
+    } else {
       Toast.makeText(ctx, "This Section Is Currently Unavailable.Stay Tune.", Toast.LENGTH_SHORT)
           .show();
     }
   }
-  int count=0;
-  public static int tm=4000;
+
+  int count = 0;
+  public static int tm = 4000;
   public long bp;
-  public  void  onBackPressed()
-  {
-    if(count==1 && bp+tm>System.currentTimeMillis())
-    {
-      count=0;
+
+  public void onBackPressed() {
+    if (count == 1 && bp + tm > System.currentTimeMillis()) {
+      count = 0;
       moveTaskToBack(true);
-    }
-    else
-    {
-      Toast.makeText(ctx,"Press Back again to Exit",Toast.LENGTH_SHORT).show();
-      bp=System.currentTimeMillis();
-      count=1;
+    } else {
+      Toast.makeText(ctx, "Press Back again to Exit", Toast.LENGTH_SHORT).show();
+      bp = System.currentTimeMillis();
+      count = 1;
     }
   }
+
   @Override
   public void onRequestPermissionsResult(int requestCode,
                                          String permissions[], int[] grantResults) {
