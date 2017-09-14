@@ -4,7 +4,5 @@ package in.tomtontech.markaz.Personal;
  * Created by FATHIMA on 8/17/2017.
  */
 public class CustomFunctions {
-
-    final static String URL_ADDR="http://192.168.43.14/markaz/";
-    //final static String URL_ADDR="http://103.86.176.102/";
+    final static String URL_ADDR="http://103.86.176.102/";
 }

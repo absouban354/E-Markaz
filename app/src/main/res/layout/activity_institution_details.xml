@@ -60,30 +60,18 @@
                 android:textColor="@color/text_color"
                 android:textSize="17sp" />
 
-            <LinearLayout
+            <in.tomtontech.markaz.Personal.ExpandableList
+                android:id="@+id/listView_contact"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:dividerHeight="0dp"
+                android:divider="@null"
+                android:fadingEdge="none"
+                android:focusable="false"
+                android:scrollbars="none"
+                />
 
-                <TextView
-                    android:id="@+id/institution_details_contact_office"
-                    style="@style/institutionDetails_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableStart="@drawable/ic_contact_icon"
-                    android:drawableLeft="@drawable/ic_contact_icon"
-                    android:text="0964245245" />
-
-                <TextView
-                    android:id="@+id/institution_details_contact_mobile"
-                    style="@style/institutionDetails_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:drawableLeft="@drawable/ic_contact_mobile"
-                    android:drawableStart="@drawable/ic_contact_mobile"
-                    android:text="9964245244" />
-            </LinearLayout>
             <TextView
                 android:id="@+id/institutionDetails_email"
                 android:layout_width="match_parent"
@@ -114,35 +102,17 @@
                 android:layout_height="match_parent"
                 android:background="@color/bgForListQuran"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/institutionDetails_principal"
-                    style="@style/institutionDetails_textView"
+                <in.tomtontech.markaz.Personal.ExpandableList
+                    android:id="@+id/listView_individual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Principal : " />
-
-                <TextView
-                    android:id="@+id/institutionDetails_principalPhone"
-                    style="@style/institutionDetails_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ph No : " />
-
-                <TextView
-                    android:id="@+id/institutionDetails_ao"
-                    style="@style/institutionDetails_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="AO : " />
-
-                <TextView
-                    android:id="@+id/institutionDetails_aoPhone"
-                    style="@style/institutionDetails_textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ph No : " />
-
+                    android:cacheColorHint="#00000000"
+                    android:dividerHeight="0dp"
+                    android:divider="@null"
+                    android:fadingEdge="none"
+                    android:focusable="false"
+                    android:scrollbars="none"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -153,7 +123,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
-
+                        <TextView
+                            android:id="@+id/institutionDetails_studentCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center" />
                         <TextView
                             android:id="@+id/institutionDetails_students"
                             style="@style/institutionDetails_textView"
@@ -162,12 +137,6 @@
                             android:gravity="center"
                             android:text="Students" />
 
-                        <TextView
-                            android:id="@+id/institutionDetails_studentCount"
-                            style="@style/institutionDetails_textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -177,6 +146,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/institutionDetails_academicStaffCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center" />
+                        <TextView
                             android:id="@+id/institutionDetails_staff"
                             style="@style/institutionDetails_textView"
                             android:layout_width="wrap_content"
@@ -184,12 +159,7 @@
                             android:layout_gravity="center"
                             android:text="Academic Staff" />
 
-                        <TextView
-                            android:id="@+id/institutionDetails_academicStaffCount"
-                            style="@style/institutionDetails_textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center" />
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -205,6 +175,13 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/institutionDetails_nonTeachingCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            />
+                        <TextView
                             android:id="@+id/institutionDetails_nonTeach"
                             style="@style/institutionDetails_textView"
                             android:layout_width="wrap_content"
@@ -212,13 +189,7 @@
                             android:layout_gravity="center"
                             android:text="Non-Teaching Staff" />
 
-                        <TextView
-                            android:id="@+id/institutionDetails_nonTeachingCount"
-                            style="@style/institutionDetails_textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingBottom="16dp" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -228,6 +199,13 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/institutionDetails_alumniCount"
+                            style="@style/institutionDetails_textView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            />
+                        <TextView
                             android:id="@+id/institutionDetails_alumni"
                             style="@style/institutionDetails_textView"
                             android:layout_width="wrap_content"
@@ -235,13 +213,7 @@
                             android:layout_gravity="center"
                             android:text="Alumni" />
 
-                        <TextView
-                            android:id="@+id/institutionDetails_alumniCount"
-                            style="@style/institutionDetails_textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:paddingBottom="16dp" />
+
                     </LinearLayout>
                 </LinearLayout>
 
@@ -249,6 +221,11 @@
             </LinearLayout>
             <TextView
                 android:id="@+id/institutionDetails_description"
+                style="@style/institutionDetails_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/institutionDetails_course"
                 style="@style/institutionDetails_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

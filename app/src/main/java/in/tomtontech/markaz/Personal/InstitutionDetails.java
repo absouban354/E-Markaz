@@ -101,14 +101,12 @@ public class InstitutionDetails extends AppCompatActivity {
 
     public void onImgClick(View view)
     {
-        if(bitmaps!=null) {
-            Dialog dialog = new Dialog(this);
-            dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view, null));
-            ImageView iv = (ImageView) dialog.findViewById(R.id.imagePop);
-            iv.setImageBitmap(bitmaps[0]);
-            dialog.show();
-        }
+        Dialog dialog=new Dialog(this);
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view,null));
+        ImageView iv=(ImageView)dialog.findViewById(R.id.imagePop);
+        iv.setImageBitmap(bitmaps[0]);
+        dialog.show();
     }
     public void onMorePhotosClick(View view)
     {
@@ -190,8 +188,10 @@ public class InstitutionDetails extends AppCompatActivity {
                     InputStream is = (InputStream) url2.getContent();
                     bitmaps[i] = BitmapFactory.decodeStream(is);
                 }
+
             } catch (JSONException | NullPointerException | IOException e) {
                 e.printStackTrace();
+                return "failed";
             }
             return result;
         }
@@ -211,6 +211,10 @@ public class InstitutionDetails extends AppCompatActivity {
                     institutionDetails_instAddress = j.getString("address");
                     institutionDetails_instEmail = j.getString("email");
                     institutionDetails_instWebsite = j.getString("website");
+                    institutionDetails_principal = "Principal : ".concat(j.getString("principal_name"));
+                    //institutionDetails_principalNo= "Ph No : ".concat(j.getString("principal_number"));
+                    institutionDetails_ao = "AO : ".concat(j.getString("ao_name"));
+                    institutionDetails_aoNo = "Ph No : ".concat(j.getString("ao_number"));
                     institutionDetails_students = j.getString("std_count");
                     institutionDetails_academicStaff = j.getString("ts_count");
                     institutionDetails_nonTeachStaff = j.getString("nts_count");
@@ -221,12 +225,16 @@ public class InstitutionDetails extends AppCompatActivity {
                     textViewAddress.setText(institutionDetails_instAddress);
                     textViewEmail.setText(institutionDetails_instEmail);
                     textViewWebsite.setText(institutionDetails_instWebsite);
+                    textViewPrincipal.setText(institutionDetails_principal);
+                    //textViewPrincipalNo.setText(institutionDetails_principalNo);
+                    textViewAO.setText(institutionDetails_ao);
+                    textViewAoNo.setText(institutionDetails_aoNo);
                     textViewStudents.setText(institutionDetails_students);
                     textViewTS.setText(institutionDetails_academicStaff);
                     textViewNTS.setText(institutionDetails_nonTeachStaff);
                     textViewAlumni.setText(institutionDetails_alumni);
                     textViewDescription.setText(institutionDetails_description);
-                    if (bitmaps!=null&&bitmaps.length>0) {
+                    if (result != null) {
                         try {
                             img1.setImageBitmap(bitmaps[0]);
                             img1.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -253,9 +261,6 @@ public class InstitutionDetails extends AppCompatActivity {
                             ae.printStackTrace();
                             img1.setVisibility(View.GONE);
                         }
-                    }else {
-                        img1.setVisibility(View.GONE);
-                        gridView.setVisibility(View.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
