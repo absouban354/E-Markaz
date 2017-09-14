@@ -48,11 +48,13 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class CustomFunction {
-  public static final String URL_ADDR = "http://103.86.176.102/";
+  public static final String URL_ADDR = "http://192.168.1.104/";
+  //public static final String URL_ADDR = "http://103.86.176.102/";
   public static final String BUNDLE_QURAN_SURAH_ID = "surah_id";
   public static final String BUNDLE_QURAN_PAGE_ID = "page_id";
   public static final String BUNDLE_DAWRA_PAGE_NUM = "page_num";
-  public static final String SERVER_ADDR = URL_ADDR;//.concat("markaz/");
+  public static final String SERVER_ADDR = URL_ADDR.concat("markaz/");
+  //public static final String SERVER_ADDR = URL_ADDR;
   public static final String SQL_DATABASE=SERVER_ADDR.concat("quran_db/");
   public static final String SP_ADDR = "staff";
   public static final String SP_PERSONAL = "personal";

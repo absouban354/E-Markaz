@@ -25,6 +25,7 @@ import java.util.concurrent.TimeUnit;
 
 import in.tomtontech.markaz.Admin.AdminPanel;
 import in.tomtontech.markaz.Async.getDawra;
+import in.tomtontech.markaz.ChatService;
 import in.tomtontech.markaz.DatabaseHelper;
 import in.tomtontech.markaz.Personal.NavList;
 import in.tomtontech.markaz.R;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     ctx = this;
+    startService(new Intent(ctx, ChatService.class));
     sp = this.getSharedPreferences(SP_PERSONAL, 0);
     dbh = new DatabaseHelper(ctx);
     TextView tvHead = (TextView) findViewById(R.id.main_mainheader);
@@ -108,7 +110,23 @@ public class MainActivity extends AppCompatActivity {
           .show();
     }
   }
-
+  int count=0;
+  public static int tm=4000;
+  public long bp;
+  public  void  onBackPressed()
+  {
+    if(count==1 && bp+tm>System.currentTimeMillis())
+    {
+      count=0;
+      moveTaskToBack(true);
+    }
+    else
+    {
+      Toast.makeText(ctx,"Press Back again to Exit",Toast.LENGTH_SHORT).show();
+      bp=System.currentTimeMillis();
+      count=1;
+    }
+  }
   @Override
   public void onRequestPermissionsResult(int requestCode,
                                          String permissions[], int[] grantResults) {

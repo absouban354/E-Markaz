@@ -117,7 +117,6 @@ public class InstitutionCategory extends Fragment {
                     for (int i = 0; i < len; i++) {
                         JSONObject j = jsonArray.getJSONObject(i);
                         institution[i] = j.getString("cat_name");
-
                     }
 
                     CustomList_Inst customList = new CustomList_Inst(avt, institution);
