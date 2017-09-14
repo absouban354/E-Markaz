@@ -130,4 +130,9 @@
   <string name="dashboard">Dashboard</string>
   <string name="addInstPhoto">Add Photos</string>
   <string name="form_label_add_photo">Photos</string>
+  <string name="live_details_heading">Live Details</string>
+  <string name="live_url_label">Live Url</string>
+  <string name="url_eg">https://www.youtube.com/watch?v=2GixUQ6rBm8</string>
+  <string name="live_date_label">Live Date</string>
+  <string name="live_date_eg">2017-12-31 05:30</string>
 </resources>
