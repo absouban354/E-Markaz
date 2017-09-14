@@ -1,6 +1,7 @@
 package in.tomtontech.markaz.Admin;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,8 @@ import org.json.JSONObject;
 
 import java.net.URISyntaxException;
 
+import in.tomtontech.markaz.Activity.StaffLoginActivity;
+import in.tomtontech.markaz.DatabaseHelper;
 import in.tomtontech.markaz.R;
 
 import static in.tomtontech.markaz.CustomFunction.JSON_TEMP_ID;
@@ -29,7 +32,7 @@ public class AddLiveActivity extends AppCompatActivity {
   private static final String LOG_TAG = "addLive";
   private Context ctx;
   private Socket socket;
-
+  private DatabaseHelper dbh;
   {
     try {
       String url = URL_ADDR.substring(0, URL_ADDR.length() - 1).concat(":8002");
@@ -48,6 +51,7 @@ public class AddLiveActivity extends AppCompatActivity {
     setContentView(R.layout.activity_add_live);
     socket.connect();
     ctx=this;
+    dbh=new DatabaseHelper(ctx);
   }
 
   public void onButtonClick(View view) {
@@ -59,7 +63,13 @@ public class AddLiveActivity extends AppCompatActivity {
     try {
       jo.put("date", strDate);
       jo.put("url", strUrl);
-      socket.emit("live update", jo, ack);
+      String [] data=new String[2];
+      data[0]=strUrl;
+      data[1]=strDate;
+      if(dbh.addLive(data))
+        socket.emit("live update", jo, ack);
+      else
+        Toast.makeText(ctx,"Not In A Valid Format",Toast.LENGTH_SHORT).show();
     } catch (JSONException e) {
       e.printStackTrace();
     }
@@ -78,6 +88,9 @@ public class AddLiveActivity extends AppCompatActivity {
               Log.v(LOG_TAG, "error");
               Toast.makeText(ctx,"Error On Updated Information",Toast.LENGTH_SHORT).show();
             }
+            Intent intent=new Intent(ctx,StaffLoginActivity.class);
+            startActivity(intent);
+            finish();
           }
         });
       }

@@ -40,7 +40,7 @@ public class QuranStartActivity extends AppCompatActivity {
     ObjectAnimator scaleY = ObjectAnimator.ofFloat(imageView, "scaleY", 1.5f, 1f);
     animatorSet.play(scaleX).with(scaleY);
     Log.v(LOG_TAG,"before animation");
-    animatorSet.setDuration(8000);
+    animatorSet.setDuration(2000);
     animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
     animatorSet.setStartDelay(1000);
     animatorSet.addListener(new Animator.AnimatorListener() {

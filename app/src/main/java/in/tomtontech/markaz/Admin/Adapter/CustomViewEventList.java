@@ -39,7 +39,6 @@ public class CustomViewEventList extends ArrayAdapter<String>{
     this.subItemName=subItemName;
     this.itemId=itemId;
   }
-
   @NonNull
   @Override
   public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {

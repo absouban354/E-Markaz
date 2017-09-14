@@ -97,10 +97,9 @@ public class ChatService extends Service {
     JSONObject jo = dbh.getLive();
     Log.v(LOG_TAG, "jo:" + jo.toString());
     socket1.emit("new connection", jo, ack);
-    socket1.on("live", handleLive);
+    socket1.on("live data", handleLive);
     return Service.START_NOT_STICKY;
   }
-
   @Override
   public IBinder onBind(Intent intent) {
     return null;
@@ -184,7 +183,7 @@ public class ChatService extends Service {
       JSONObject message;
       String strUrl, strDate;
       try {
-        Log.v(LOG_TAG, args[0].toString());
+        Log.v(LOG_TAG, args[0].toString()+"hai");
         message = (JSONObject) args[0];
         strDate = message.getString("date");
         strUrl = message.getString("url");
