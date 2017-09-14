@@ -139,4 +139,14 @@
   <string name="charity_button_text">DONATE ONLINE</string>
   <string name="photoDetails_name">%1$s %2$s</string>
   <string name="charity_bank_detail_label">For Donation Through Banks,\n Please Refer The Following Details</string>
+  <string name="charity_bank_1">MARKAZU SSAQAFATHI SSUNNIYYA (FCRA ACCOUNT) STATE BANK OF INDIA, MANANCHIRA, KOZHIKODE</string>
+  <string name="charity_bank_ifsc">IFSC</string>
+  <string name="charity_bank1_ifsc_code">SBIN0000861</string>
+  <string name="charity_bank_swift">SWIFT CODE</string>
+  <string name="charity_bank1_swift_code">SBININBB392</string>
+  <string name="charity_bank_accno">ACCOUNT NO</string>
+  <string name="charity_bank1_accno">106 22 32 32 94</string>
+  <string name="charity_bank_2">MARKAZU SSAQAFATHI SSUNNIYYA (LOCAL DONATION)  STATE BANK OF INDIA, MANANCHIRA, KOZHIKODE</string>
+  <string name="charity_bank2_ifsc_code">SBIN0000861</string>
+  <string name="charity_bank2_accno">32 32 58 67 853</string>
 </resources>

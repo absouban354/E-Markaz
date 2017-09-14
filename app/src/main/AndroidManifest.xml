@@ -25,13 +25,15 @@
     </activity>
     <activity android:name=".Activity.ChatRoom"/>
     <activity android:name=".Activity.StaffLoginActivity"/>
-    <activity android:name=".Personal.NavList"
+    <activity
+        android:name=".Personal.NavList"
         android:theme="@style/AppTheme.NoActionBar"
         android:screenOrientation="portrait"
         android:windowSoftInputMode="stateHidden"/>
     <activity android:name=".Personal.EventDetails"/>
     <activity android:name=".Personal.InstitutionDetails"/>
     <activity android:name=".Personal.PhotoDetails"/>
+
     <receiver android:name=".ChatBroadcatReceiver">
       <intent-filter>
         <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
@@ -80,6 +82,7 @@
     </activity>
     <activity android:name=".Admin.Activity.AddInstPhoto">
     </activity>
+    <activity android:name=".Activity.CharityActivity"/>
   </application>
 
 </manifest>

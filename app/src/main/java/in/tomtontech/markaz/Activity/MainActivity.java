@@ -101,11 +101,13 @@ public class MainActivity extends AppCompatActivity {
       intent.putExtra("category", category);
       startActivity(intent);
     } else if (view == findViewById(R.id.main_section_charity)) {
-      Toast.makeText(ctx, "This SEction Isnt Available", Toast.LENGTH_SHORT).show();
+      Intent intent =new Intent(ctx,CharityActivity.class);
+      startActivity(intent);
     } else if (view == findViewById(R.id.main_section_settings)) {
       Intent intent = new Intent(ctx, QuranSettingsActivity.class);
       startActivity(intent);
-    } else {
+    }
+    else {
       Toast.makeText(ctx, "This Section Is Currently Unavailable.Stay Tune.", Toast.LENGTH_SHORT)
           .show();
     }

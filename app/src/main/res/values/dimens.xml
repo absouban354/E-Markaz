@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="chatMessage_messageMargin">10dp</dimen>
-    <dimen name="chatMessage_messagePadding">2dp</dimen>
-    <dimen name="subTitle_height">48dp</dimen>
+  <dimen name="chatMessage_messageMargin">10dp</dimen>
+  <dimen name="chatMessage_messagePadding">2dp</dimen>
+  <dimen name="subTitle_height">48dp</dimen>
   <dimen name="institutionImageHeight">250dp</dimen>
-  <dimen name="charity_image_height">300dp</dimen>
+  <dimen name="charity_image_height">250dp</dimen>
 </resources>
