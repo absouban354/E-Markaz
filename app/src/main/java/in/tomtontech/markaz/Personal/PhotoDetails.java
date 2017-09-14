@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +54,12 @@ public class PhotoDetails extends AppCompatActivity {
         iv = (ImageView) findViewById(R.id.photoDetails_image);
         PhotoDetailsAsync pda = new PhotoDetailsAsync();
         pda.execute();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.photos_action_bar_menu, menu);
+        return true;
     }
 
     public class PhotoDetailsAsync extends AsyncTask<String, Void, String> {

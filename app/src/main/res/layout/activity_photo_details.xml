@@ -18,12 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:text="sdgfs"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:textColor="@color/text_color"
         android:textSize="17sp" />
 
+    <TextView
+        android:id="@+id/photoDetails_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:textColor="@color/text_color"
+        android:textSize="17sp" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -54,14 +62,4 @@
             android:textSize="17sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/photoDetails_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:text="sdgfs"
-        android:paddingLeft="16dp"
-        android:paddingTop="16dp"
-        android:textColor="@color/text_color"
-        android:textSize="17sp" />
 </LinearLayout>
