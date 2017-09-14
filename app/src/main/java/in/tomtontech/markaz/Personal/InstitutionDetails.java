@@ -107,12 +107,25 @@ public class InstitutionDetails extends AppCompatActivity {
         iv.setImageBitmap(bitmaps[0]);
         dialog.show();
     }
+    /*
+    @Override
+    public  void onBackPressed()
+    {
+        super.onBackPressed();
+        finish();
+    }*/
     public void onMorePhotosClick(View view)
     {
-        Intent intent=new Intent(ctx,NavList.class);
-        intent.putExtra("category","Photos");
-        intent.putExtra("inst_id",institution_details_inst_id);
-        startActivity(intent);
+        if(bitmaps==null)
+        {
+            Toast.makeText(ctx,"No images found",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent intent = new Intent(ctx, NavList.class);
+            intent.putExtra("category", "Photos");
+            intent.putExtra("inst_id", institution_details_inst_id);
+            startActivity(intent);
+        }
     }
     public class InstDetailsAsync extends AsyncTask<String, Void, String> {
 
@@ -178,16 +191,24 @@ public class InstitutionDetails extends AppCompatActivity {
                 wr.flush();
                 InputStream in = new BufferedInputStream(conn.getInputStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                JSONArray jsonArray = new JSONArray(reader.readLine());
-                bitmaps = new Bitmap[jsonArray.length()];
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    String jaImg1 = jsonArray.getString(i);
-                    URL url2 = new URL(CustomFunctions.URL_ADDR.concat(jaImg1));
-                    Log.v("pic", "url" + url2);
-                    InputStream is = (InputStream) url2.getContent();
-                    bitmaps[i] = BitmapFactory.decodeStream(is);
+                String line=reader.readLine();
+                Log.v("line","image:"+line);
+                if(line.equals("[]"))
+                {
+                    JSONArray jsonArray = new JSONArray(line);
+                    bitmaps =null;
                 }
-
+                else {
+                    JSONArray jsonArray = new JSONArray(line);
+                    bitmaps = new Bitmap[jsonArray.length()];
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        String jaImg1 = jsonArray.getString(i);
+                        URL url2 = new URL(CustomFunctions.URL_ADDR.concat(jaImg1));
+                        Log.v("pic", "url" + url2);
+                        InputStream is = (InputStream) url2.getContent();
+                        bitmaps[i] = BitmapFactory.decodeStream(is);
+                    }
+                }
             } catch (JSONException | NullPointerException | IOException e) {
                 e.printStackTrace();
                 return "failed";
@@ -203,8 +224,7 @@ public class InstitutionDetails extends AppCompatActivity {
             } else {
                 try {
                     String institutionDetails_instName, institutionDetails_instLabel, institutionDetails_instAddress, institutionDetails_instEmail, institutionDetails_instWebsite, institutionDetails_principal, institutionDetails_principalNo, institutionDetails_ao, institutionDetails_aoNo, institutionDetails_students, institutionDetails_academicStaff, institutionDetails_nonTeachStaff, institutionDetails_alumni, institutionDetails_description,institutionDetails_course;
-                    JSONArray jsonArray = new JSONArray(result);
-                    JSONObject j = jsonArray.getJSONObject(0);
+                    JSONObject j = new JSONObject(result);
                     JSONObject personal=j.getJSONObject("personal");
                     institutionDetails_instName = personal.getString("inst_name");
                     institutionDetails_instLabel = personal.getString("inst_label");
@@ -231,7 +251,7 @@ public class InstitutionDetails extends AppCompatActivity {
                     lvIndividual.setAdapter(customList_institutionDetailsIndividual);
                     lvIndividual.setExpanded(true);
                     JSONObject course=j.getJSONObject("course");
-                    institutionDetails_course=course.getString("course_name");
+                    institutionDetails_course="Courses Offered : \n".concat(course.getString("course_name"));
                     tvCourse.setText(institutionDetails_course);
                     JSONArray jsonArray2=j.getJSONArray("contact");
                     String[] contactNo=new String[jsonArray2.length()];
@@ -253,7 +273,7 @@ public class InstitutionDetails extends AppCompatActivity {
                     textViewNTS.setText(institutionDetails_nonTeachStaff);
                     textViewAlumni.setText(institutionDetails_alumni);
                     textViewDescription.setText(institutionDetails_description);
-                    if (result != null) {
+                    if (bitmaps!= null) {
                         try {
                             img1.setImageBitmap(bitmaps[0]);
                             img1.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -280,6 +300,10 @@ public class InstitutionDetails extends AppCompatActivity {
                             ae.printStackTrace();
                             img1.setVisibility(View.GONE);
                         }
+                    }
+                    else
+                    {
+                        img1.setVisibility(View.GONE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
