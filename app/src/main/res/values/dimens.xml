@@ -4,4 +4,5 @@
     <dimen name="chatMessage_messagePadding">2dp</dimen>
     <dimen name="subTitle_height">48dp</dimen>
   <dimen name="institutionImageHeight">250dp</dimen>
+  <dimen name="charity_image_height">300dp</dimen>
 </resources>

@@ -3,6 +3,8 @@
     <color name="colorPrimary">#0073b5</color>
     <color name="colorPrimaryDark">#004a80</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="charityButton">#FF6559</color>
+    <color name="charityBankButton">#5BB85D</color>
     <color name="chatSelfBackgroundColor">#EDEDED</color>
     <color name="textColor">#000</color>
     <color name="transparentGrey">#55FFFFFF</color>

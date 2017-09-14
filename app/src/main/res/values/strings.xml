@@ -135,4 +135,6 @@
   <string name="url_eg">https://www.youtube.com/watch?v=2GixUQ6rBm8</string>
   <string name="live_date_label">Live Date</string>
   <string name="live_date_eg">2017-12-31 05:30</string>
+  <string name="charity_online_donation_label">For Online Donation Please Click Below</string>
+  <string name="charity_button_text">DONATE ONLINE</string>
 </resources>
