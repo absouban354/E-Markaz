@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
   private static final String QURAN_FILE_ZIP = "quran.zip";
   public static final String JSON_QURAN_ID = "db_id";
   public static final String JSON_QURAN_TEXT = "db_text";
-  private static int DB_VERSION = 8;
+  private static int DB_VERSION = 9;
   private static String DB_NAME = "markaz.sqlite";
   private static String QURAN_DB = "quran.sqlite";
   private static String MESSAGE_TABLE = "messages";
@@ -53,8 +53,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
   private static String QURAN_DB_ID = "DatabaseID";
   public static String MESSAGE_ID = "message_id";
   public static String TEMP_ID = "temp_id";
-  public static String LIVE_URL = "live_URL";
-  public static String LIVE_DATE = "live_date";
+  public static String LIVE_URL = "liveURL";
+  public static String LIVE_DATE = "liveDate";
   public static String TEMP_TIME = "temp_time";
   public static String TEMP_TYPE = "temp_type";
   public static String MESSAGE_USER = "message_user";
@@ -425,21 +425,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
   }
 
   public Boolean addLive(String[] data) {
-    return true;
+    String strUrl = data[0];
+    String strDate = data[1];
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues cv = new ContentValues();
+    cv.put(LIVE_URL, strUrl);
+    cv.put(LIVE_DATE, strDate);
+    String getSql="SELECT * FROM "+PERSONAL_TABLE+" LIMIT 1";
+    Cursor c=db.rawQuery(getSql,null);
+    long i=0;
+    if(c.getCount()==1)
+    {
+      //TODO:update
+      i = db.update(PERSONAL_TABLE,cv,null, null);
+    }
+    else
+    {
+      //TODO:add
+      i = db.insert(PERSONAL_TABLE, null, cv);
+    }
+    c.close();
+    db.close();
+    return i>0;
   }
-
-  public Cursor getLive() {
+  public JSONObject getLive() {
     SQLiteDatabase db = this.getReadableDatabase();
     String getQuery = "SELECT * FROM " + PERSONAL_TABLE + " LIMIT 1 ";
     Cursor c = db.rawQuery(getQuery, null);
     int len = c.getCount();
-    JSONArray ja = new JSONArray();
-    if (len > 0) {
-      while (c.moveToNext()) {
-        JSONObject jo = new JSONObject();
-        
+    JSONObject jo = new JSONObject();
+    if (len > 0 && c.moveToFirst()) {
+      try {
+        jo.put(LIVE_URL, c.getString(c.getColumnIndex(LIVE_URL)));
+        jo.put(LIVE_DATE, c.getString(c.getColumnIndex(LIVE_DATE)));
+      } catch (JSONException e) {
+        e.printStackTrace();
       }
     }
-    return null;
+    c.close();
+    db.close();
+    return jo;
   }
 }
