@@ -272,9 +272,13 @@
   </style>
   <style name="charity_button">
     <item name="android:background">@drawable/custom_charity_button</item>
+    <item name="android:textStyle">bold</item>
     <item name="android:textColor">@color/white</item>
     <item name="android:padding">20dp</item>
     <item name="android:paddingTop">10dp</item>
     <item name="android:paddingBottom">10dp</item>
+  </style>
+  <style name="charity_bank_detail_label" parent="charity_label">
+
   </style>
 </resources>

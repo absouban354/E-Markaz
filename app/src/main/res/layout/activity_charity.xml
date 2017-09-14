@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context="in.tomtontech.markaz.Activity.CharityActivity"
     >
-</RelativeLayout>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:orientation="vertical"
+      android:layout_height="wrap_content"
+      >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/charity_image_height"
+        android:src="@drawable/ic_charity_png"
+        android:scaleType="fitXY"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        style="@style/charity_label"
+        android:textAlignment="center"
+        android:text="@string/charity_online_donation_label"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/bgForListQuran"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            style="@style/charity_button"
+            android:text="@string/charity_button_text"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/charity_bank_detail_label"
+            android:textAlignment="center"
+            style="@style/charity_bank_detail_label"
+            android:gravity="center"
+            />
+    </LinearLayout>
+  </LinearLayout>
+</ScrollView>
