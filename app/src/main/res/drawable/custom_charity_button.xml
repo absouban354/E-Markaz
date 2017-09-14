@@ -6,7 +6,7 @@
             <stroke android:width="1dp" android:color="@color/charityButton"/>
             <solid android:color="@color/charityButton" />
             <corners android:radius="10dp" />
-            <padding android:bottom="3dp" android:left="3dp" android:right="3dp" android:top="3dp" />
+            <padding android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp" />
         </shape></item>
     </layer-list></item>
 
