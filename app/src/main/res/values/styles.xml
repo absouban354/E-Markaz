@@ -313,4 +313,24 @@
     <item name="android:paddingStart">32dp</item>
     <item name="android:paddingLeft">32dp</item>
   </style>
+  <style name="contact_dept_detail">
+    <item name="android:paddingStart">10dp</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">16sp</item>
+  </style>
+  <style name="contact_details">
+    <item name="android:paddingTop">5dp</item>
+    <item name="android:paddingBottom">5dp</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+  <style name="listItem_subTitle">
+    <item name="android:textColor">@color/gridColor</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+  <style name="listItem_title">
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">16sp</item>
+  </style>
 </resources>

@@ -65,7 +65,6 @@ public class QuranStartActivity extends AppCompatActivity {
         isAnimation=false;
         finish();
       }
-
       @Override
       public void onAnimationRepeat(Animator animator) {
 

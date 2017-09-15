@@ -29,6 +29,7 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
   private String URL_INST_ADDR=SERVER_ADDR+"admin/web_viewInstitution.php";
   private String URL_EVENT_ADDR=SERVER_ADDR+"admin/web_viewEvent.php";
   private String URL_PHOTO_ADDR=SERVER_ADDR+"admin/web_viewPhoto.php";
+  private String URL_CONTACT_ADDR=SERVER_ADDR+"admin/web_viewContact.php";
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -77,6 +78,10 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
     else if(id==R.id.nav_photo)
     {
       webView.loadUrl(URL_PHOTO_ADDR);
+      drawer.closeDrawers();
+    }else if(id==R.id.nav_contact)
+    {
+      webView.loadUrl(URL_CONTACT_ADDR);
       drawer.closeDrawers();
     }
     else if(id==R.id.nav_dashBoard)
