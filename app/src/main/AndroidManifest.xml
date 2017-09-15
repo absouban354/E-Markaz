@@ -107,6 +107,7 @@
     </activity>
     <activity android:name=".Activity.RouteMapListActivity"
         android:label="@string/route_map"/>
+    <activity android:name=".Admin.AddLiveActivity"/>
   </application>
 
 </manifest>
