@@ -1,5 +1,6 @@
 package in.tomtontech.markaz.Personal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,14 +27,16 @@ import in.tomtontech.markaz.R;
 public class NavList extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     String category;
-    String inst_id="";
+    String inst_id = "";
+    Context ctx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle extra = getIntent().getExtras();
         if (extra != null) {
-             category= extra.getString("category");
-             inst_id=extra.getString("inst_id");
+            category = extra.getString("category");
+            inst_id = extra.getString("inst_id");
         }
         setContentView(R.layout.activity_nav_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -45,8 +48,8 @@ public class NavList extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        switch(category)
-        {
+        ctx = getApplicationContext();
+        switch (category) {
             case "Institution":
                 displaySelectedScreen(R.id.nav_inst);
                 break;
@@ -60,27 +63,28 @@ public class NavList extends AppCompatActivity
     }
 
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else {
-            int count=getFragmentManager().getBackStackEntryCount();
-            if(count>=1)
-            {
+        } else {
+            int count = getFragmentManager().getBackStackEntryCount();
+            if (count > 1) {
                 getFragmentManager().popBackStack();
 
-            }
-            else
-            {
+            } else {
                 super.onBackPressed();
+                if (inst_id==null || inst_id.equalsIgnoreCase("")) {
+                    Intent intent = new Intent(ctx, MainActivity.class);
+                    startActivity(intent);
+                }
+                finish();
             }
 
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -109,39 +113,41 @@ public class NavList extends AppCompatActivity
         displaySelectedScreen(item.getItemId());
         return true;
     }
+
     private void displaySelectedScreen(int itemId) {
         Fragment fragment = null;
-        switch (itemId)
-        {
+        switch (itemId) {
             case R.id.nav_home:
-                Intent intent=new Intent(this,MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;
             case R.id.nav_inst:
-                fragment=new InstitutionCategory();
+                inst_id = "";
+                fragment = new InstitutionCategory();
                 break;
             case R.id.nav_eve:
-                fragment=new EventCategory();
+                inst_id = "";
+                fragment = new EventCategory();
                 break;
             case R.id.nav_pho:
-                fragment=new PhotoFragment();
-                if(inst_id!=null) {
+                fragment = new PhotoFragment();
+                if (inst_id != null) {
                     Bundle bundle = new Bundle();
                     bundle.putString("inst_id", inst_id);
                     fragment.setArguments(bundle);
                 }
                 break;
         }
-        if(fragment!=null)
-        {
+        if (fragment != null) {
 
-            android.app.FragmentManager manager=getFragmentManager();
-            FragmentTransaction ft=getFragmentManager().beginTransaction();
-            Log.v("jhafkds","afjkd");
-            ft.replace(R.id.content_frame,fragment);
+            android.app.FragmentManager manager = getFragmentManager();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Log.v("jhafkds", "afjkd");
+            getSupportFragmentManager().popBackStack();
+            ft.replace(R.id.content_frame, fragment);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-            manager.popBackStack(null,android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            manager.popBackStack(null, android.app.FragmentManager.POP_BACK_STACK_INCLUSIVE);
             ft.addToBackStack(null);
             ft.commit();
         }

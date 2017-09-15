@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +37,9 @@ import in.tomtontech.markaz.R;
 public class PhotoDetails extends AppCompatActivity {
     protected Activity avt;
     protected Context ctx;
-    String photoDetails_photoId;
+    String photoDetails_photoId, name;
+    int position, size;
+    String[] photoId;
     TextView tvName, tvDescription;
     ImageView iv;
 
@@ -46,34 +49,69 @@ public class PhotoDetails extends AppCompatActivity {
         Bundle extra = getIntent().getExtras();
         if (extra != null) {
             photoDetails_photoId = extra.getString("photo_id");
+            photoId = extra.getStringArray("photoId");
+            position = extra.getInt("position");
+            name = extra.getString("photoName");
         }
         setContentView(R.layout.activity_photo_details);
         ctx = getApplicationContext();
+        size = photoId.length;
         tvName = (TextView) findViewById(R.id.photoDetails_name);
         tvDescription = (TextView) findViewById(R.id.photoDetails_description);
         iv = (ImageView) findViewById(R.id.photoDetails_image);
         PhotoDetailsAsync pda = new PhotoDetailsAsync();
-        pda.execute();
+        pda.execute(photoDetails_photoId, name);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.photos_action_bar_menu, menu);
         return true;
     }
-    
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        PhotoDetailsAsync photoDetailsAsync = new PhotoDetailsAsync();
+        switch (item.getItemId()) {
+            case R.id.photo_action_previous:
+                if (position == 0) {
+                    //Toast.makeText(ctx,"No more photos",Toast.LENGTH_SHORT).show();
+                    position = size - 1;
+                } else
+                    position -= 1;
+                photoDetails_photoId = photoId[position];
+                photoDetailsAsync.execute(photoDetails_photoId, name);
+                return true;
+            case R.id.photo_action_next:
+                if (position == (size - 1)) {
+                    position = 0;
+                } else
+                    position += 1;
+                photoDetails_photoId = photoId[position];
+                photoDetailsAsync.execute(photoDetails_photoId, name);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     public class PhotoDetailsAsync extends AsyncTask<String, Void, String> {
         String result;
         Bitmap bitmap;
+        Bitmap[] bitmaps = null;
 
         @Override
         protected String doInBackground(String... strings) {
+            photoDetails_photoId = strings[0];
+            name = strings[1];
             try {
                 String photoUrl = CustomFunctions.URL_ADDR.concat("photo_details.php");
                 URL url = new URL(photoUrl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 String data = URLEncoder.encode("photo_id", "UTF-8") + "=" + URLEncoder
-                        .encode(photoDetails_photoId, "UTF-8");
+                        .encode(photoDetails_photoId, "UTF-8") + "&" + URLEncoder.encode("photo_name", "UTF-8") + "=" + URLEncoder
+                        .encode(name, "UTF-8");
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
                 OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -107,12 +145,26 @@ public class PhotoDetails extends AppCompatActivity {
                 return "failed";
             }
             try {
-                JSONObject jb = new JSONObject(result);
-                String jaImg1 = jb.getString("photo");
-                URL url2 = new URL(CustomFunctions.URL_ADDR.concat(jaImg1));
-                Log.v("pic", "url" + url2);
-                InputStream is = (InputStream) url2.getContent();
-                bitmap = BitmapFactory.decodeStream(is);
+                if (name.equalsIgnoreCase("")) {
+                    JSONObject jb = new JSONObject(result);
+                    String jaImg1 = jb.getString("photo");
+                    URL url2 = new URL(CustomFunctions.URL_ADDR.concat(jaImg1));
+                    Log.v("pic", "url" + url2);
+                    InputStream is = (InputStream) url2.getContent();
+                    bitmap = BitmapFactory.decodeStream(is);
+                } else {
+                    JSONArray jsonArray = new JSONArray(result);
+                    String[] img = new String[jsonArray.length()];
+                    bitmaps = new Bitmap[jsonArray.length()];
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jb = jsonArray.getJSONObject(i);
+                        img[i] = jb.getString("photo");
+                        URL url2 = new URL(CustomFunctions.URL_ADDR.concat(img[i]));
+                        Log.v("pic", "url" + url2);
+                        InputStream is = (InputStream) url2.getContent();
+                        bitmaps[i] = BitmapFactory.decodeStream(is);
+                    }
+                }
 
             } catch (JSONException | IOException e) {
                 e.printStackTrace();
@@ -129,14 +181,27 @@ public class PhotoDetails extends AppCompatActivity {
             } else {
                 try {
                     String photoDetails_name, photoDetails_date, photoDetails_description;
-                    JSONObject jb = new JSONObject(result);
-                    photoDetails_name = jb.getString("photo_name");
-                    photoDetails_date = jb.getString("photo_date");
-                    photoDetails_description = jb.getString("photo_description");
-                    tvName.setText(getString(R.string.photoDetails_name, photoDetails_name, photoDetails_date));
-                    tvDescription.setText(photoDetails_description);
-                    iv.setImageBitmap(bitmap);
-                    iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                    if (name.equalsIgnoreCase("")) {
+                        JSONObject jb = new JSONObject(result);
+                        photoDetails_name = jb.getString("photo_name");
+                        photoDetails_date = jb.getString("photo_date");
+                        photoDetails_description = jb.getString("photo_description");
+                        tvName.setText(getString(R.string.photoDetails_name, photoDetails_name, photoDetails_date));
+                        tvDescription.setText(photoDetails_description);
+                        iv.setImageBitmap(bitmap);
+                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                    } else {
+                        JSONArray jsonArray = new JSONArray(result);
+                        String[] photoDetailsDescription = new String[jsonArray.length()];
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jb = jsonArray.getJSONObject(i);
+                            photoDetailsDescription[i] = jb.getString("photo_description");
+                        }
+                        tvName.setVisibility(View.GONE);
+                        tvDescription.setText(photoDetailsDescription[position]);
+                        iv.setImageBitmap(bitmaps[position]);
+                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
