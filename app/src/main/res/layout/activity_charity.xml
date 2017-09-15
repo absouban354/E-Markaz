@@ -38,6 +38,7 @@
           android:layout_height="wrap_content"
           android:layout_gravity="center"
           style="@style/charity_button"
+          android:onClick="onDonationClick"
           android:text="@string/charity_button_text"
           android:id="@+id/button"
           />

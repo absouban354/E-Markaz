@@ -1,4 +1,5 @@
 package in.tomtontech.markaz;
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
@@ -48,7 +49,7 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class CustomFunction {
-  public static final String URL_ADDR = "http://192.168.1.102/";
+  public static final String URL_ADDR = "http://192.168.1.101/";
   //public static final String URL_ADDR = "http://103.86.176.102/";
   public static final String BUNDLE_QURAN_SURAH_ID = "surah_id";
   public static final String BUNDLE_QURAN_PAGE_ID = "page_id";
@@ -107,7 +108,28 @@ public class CustomFunction {
     this.ctx = ctx;
     dbh=new DatabaseHelper(ctx);
   }
-
+  public Boolean checkInternetConnection()
+  {
+    ConnectivityManager connec
+        =(ConnectivityManager)ctx.getSystemService(((Activity)ctx).getBaseContext().CONNECTIVITY_SERVICE);
+    // Check for network connections
+    if ( connec.getNetworkInfo(0).getState() ==
+        android.net.NetworkInfo.State.CONNECTED ||
+        connec.getNetworkInfo(0).getState() ==
+            android.net.NetworkInfo.State.CONNECTING ||
+        connec.getNetworkInfo(1).getState() ==
+            android.net.NetworkInfo.State.CONNECTING ||
+        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+      return true;
+    }else if (
+        connec.getNetworkInfo(0).getState() ==
+            android.net.NetworkInfo.State.DISCONNECTED ||
+            connec.getNetworkInfo(1).getState() ==
+                android.net.NetworkInfo.State.DISCONNECTED  ) {
+      return false;
+    }
+    return false;
+  }
   public boolean saveImageToExternalStorage(Bitmap image, String imageName, int flag) {
     String fullPath = APP_CHAT_IMAGE_LOCATION;
     if (flag == 2) {

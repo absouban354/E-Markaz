@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import in.tomtontech.markaz.R;
 
@@ -23,5 +24,10 @@ public class CharityActivity extends AppCompatActivity {
       return true;
     }
     return super.onOptionsItemSelected(item);
+  }
+  public void onDonationClick(View view)
+  {
+    Intent intent =new Intent(this,CharityWebActivity.class);
+    startActivity(intent);
   }
 }

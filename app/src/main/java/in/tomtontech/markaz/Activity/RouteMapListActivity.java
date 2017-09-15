@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import java.net.URL;
 
 import in.tomtontech.markaz.Adapter.ListQuickContact;
 import in.tomtontech.markaz.Adapter.ListRouteMap;
+import in.tomtontech.markaz.CustomFunction;
 import in.tomtontech.markaz.R;
 
 import static in.tomtontech.markaz.CustomFunction.CONNECTION_TIMEOUT;
@@ -39,6 +41,8 @@ public class RouteMapListActivity extends AppCompatActivity {
   private static final String LOG_TAG = "routeList";
   private Context ctx;
   private ListView lvRoute;
+  private LinearLayout llError;
+  private CustomFunction cf;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,10 @@ public class RouteMapListActivity extends AppCompatActivity {
     setContentView(R.layout.activity_route_map_list);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     ctx = this;
+    cf = new CustomFunction(ctx);
     lvRoute = (ListView) findViewById(R.id.routeMap_listView);
+    llError = (LinearLayout) findViewById(R.id.routeMap_llError);
+    llError.setVisibility(View.GONE);
     new AsyncRoute().execute();
   }
 
@@ -61,7 +68,8 @@ public class RouteMapListActivity extends AppCompatActivity {
   }
 
   private class AsyncRoute extends AsyncTask<Void, Void, String> {
-    ProgressDialog pd=new ProgressDialog(ctx);
+    ProgressDialog pd = new ProgressDialog(ctx);
+
     @Override
     protected void onPreExecute() {
       super.onPreExecute();
@@ -94,8 +102,12 @@ public class RouteMapListActivity extends AppCompatActivity {
       pd.dismiss();
       Log.v(LOG_TAG, s);
       if (s.equalsIgnoreCase("failed")) {
+        llError.setVisibility(View.VISIBLE);
+        lvRoute.setVisibility(View.GONE);
         Toast.makeText(ctx, "Network Error. Try Again", Toast.LENGTH_SHORT).show();
       } else {
+        llError.setVisibility(View.GONE);
+        lvRoute.setVisibility(View.VISIBLE);
         try {
           JSONArray ja = new JSONArray(s);
           if (ja.length() > 0) {
@@ -105,7 +117,8 @@ public class RouteMapListActivity extends AppCompatActivity {
               JSONObject jo = ja.getJSONObject(i);
               strInstId[i] = jo.getString("instId");
               strInstName[i] = jo.getString("instName");
-              strInstLabel[i] = jo.getString("instLabel");
+              if (!jo.getString("instLabel").equalsIgnoreCase(""))
+                strInstLabel[i] = jo.getString("instLabel");
               strLongitude[i] = jo.getString("Longitude");
               strLatitude[i] = jo.getString("Latitude");
             }
@@ -130,5 +143,9 @@ public class RouteMapListActivity extends AppCompatActivity {
         }
       }
     }
+  }
+
+  public void onRetryClick(View view) {
+    new AsyncRoute().execute();
   }
 }

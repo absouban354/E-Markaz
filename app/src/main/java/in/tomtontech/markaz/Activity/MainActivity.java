@@ -1,6 +1,8 @@
 package in.tomtontech.markaz.Activity;
 
 import android.Manifest;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
   * TODO: Get Click Event From Section
   * */
   public void onSectionClick(View view) {
+    final TextView tv=(TextView)view;
     if (view == findViewById(R.id.main_section_staff)) {
       SharedPreferences sp1 = this.getSharedPreferences(SP_ADDR, 0);
       int privilage = sp1.getInt(SP_PRIVILAGE, 0);
@@ -91,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
       intent.putExtra("category", category);
       startActivity(intent);
     } else if (view == findViewById(R.id.main_section_multimedia)) {
-      Toast.makeText(ctx, "This SEction Isnt Available", Toast.LENGTH_SHORT).show();
+      Intent intent=new Intent(ctx,MultiMediaActivity.class);
+      startActivity(intent);
     } else if (view == findViewById((R.id.main_section_photo))) {
       String category = "Photos";
       Intent intent = new Intent(ctx, NavList.class);

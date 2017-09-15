@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationSet;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -108,6 +109,9 @@ public class QuickContactActivity extends AppCompatActivity {
             }
             final ListQuickContact lqc=new ListQuickContact((Activity)ctx,strPersonName,strDepartment,strContact,strEmail);
             lvContact.setAdapter(lqc);
+            Button btn=new Button(ctx);
+            btn.setText("Load More");
+            lvContact.addFooterView(btn);
             lvContact.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                   @Override
