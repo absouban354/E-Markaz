@@ -61,7 +61,7 @@ public class PhotoDetails extends AppCompatActivity {
         inflater.inflate(R.menu.photos_action_bar_menu, menu);
         return true;
     }
-
+    
     public class PhotoDetailsAsync extends AsyncTask<String, Void, String> {
         String result;
         Bitmap bitmap;

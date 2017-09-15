@@ -163,6 +163,8 @@ public class PhotoFragment extends Fragment {
               Intent intent = new Intent(ctx, PhotoDetails.class);
               String photo_id = photoId[i];
               intent.putExtra("photo_id", photo_id);
+              intent.putExtra("position",i);
+              intent.putExtra("photo_id",photoId);
               startActivity(intent);
             }
           });
