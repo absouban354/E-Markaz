@@ -55,8 +55,9 @@ public class InstitutionDetails extends AppCompatActivity {
     GridView gridView;
     public Bitmap[] bitmaps = null;
     TextView textViewName, textViewLabel, textViewAddress, textViewEmail, textViewWebsite, textViewPrincipal, textViewPrincipalNo, textViewAO, textViewAoNo, textViewStudents, textViewTS, textViewNTS, textViewAlumni, textViewDescription;
-    TextView tvCourse,tvRouteMap,tvMorePhotos;
-    ExpandableList lvContact,lvIndividual;
+    TextView tvCourse, tvRouteMap, tvMorePhotos;
+    ExpandableList lvContact, lvIndividual;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +71,8 @@ public class InstitutionDetails extends AppCompatActivity {
         gridView = (GridView) findViewById(R.id.institutionDetails_gridView);
         ctx = this;
         avt = (Activity) ctx;
-        tvRouteMap=(TextView)findViewById(R.id.institutionDetails_routemap);
-        tvMorePhotos=(TextView)findViewById(R.id.institutionDetails_morepics);
+        tvRouteMap = (TextView) findViewById(R.id.institutionDetails_routemap);
+        tvMorePhotos = (TextView) findViewById(R.id.institutionDetails_morepics);
         textViewName = (TextView) findViewById(R.id.institutionDetails_instName);
         textViewLabel = (TextView) findViewById(R.id.institutionDetails_instLabel);
         textViewAddress = (TextView) findViewById(R.id.institution_details_address);
@@ -82,31 +83,30 @@ public class InstitutionDetails extends AppCompatActivity {
         textViewNTS = (TextView) findViewById(R.id.institutionDetails_nonTeachingCount);
         textViewAlumni = (TextView) findViewById(R.id.institutionDetails_alumniCount);
         textViewDescription = (TextView) findViewById(R.id.institutionDetails_description);
-        tvCourse=(TextView)findViewById(R.id.institutionDetails_course);
-        lvContact=(ExpandableList)findViewById(R.id.listView_contact);
-        lvIndividual=(ExpandableList)findViewById(R.id.listView_individual);
+        tvCourse = (TextView) findViewById(R.id.institutionDetails_course);
+        lvContact = (ExpandableList) findViewById(R.id.listView_contact);
+        lvIndividual = (ExpandableList) findViewById(R.id.listView_individual);
         InstDetailsAsync ica = new InstDetailsAsync();
         ica.execute();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==android.R.id.home)
-        {
+        if (item.getItemId() == android.R.id.home) {
             super.onBackPressed();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void onImgClick(View view)
-    {
-        Dialog dialog=new Dialog(this);
+    public void onImgClick(View view) {
+        Dialog dialog = new Dialog(this);
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view,null));
-        ImageView iv=(ImageView)dialog.findViewById(R.id.imagePop);
+        dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view, null));
+        ImageView iv = (ImageView) dialog.findViewById(R.id.imagePop);
         iv.setImageBitmap(bitmaps[0]);
         dialog.show();
     }
+
     /*
     @Override
     public  void onBackPressed()
@@ -114,24 +114,23 @@ public class InstitutionDetails extends AppCompatActivity {
         super.onBackPressed();
         finish();
     }*/
-    public void onMorePhotosClick(View view)
-    {
-        if(bitmaps==null)
-        {
-            Toast.makeText(ctx,"No images found",Toast.LENGTH_SHORT).show();
-        }
-        else {
+    public void onMorePhotosClick(View view) {
+        if (bitmaps == null) {
+            Toast.makeText(ctx, "No images found", Toast.LENGTH_SHORT).show();
+        } else {
             Intent intent = new Intent(ctx, NavList.class);
             intent.putExtra("category", "Photos");
             intent.putExtra("inst_id", institution_details_inst_id);
             startActivity(intent);
         }
     }
+
     public class InstDetailsAsync extends AsyncTask<String, Void, String> {
 
         ImageView img1 = (ImageView) findViewById(R.id.institution_details_image_view);
         String result;
-        ProgressDialog pd=new ProgressDialog(ctx);
+        ProgressDialog pd = new ProgressDialog(ctx);
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -191,14 +190,12 @@ public class InstitutionDetails extends AppCompatActivity {
                 wr.flush();
                 InputStream in = new BufferedInputStream(conn.getInputStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-                String line=reader.readLine();
-                Log.v("line","image:"+line);
-                if(line.equals("[]"))
-                {
+                String line = reader.readLine();
+                Log.v("line", "image:" + line);
+                if (line.equals("[]")) {
                     JSONArray jsonArray = new JSONArray(line);
-                    bitmaps =null;
-                }
-                else {
+                    bitmaps = null;
+                } else {
                     JSONArray jsonArray = new JSONArray(line);
                     bitmaps = new Bitmap[jsonArray.length()];
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -223,9 +220,9 @@ public class InstitutionDetails extends AppCompatActivity {
                 Toast.makeText(ctx, "Network Error. Please turn on Mobile data or WiFi and try again", Toast.LENGTH_SHORT).show();
             } else {
                 try {
-                    String institutionDetails_instName, institutionDetails_instLabel, institutionDetails_instAddress, institutionDetails_instEmail, institutionDetails_instWebsite, institutionDetails_principal, institutionDetails_principalNo, institutionDetails_ao, institutionDetails_aoNo, institutionDetails_students, institutionDetails_academicStaff, institutionDetails_nonTeachStaff, institutionDetails_alumni, institutionDetails_description,institutionDetails_course;
+                    String institutionDetails_instName, institutionDetails_instLabel, institutionDetails_instAddress, institutionDetails_instEmail, institutionDetails_instWebsite, institutionDetails_principal, institutionDetails_principalNo, institutionDetails_ao, institutionDetails_aoNo, institutionDetails_students, institutionDetails_academicStaff, institutionDetails_nonTeachStaff, institutionDetails_alumni, institutionDetails_description, institutionDetails_course;
                     JSONObject j = new JSONObject(result);
-                    JSONObject personal=j.getJSONObject("personal");
+                    JSONObject personal = j.getJSONObject("personal");
                     institutionDetails_instName = personal.getString("inst_name");
                     institutionDetails_instLabel = personal.getString("inst_label");
                     institutionDetails_instAddress = personal.getString("address");
@@ -236,31 +233,29 @@ public class InstitutionDetails extends AppCompatActivity {
                     institutionDetails_nonTeachStaff = personal.getString("nts_count");
                     institutionDetails_alumni = personal.getString("alumni_count");
                     institutionDetails_description = personal.getString("description");
-                    JSONArray jsonArray1=j.getJSONArray("individual");
-                    String name[]=new String[jsonArray1.length()];
-                    String number[]=new String[jsonArray1.length()];
-                    String designation[]=new String[jsonArray1.length()];
-                    for(int i=0;i<jsonArray1.length();i++)
-                    {
-                        JSONObject individual=jsonArray1.getJSONObject(i);
-                        designation[i]=individual.getString("designation");
-                        name[i]=designation[i].concat(" : ").concat(individual.getString("name"));
-                        number[i]="Ph No : ".concat(individual.getString("number"));
+                    JSONArray jsonArray1 = j.getJSONArray("individual");
+                    String name[] = new String[jsonArray1.length()];
+                    String number[] = new String[jsonArray1.length()];
+                    String designation[] = new String[jsonArray1.length()];
+                    for (int i = 0; i < jsonArray1.length(); i++) {
+                        JSONObject individual = jsonArray1.getJSONObject(i);
+                        designation[i] = individual.getString("designation");
+                        name[i] = designation[i].concat(" : ").concat(individual.getString("name"));
+                        number[i] = "Ph No : ".concat(individual.getString("number"));
                     }
-                    CustomList_InstitutionDetailsIndividual customList_institutionDetailsIndividual=new CustomList_InstitutionDetailsIndividual(avt,name,number);
+                    CustomList_InstitutionDetailsIndividual customList_institutionDetailsIndividual = new CustomList_InstitutionDetailsIndividual(avt, name, number);
                     lvIndividual.setAdapter(customList_institutionDetailsIndividual);
                     lvIndividual.setExpanded(true);
-                    JSONObject course=j.getJSONObject("course");
-                    institutionDetails_course="Courses Offered : \n".concat(course.getString("course_name"));
+                    JSONObject course = j.getJSONObject("course");
+                    institutionDetails_course = "Courses Offered : \n".concat(course.getString("course_name"));
                     tvCourse.setText(institutionDetails_course);
-                    JSONArray jsonArray2=j.getJSONArray("contact");
-                    String[] contactNo=new String[jsonArray2.length()];
-                    for(int i=0;i<jsonArray2.length();i++)
-                    {
-                        JSONObject contact=jsonArray2.getJSONObject(i);
-                        contactNo[i]=contact.getString("contact_number");
+                    JSONArray jsonArray2 = j.getJSONArray("contact");
+                    String[] contactNo = new String[jsonArray2.length()];
+                    for (int i = 0; i < jsonArray2.length(); i++) {
+                        JSONObject contact = jsonArray2.getJSONObject(i);
+                        contactNo[i] = contact.getString("contact_number");
                     }
-                    CustomList_InstitutionDetailsContact customList_institutionDetailsContact=new CustomList_InstitutionDetailsContact(avt,contactNo);
+                    CustomList_InstitutionDetailsContact customList_institutionDetailsContact = new CustomList_InstitutionDetailsContact(avt, contactNo);
                     lvContact.setAdapter(customList_institutionDetailsContact);
                     lvContact.setExpanded(true);
                     textViewName.setText(institutionDetails_instName);
@@ -273,36 +268,32 @@ public class InstitutionDetails extends AppCompatActivity {
                     textViewNTS.setText(institutionDetails_nonTeachStaff);
                     textViewAlumni.setText(institutionDetails_alumni);
                     textViewDescription.setText(institutionDetails_description);
-                    if (bitmaps!= null) {
+                    if (bitmaps != null) {
                         try {
                             img1.setImageBitmap(bitmaps[0]);
                             img1.setScaleType(ImageView.ScaleType.FIT_XY);
-                            int len=bitmaps.length>4?5:bitmaps.length;
-                            Bitmap[] tempArray=new Bitmap[len-1];
+                            int len = bitmaps.length > 4 ? 5 : bitmaps.length;
+                            Bitmap[] tempArray = new Bitmap[len - 1];
                             System.arraycopy(bitmaps, 1, tempArray, 0, tempArray.length);
                             CustomList_InstitutionDetailsImages customListInstitutionDetailsImages = new CustomList_InstitutionDetailsImages(avt, tempArray);
                             gridView.setAdapter(customListInstitutionDetailsImages);
                             gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    Dialog dialog=new Dialog(ctx);
+                                    Dialog dialog = new Dialog(ctx);
                                     dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-                                    dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view,null));
-                                    ImageView iv=(ImageView)dialog.findViewById(R.id.imagePop);
-                                    iv.setImageBitmap(bitmaps[i+1]);
+                                    dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view, null));
+                                    ImageView iv = (ImageView) dialog.findViewById(R.id.imagePop);
+                                    iv.setImageBitmap(bitmaps[i + 1]);
                                     //iv.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                                     dialog.show();
                                 }
                             });
-                        }
-                        catch (ArrayIndexOutOfBoundsException ae)
-                        {
+                        } catch (ArrayIndexOutOfBoundsException ae) {
                             ae.printStackTrace();
                             img1.setVisibility(View.GONE);
                         }
-                    }
-                    else
-                    {
+                    } else {
                         img1.setVisibility(View.GONE);
                     }
                 } catch (JSONException e) {
