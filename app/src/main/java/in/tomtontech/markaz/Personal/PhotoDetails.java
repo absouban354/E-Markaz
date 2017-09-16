@@ -75,18 +75,17 @@ public class PhotoDetails extends AppCompatActivity {
         PhotoDetailsAsync photoDetailsAsync = new PhotoDetailsAsync();
         switch (item.getItemId()) {
             case R.id.photo_action_previous:
-                if (position == 0) {
-                    //Toast.makeText(ctx,"No more photos",Toast.LENGTH_SHORT).show();
+                if (position == 0)
                     position = size - 1;
-                } else
+                else
                     position -= 1;
                 photoDetails_photoId = photoId[position];
                 photoDetailsAsync.execute(photoDetails_photoId, name);
                 return true;
             case R.id.photo_action_next:
-                if (position == (size - 1)) {
+                if (position == (size - 1))
                     position = 0;
-                } else
+                else
                     position += 1;
                 photoDetails_photoId = photoId[position];
                 photoDetailsAsync.execute(photoDetails_photoId, name);

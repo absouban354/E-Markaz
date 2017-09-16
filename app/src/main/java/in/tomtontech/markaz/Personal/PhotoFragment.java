@@ -172,6 +172,7 @@ public class PhotoFragment extends Fragment {
                             intent.putExtra("photoId", photoId);
                             intent.putExtra("photoName", name);
                             startActivity(intent);
+                            avt.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                         }
                     });
 

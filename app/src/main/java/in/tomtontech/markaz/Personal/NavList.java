@@ -1,5 +1,6 @@
 package in.tomtontech.markaz.Personal;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class NavList extends AppCompatActivity
     String category;
     String inst_id = "";
     Context ctx;
+    Activity avt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
