@@ -132,7 +132,7 @@ public class CustomFunction {
         }
         return false;
     }
-
+    //hi kitya noak
     public boolean saveImageToExternalStorage(Bitmap image, String imageName, int flag) {
         String fullPath = APP_CHAT_IMAGE_LOCATION;
         if (flag == 2) {
