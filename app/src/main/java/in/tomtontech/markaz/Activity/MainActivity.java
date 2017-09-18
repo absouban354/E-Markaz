@@ -114,6 +114,12 @@ public class MainActivity extends AppCompatActivity {
     } else if (view == findViewById(R.id.main_section_routeMap)) {
       Intent intent = new Intent(ctx, RouteMapListActivity.class);
       startActivity(intent);
+    } else if (view == findViewById(R.id.main_section_brief)) {
+      Intent intent = new Intent(ctx, BriefActivity.class);
+      startActivity(intent);
+    } else if (view == findViewById(R.id.main_section_noticeBoard)) {
+      Intent intent = new Intent(ctx, NoticeBoardActivity.class);
+      startActivity(intent);
     } else {
       Toast.makeText(ctx, "This Section Is Currently Unavailable.Stay Tune.", Toast.LENGTH_SHORT)
           .show();

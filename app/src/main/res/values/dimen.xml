@@ -13,10 +13,24 @@
     <dimen name="appBar_subTitle">16sp</dimen>
     <dimen name="appBar_titleSize">20sp</dimen>
     <dimen name="nullValue">0dp</dimen>
+    <dimen name="paragraph_textSize">14sp</dimen>
+    <dimen name="paragraph_verticalPadding">10dp</dimen>
+    <dimen name="list_item_title_left_padding">16dp</dimen>
+    <dimen name="list_item_title_text_size">16sp</dimen>
+    <dimen name="list_item_sub_title_text_size">14sp</dimen>
+    <dimen name="list_item_title_height">48dp</dimen>
+    <dimen name="list_item_icon_width">56dp</dimen>
+    <dimen name="list_item_second_line_text_size">14sp</dimen>
+    <dimen name="list_three_line_top_padding">16dp</dimen>
+    <dimen name="list_three_line_bottom_padding">20dp</dimen>
+    <dimen name="list_three_line_secondary_vertical_padding">8dp</dimen>
+    <dimen name="list_three_line_secondary_left_padding">56dp</dimen>
+    <dimen name="list_three_line_secondary_right_padding">16dp</dimen>
+    <dimen name="activity_subtitle_height">48dp</dimen>
+    <dimen name="list_single_min_height">48dp</dimen>
 
     <dimen name="brand_heading_textSize">37dp</dimen>
     <dimen name="brand_subheading_textSize">17dp</dimen>
-
     <dimen name="chatRoom_messageUser_textSize">14sp</dimen>
     <dimen name="chatRoom_messageText_textSize">16sp</dimen>
     <dimen name="chatRoom_messageTime_textSize">10sp</dimen>

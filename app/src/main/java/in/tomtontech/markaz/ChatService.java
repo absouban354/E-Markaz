@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.net.URISyntaxException;
 
+import in.tomtontech.markaz.Activity.CharityActivity;
 import in.tomtontech.markaz.Activity.ChatRoom;
 
 import static in.tomtontech.markaz.CustomFunction.JSON_ID;
@@ -98,6 +99,7 @@ public class ChatService extends Service {
     Log.v(LOG_TAG, "jo:" + jo.toString());
     socket1.emit("new connection", jo, ack);
     socket1.on("live data", handleLive);
+    socket1.on("noticeData",handleNotice);
     return Service.START_NOT_STICKY;
   }
   @Override
@@ -177,7 +179,41 @@ public class ChatService extends Service {
       Log.v(TAG, "service message:" + strMsg);
     }
   };
-  private Emitter.Listener handleLive = new Emitter.Listener() {
+  private Emitter.Listener handleNotice = new Emitter.Listener() {
+    @Override
+    public void call(final Object... args) {
+      JSONObject message;
+      String strMessage;
+      int status;
+      try {
+        Log.v(LOG_TAG, args[0].toString()+"hai");
+        message = (JSONObject) args[0];
+        strMessage = message.getString("message");
+        status = message.getInt("status");
+        if (status==1) {
+          Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+          NotificationCompat.Builder builder =
+              (NotificationCompat.Builder) new NotificationCompat.Builder(context)
+                  .setSmallIcon(R.mipmap.ic_markaz_logo)
+                  .setContentTitle("MARKAZU SSAQUAFATHI SSUNNIYYA")
+                  .setSound(soundUri)
+                  .setAutoCancel(true)
+                  .setContentText("New Notification From Markaz Institute ");
+          //TODO:add This To Notification Activity.
+          Intent notificationIntent = new Intent(context, CharityActivity.class);
+          PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent,
+              PendingIntent.FLAG_UPDATE_CURRENT);
+          builder.setContentIntent(contentIntent);
+          // Add as notification
+          NotificationManager manager = (NotificationManager) getSystemService(
+              Context.NOTIFICATION_SERVICE);
+          manager.notify(0, builder.build());
+        }
+      } catch (JSONException | ClassCastException e) {
+        e.printStackTrace();
+      }
+    }
+  };private Emitter.Listener handleLive = new Emitter.Listener() {
     @Override
     public void call(final Object... args) {
       JSONObject message;

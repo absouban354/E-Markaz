@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
+              android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:orientation="vertical"
               android:paddingStart="@dimen/activity_horizontal_margin"
+              android:paddingEnd="@dimen/activity_horizontal_margin"
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
-              android:paddingEnd="@dimen/activity_horizontal_margin"
     >
   <RelativeLayout
       android:layout_width="match_parent"
@@ -15,54 +15,47 @@
       android:orientation="horizontal"
       >
     <ImageView
-        android:id="@+id/quickContact_arrowButton"
+        android:id="@+id/notice_arrowButton"
         android:clickable="false"
+        android:layout_centerVertical="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_chevron_right_black_24dp"
-        android:layout_gravity="center"
-        android:layout_centerVertical="true"
         />
     <TextView
-        android:layout_gravity="center"
         style="@style/list_item_expandable_title"
-        android:id="@+id/quickContact_department"
-        android:layout_width="fill_parent"
+        android:id="@+id/notice_instName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:layout_centerVertical="true"
         android:text="Asst General Managger"
         />
   </RelativeLayout>
   <LinearLayout
-      android:id="@+id/quickContact_llItem"
+      android:visibility="visible"
+      android:id="@+id/notice_llItem"
       android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
       android:paddingStart="@dimen/list_three_line_secondary_left_padding"
       android:paddingEnd="@dimen/list_three_line_secondary_left_padding"
       android:paddingLeft="@dimen/list_three_line_secondary_left_padding"
       android:paddingRight="@dimen/list_three_line_secondary_left_padding"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
       >
     <TextView
-        android:id="@+id/quickContact_personName"
+        android:id="@+id/notice_title"
         android:layout_width="fill_parent"
         style="@style/list_item_secondary_line_1"
         android:layout_height="wrap_content"
         android:text="Asst General Managger"
         />
     <TextView
-        style="@style/list_item_secondary_line_1"
-        android:id="@+id/quickContact_contactNumber"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Asst General Managger"
-        />
-    <TextView
-        style="@style/list_item_secondary_line"
-        android:id="@+id/quickContact_emailAddress"
+        style="@style/list_item_secondary_line_2"
+        android:id="@+id/notice_desc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Asst General Managger"
         />
   </LinearLayout>
+
 </LinearLayout>

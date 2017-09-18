@@ -49,6 +49,12 @@ public class ListRouteMap extends ArrayAdapter<String> {
             viewHolder=(ViewHolder)convertView.getTag();
         viewHolder.tvInstName.setText(instName[position]);
         viewHolder.tvInstLabel.setText(instLabel[position]);
+        if(instLabel[position]==null||instLabel[position].equalsIgnoreCase(""))
+        {
+            viewHolder.tvInstLabel.setVisibility(View.GONE);
+        }else {
+            viewHolder.tvInstLabel.setVisibility(View.VISIBLE);
+        }
         return convertView;
     }
     private static class ViewHolder {

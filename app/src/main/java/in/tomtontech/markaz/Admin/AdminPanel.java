@@ -9,17 +9,25 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.github.nkzawa.socketio.client.IO;
+import com.github.nkzawa.socketio.client.Socket;
+
+import java.net.URISyntaxException;
+
+import in.tomtontech.markaz.Admin.Activity.AddLiveActivity;
 import in.tomtontech.markaz.Personal.EventDetails;
 import in.tomtontech.markaz.Personal.InstitutionDetails;
 import in.tomtontech.markaz.R;
 
 import static in.tomtontech.markaz.CustomFunction.SERVER_ADDR;
+import static in.tomtontech.markaz.CustomFunction.URL_ADDR;
 
 
 public class AdminPanel extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +38,22 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
   private String URL_EVENT_ADDR=SERVER_ADDR+"admin/web_viewEvent.php";
   private String URL_PHOTO_ADDR=SERVER_ADDR+"admin/web_viewPhoto.php";
   private String URL_CONTACT_ADDR=SERVER_ADDR+"admin/web_viewContact.php";
+  private String URL_NOTICE_ADDR=SERVER_ADDR+"admin/web_viewNotice.php";
+  private static final String TAG ="adminPanel" ;
+  private Socket socket;
+
+  {
+    try {
+      String url = URL_ADDR.substring(0, URL_ADDR.length() - 1).concat(":8002");
+      Log.v(TAG, "url:" + url);
+      socket = IO.socket(url);
+
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+      throw new RuntimeException(e);
+    }
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -93,6 +117,10 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
       Intent intent=new Intent(ctx,AddLiveActivity.class);
       startActivity(intent);
       drawer.closeDrawers();
+    }else if(id==R.id.nav_notice)
+    {
+      webView.loadUrl(URL_NOTICE_ADDR);
+      drawer.closeDrawers();
     }
     item.setChecked(true);
     return false;
@@ -130,6 +158,18 @@ public class AdminPanel extends AppCompatActivity implements NavigationView.OnNa
         startActivity(intent);
         //photo page.
       }
+      else if(page==4)
+      {
+        //TODO: Nptce Board.
+        //Intent intent=new Intent(ctx,)
+      }
+    }
+    @JavascriptInterface
+    public void newNoticeAdded()
+    {
+      Log.v(TAG,"new notice added");
+      socket.connect();
+      socket.emit("noticeAdded");
     }
   }
 }

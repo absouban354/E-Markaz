@@ -5,6 +5,9 @@
     <color name="colorAccent">#FF4081</color>
     <color name="charityButton">#FF6559</color>
     <color name="charityBankButton">#5BB85D</color>
+    <color name="lightBlack">#5F000000</color>
+    <color name="darkMediumBlack">#BB000000</color>
+    <color name="mediumBlack">#99000000</color>
     <color name="chatSelfBackgroundColor">#EDEDED</color>
     <color name="textColor">#000</color>
     <color name="transparentGrey">#55FFFFFF</color>

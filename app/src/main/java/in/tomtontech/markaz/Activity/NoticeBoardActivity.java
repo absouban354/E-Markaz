@@ -1,23 +1,16 @@
 package in.tomtontech.markaz.Activity;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AnimationSet;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -37,30 +30,30 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.tomtontech.markaz.Adapter.ListQuickContact;
-import in.tomtontech.markaz.ContactClass;
+import in.tomtontech.markaz.Adapter.ListNoticeBoard;
+import in.tomtontech.markaz.NoticeClass;
 import in.tomtontech.markaz.R;
 
 import static in.tomtontech.markaz.CustomFunction.CONNECTION_TIMEOUT;
 import static in.tomtontech.markaz.CustomFunction.READ_TIMEOUT;
 import static in.tomtontech.markaz.CustomFunction.SERVER_ADDR;
 
-public class QuickContactActivity extends AppCompatActivity {
-  private static final String LOG_TAG = "quickContact";
-  private ListView lvContact;
+public class NoticeBoardActivity extends AppCompatActivity {
+  private static final String LOG_TAG = "noticeBoard";
+  private ListView listView;
+  private int noticeId = 99999;
   private Context ctx;
-  private String contactId = "0";
-  private List<ContactClass> listContact = new ArrayList<>();
   private LinearLayout llError;
+  private List<NoticeClass> listNotice = new ArrayList<>();
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_quick_contact);
+    setContentView(R.layout.activity_notice_board);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     ctx = this;
-    lvContact = (ListView) findViewById(R.id.quickContact_listView);
+    listView = (ListView) findViewById(R.id.notice_listView);
     llError=(LinearLayout)findViewById(R.id.network_llError);
-    new AsyncContact().execute(contactId);
+    new AsyncGetNotice().execute(noticeId);
   }
 
   @Override
@@ -73,18 +66,13 @@ public class QuickContactActivity extends AppCompatActivity {
     return super.onOptionsItemSelected(item);
   }
 
-  private class AsyncContact extends AsyncTask<String, Void, String> {
+  private class AsyncGetNotice extends AsyncTask<Integer, Void, String> {
     @Override
-    protected void onPreExecute() {
-      super.onPreExecute();
-    }
-
-    @Override
-    protected String doInBackground(String... strings) {
+    protected String doInBackground(Integer... integers) {
       try {
-        String data = URLEncoder.encode("contact_id", "UTF-8") + "=" + URLEncoder
-            .encode(strings[0], "UTF-8");
-        String fileName = "php_getContactDetails.php";
+        String data = URLEncoder.encode("noticeId", "UTF-8") + "=" + URLEncoder
+            .encode(String.valueOf(integers[0]), "UTF-8");
+        String fileName = "php_getNoticeDetails.php";
         URL path = new URL(SERVER_ADDR.concat(fileName));
         HttpURLConnection httpURLConnection = (HttpURLConnection) path.openConnection();
         httpURLConnection.setConnectTimeout(CONNECTION_TIMEOUT);
@@ -103,7 +91,6 @@ public class QuickContactActivity extends AppCompatActivity {
         return "failed";
       }
     }
-
     @Override
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
@@ -115,17 +102,17 @@ public class QuickContactActivity extends AppCompatActivity {
       if (s.equalsIgnoreCase("failed")) {
         Toast.makeText(ctx, "Network Error. Try Again", Toast.LENGTH_SHORT).show();
         llError.setVisibility(View.VISIBLE);
-        lvContact.setVisibility(View.GONE);
+        listView.setVisibility(View.GONE);
       } else {
+        listView.setVisibility(View.VISIBLE);
         llError.setVisibility(View.GONE);
-        lvContact.setVisibility(View.VISIBLE);
         try {
           JSONObject jo = new JSONObject(s);
           if (jo.has("status")) {
             Toast.makeText(ctx, "No More Information.", Toast.LENGTH_SHORT).show();
             flLayout.removeAllViews();
             btn.setVisibility(View.GONE);
-            lvContact.removeFooterView(flLayout);
+            listView.removeFooterView(flLayout);
             flLayout.setVisibility(View.GONE);
           }
         } catch (JSONException ignored) {
@@ -137,50 +124,55 @@ public class QuickContactActivity extends AppCompatActivity {
             String[] strId = new String[len];
             for (int i = 0; i < len; i++) {
               JSONObject jo = ja.getJSONObject(i);
-              strId[i] = jo.getString("contact_id");
+              strId[i] = jo.getString("noticeId");
               if (i == 0) {
-                contactId = strId[i];
+                noticeId = Integer.parseInt(strId[i]);
               }
               if (i > 0) {
                 int now = Integer.parseInt(strId[i]);
                 int prev = Integer.parseInt(strId[i - 1]);
-                if (now > prev && Integer.parseInt(contactId) < now) {
-                  contactId = strId[i];
+                if (now < prev && noticeId > now) {
+                  noticeId = Integer.parseInt(strId[i]);
                 }
               }
-              ContactClass ctc = new ContactClass(jo.getString("personName"),
-                  jo.getString("department"), jo.getString("contactNumber"),
-                  jo.getString("emailAddress"));
-              listContact.add(ctc);
+              NoticeClass ctc = new NoticeClass(jo.getString("noticeId"),
+                  jo.getString("noticeTitle"), jo.getString("noticeDesc"),
+                  jo.getString("noticeInst"));
+              listNotice.add(ctc);
             }
-            strId = new String[listContact.size()];
+            strId = new String[listNotice.size()];
             if (len == 20) {
               btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                  new AsyncContact().execute(contactId);
+                  new AsyncGetNotice().execute(noticeId);
                 }
               });
-              lvContact.addFooterView(flLayout);
+              if(listView.getFooterViewsCount()==0)
+                listView.addFooterView(flLayout);
             } else {
-              lvContact.removeFooterView(flLayout);
+              listView.removeFooterView(flLayout);
               flLayout.setVisibility(View.GONE);
               flLayout.removeAllViews();
               btn.setVisibility(View.GONE);
               Toast.makeText(ctx, "End Of Information", Toast.LENGTH_SHORT).show();
             }
-            int current=lvContact.getFirstVisiblePosition();
-            final ListQuickContact lqc = new ListQuickContact((Activity) ctx, listContact, strId);
-            lvContact.setAdapter(lqc);
-            lvContact.setSelectionFromTop(current+1,0);
-            lvContact.setOnItemClickListener(
+            int current = listView.getFirstVisiblePosition();
+            final ListNoticeBoard lnb=new ListNoticeBoard((Activity) ctx, listNotice, strId);
+            listView.setAdapter(lnb);
+            listView.setSelectionFromTop(current + 1, 0);
+            listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                   @Override
                   public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Log.v(LOG_TAG, " item clicked at " + i);
-                    if (lqc.getmPosition() != i) {
-                      lqc.setSelectedPosition(i);
-                      lqc.notifyDataSetChanged();
+                    if (lnb.getmPosition() != i) {
+                      lnb.setSelectedPosition(i);
+                      lnb.notifyDataSetChanged();
+                    }else
+                    {
+                      lnb.setSelectedPosition(999);
+                      lnb.notifyDataSetChanged();
                     }
                   }
                 }

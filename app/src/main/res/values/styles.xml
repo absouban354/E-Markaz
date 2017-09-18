@@ -45,7 +45,58 @@
     <item name="android:textColor">@color/white</item>
     <item name="android:gravity">center</item>
   </style>
-
+  <!-- Title Bar Right Before Listview-->
+  <style name="activity_subHeader">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">@dimen/activity_subtitle_height</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:gravity">center_vertical</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textColor">@color/mediumBlack</item>
+    <item name="android:paddingStart">@dimen/activity_horizontal_margin</item>
+    <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+    <item name="android:paddingEnd">@dimen/activity_horizontal_margin</item>
+    <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+  </style>
+  <!-- List Item Style-->
+  <style name="listItem_title">
+    <item name="android:textColor">@color/black</item>
+    <item name="android:textSize">@dimen/list_item_title_text_size</item>
+    <item name="android:layout_centerVertical">true</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:layout_height">@dimen/list_item_title_height</item>
+  </style>
+  <style name="listItem_subTitle">
+    <item name="android:textColor">@color/mediumBlack</item>
+    <item name="android:textSize">@dimen/list_item_sub_title_text_size</item>
+  </style>
+  <!--Expandable List Item Title-->
+  <style name="list_item_expandable_title" parent="@style/listItem_title">
+    <item name="android:paddingStart">@dimen/list_three_line_secondary_left_padding</item>
+    <item name="android:paddingLeft">@dimen/list_three_line_secondary_left_padding</item>
+    <item name="android:paddingTop">4dp</item>
+    <item name="android:paddingBottom">4dp</item>
+  </style>
+  <style name="list_item_secondary_line">
+    <item name="android:textSize">@dimen/list_item_second_line_text_size</item>
+    <item name="android:paddingTop">@dimen/list_three_line_secondary_vertical_padding</item>
+    <item name="android:paddingBottom">@dimen/list_three_line_secondary_vertical_padding</item>
+    <item name="android:textColor">@color/mediumBlack</item>
+  </style>
+  <style name="list_item_secondary_line_1" parent="list_item_secondary_line">
+    <item name="android:textColor">@color/darkMediumBlack</item>
+    <item name="android:paddingBottom">4dp</item>
+  </style>
+  <style name="list_item_secondary_line_2" parent="list_item_secondary_line">
+    <item name="android:paddingTop">4dp</item>
+  </style>
+  <style name="list_two_line_title" parent="listItem_title">
+    <item name="android:paddingTop">16dp</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>
+  <style name="list_two_line_sub_title" parent="listItem_subTitle">
+    <item name="android:paddingTop">4dp</item>
+  </style>
   <style name="quranRead_appBar_subTitle">
     <item name="android:textSize">@dimen/appBar_subTitle</item>
     <item name="android:textColor">@color/appBar_subTitle</item>
@@ -268,10 +319,12 @@
     <item name="android:backgroundTint">@color/primaryDark</item>
     <item name="android:layout_margin">@dimen/nullValue</item>
   </style>
+
   <style name="charity_label">
     <item name="android:paddingTop">16dp</item>
     <item name="android:paddingBottom">16dp</item>
   </style>
+
   <style name="charity_button">
     <item name="android:background">@drawable/custom_charity_button</item>
     <item name="android:textStyle">bold</item>
@@ -284,9 +337,11 @@
     <item name="android:paddingBottom">10dp</item>
     <item name="android:minHeight">0dp</item>
   </style>
+
   <style name="charity_bank_detail_label" parent="charity_label">
     <item name="android:textSize">16sp</item>
   </style>
+
   <style name="charity_bank_detail">
     <item name="android:textSize">16sp</item>
     <item name="android:paddingBottom">10dp</item>
@@ -295,6 +350,7 @@
     <item name="android:textStyle">normal</item>
     <item name="android:textColor">@color/black</item>
   </style>
+
   <style name="charity_bank_acc_label">
     <item name="android:textStyle">bold</item>
     <item name="android:background">@drawable/custom_charity_bank_button</item>
@@ -305,41 +361,39 @@
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
   </style>
+
   <style name="account_bank_container">
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
   </style>
+
   <style name="charity_bank_acc_detail">
     <item name="android:textSize">14sp</item>
     <item name="android:textColor">@color/black</item>
     <item name="android:paddingStart">32dp</item>
     <item name="android:paddingLeft">32dp</item>
   </style>
+
   <style name="contact_dept_detail">
     <item name="android:paddingStart">10dp</item>
     <item name="android:paddingLeft">10dp</item>
     <item name="android:textColor">@color/black</item>
     <item name="android:textSize">16sp</item>
   </style>
+
   <style name="contact_details">
     <item name="android:paddingTop">5dp</item>
     <item name="android:paddingBottom">5dp</item>
     <item name="android:textColor">@color/black</item>
     <item name="android:textSize">14sp</item>
   </style>
-  <style name="listItem_subTitle">
-    <item name="android:textColor">@color/gridColor</item>
-    <item name="android:textSize">14sp</item>
-  </style>
-  <style name="listItem_title">
-    <item name="android:textColor">@color/black</item>
-    <item name="android:textSize">16sp</item>
-  </style>
+
   <style name="connection_error_text">
     <item name="android:textColor">@color/black</item>
     <item name="android:textSize">16sp</item>
     <item name="android:paddingBottom">10dp</item>
   </style>
+
   <style name="connection_error_button">
     <item name="android:paddingStart">40dp</item>
     <item name="android:paddingLeft">40dp</item>
@@ -348,5 +402,13 @@
     <item name="android:background">@drawable/custom_button</item>
     <item name="android:textColor">@color/white</item>
     <item name="android:textSize">16sp</item>
+  </style>
+
+  <!-- Brief Style -->
+  <style name="brief_text">
+    <item name="android:textSize">@dimen/paragraph_textSize</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:lineSpacingMultiplier">1.2</item>
+    <item name="android:paddingTop">@dimen/paragraph_verticalPadding</item>
   </style>
 </resources>

@@ -1,4 +1,4 @@
-package in.tomtontech.markaz.Admin;
+package in.tomtontech.markaz.Admin.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -66,8 +66,10 @@ public class AddLiveActivity extends AppCompatActivity {
       String [] data=new String[2];
       data[0]=strUrl;
       data[1]=strDate;
-      if(dbh.addLive(data))
+      if(dbh.addLive(data)) {
         socket.emit("live update", jo, ack);
+        Log.v(LOG_TAG,"socket emitted");
+      }
       else
         Toast.makeText(ctx,"Not In A Valid Format",Toast.LENGTH_SHORT).show();
     } catch (JSONException e) {
@@ -81,6 +83,7 @@ public class AddLiveActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
           @Override
           public void run() {
+            Log.v(LOG_TAG,"ack got");
             if (args[0].equals(SOCKET_SEND_SUCCESS)) {
               Log.v(LOG_TAG, "sucesss");
               Toast.makeText(ctx,"Successfully Updated Information",Toast.LENGTH_SHORT).show();

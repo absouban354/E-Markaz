@@ -109,11 +109,17 @@
     <activity
         android:name=".Activity.RouteMapListActivity"
         android:label="@string/route_map"/>
-    <activity android:name=".Admin.AddLiveActivity"/>
+    <activity android:name=".Admin.Activity.AddLiveActivity"/>
     <activity
         android:name=".Activity.MultiMediaActivity"
         android:theme="@style/AppTheme.NoActionBar"/>
     <activity android:name=".Activity.CharityWebActivity">
+    </activity>
+    <activity android:name=".Activity.BriefActivity">
+    </activity>
+    <activity android:name=".Admin.Activity.AddNoticeActivity">
+    </activity>
+    <activity android:name=".Activity.NoticeBoardActivity">
     </activity>
   </application>
 

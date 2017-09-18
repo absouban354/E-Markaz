@@ -134,7 +134,7 @@
   <string name="live_url_label">Live Url</string>
   <string name="url_eg">https://www.youtube.com/watch?v=2GixUQ6rBm8</string>
   <string name="live_date_label">Live Date</string>
-  <string name="live_date_eg">2017-12-31 05:30</string>
+  <string name="live_date_eg">2017&#8211;12&#8211;31 05:30</string>
   <string name="charity_online_donation_label">For Online Donation Please Click Below</string>
   <string name="charity_button_text">DONATE ONLINE</string>
   <string name="photoDetails_name">%1$s %2$s</string>
@@ -154,4 +154,18 @@
   <string name="title_activity_route_map">Map</string>
   <string name="internet_error">No Internet Connection</string>
   <string name="btn_retry">Retry</string>
+
+  <!--Breif Module-->
+  <string name="desc_ap_usthad">Sheikh Aboobacker Ahmed الشيخ أبوبكر أحمد is the leader of one of the traditionalist Sunni factions of Muslims in Kerala state, India and he is one of the most famous Muslim personalities in Kerala. He was also named among 500 most influential Muslims in the world. Kanthapuram A. P. Aboobacker Musalyar is known for his professionalism and expediency.\n
+    Shaikh Aboobackar Ahmad is the General Secretary of the All India Muslim Scholars Association and founder and Chancellor of Jamia Markazu Ssaquafathi Ssunniyya (Sunni Cultural Centre), Karanthur, Kozhikode, Kerala. He is also chief patron of the Sunni Youth Society and General Secretary, Jamiat Ulema (Kerala)\n
+    He was appointed as a member of the NAC for the implementation of the RTE act in 2010\n
+    Kanthapuram hails from a mediocre peasant family of \'Alangam Poyil\', the much popular and better known \"A.P.\" stands for this.He is well known as Shiekh Aboobackar Ahmed in Arab and Western World.
+  </string>
+  <string name="desc_markaz_gate">
+    The newly built gateway of Jamia Markaz has been a great symbol in itself. It implies a vast array of meanings concerning different dimensions of what it means to be a true and productive knowledge, dimensions as cultural, social, civilizational and humanistic. The two big pillars on each side built in a form as books have been put one on another; make it clear that any kind of material developments in the universe are the visible outcomes of the deeper knowledge in those specific domains. The history has proved the fact pretty well that civilizations was not born overnight, but collaborative attempts made by scientists, engineers, scholars, doctors, visionaries,professionals and teachers had constituted into the making of it.  We hope that Bawaba has great potential to strike the minds of all those who came into ponder over it, with some crucial things that draws their memories into grave concerns on Islamic intellectual history and a number of great civilizations it gave birth to. In Brief, the underlying theme consists of a significant message on reviving a culture grown on the edifice of true essence of knowledge. A gate without doors genuinely points out to the epistemic openness that Jamia Markaz envisions throughout its academic and other discourses.
+  </string>
+  <string name="desc_markaz_learn">
+    ​In Markaz, the students have the opportunity to interact with great minds in the field of Islamic knowledge and its different branches. They come across scores of extracurricular, literary activities and training programmes that can help them sharpen their academic skills and enrich their life experience. Effective communication, counselling, Dawa training, Spoken English are major attributes among some others. As our students pursue their studies, they are integrated with the living community by participating in a number of programmes, being carried out across the country. Students at Markaz will find its curriculum to be holistic, touching all major aspects of their life in this new world.
+  </string>
+  <string name="quick_contact_subheader">Quick Contact</string>
 </resources>
