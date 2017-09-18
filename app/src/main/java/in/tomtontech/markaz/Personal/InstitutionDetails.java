@@ -45,6 +45,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import in.tomtontech.markaz.Activity.RouteMapActivity;
 import in.tomtontech.markaz.R;
 
 
@@ -106,14 +107,6 @@ public class InstitutionDetails extends AppCompatActivity {
         iv.setImageBitmap(bitmaps[0]);
         dialog.show();
     }
-
-    /*
-    @Override
-    public  void onBackPressed()
-    {
-        super.onBackPressed();
-        finish();
-    }*/
     public void onMorePhotosClick(View view) {
         if (bitmaps == null) {
             Toast.makeText(ctx, "No images found", Toast.LENGTH_SHORT).show();
@@ -122,7 +115,14 @@ public class InstitutionDetails extends AppCompatActivity {
             intent.putExtra("category", "Photos");
             intent.putExtra("inst_id", institution_details_inst_id);
             startActivity(intent);
+            avt.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
         }
+    }
+    public void onRouteMapClick(View view){
+        Intent intent=new Intent(ctx, RouteMapActivity.class);
+        intent.putExtra("inst_id",institution_details_inst_id);
+        startActivity(intent);
+        avt.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
     }
 
     public class InstDetailsAsync extends AsyncTask<String, Void, String> {

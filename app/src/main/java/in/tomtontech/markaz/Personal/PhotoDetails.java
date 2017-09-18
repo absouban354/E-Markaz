@@ -2,9 +2,12 @@ package in.tomtontech.markaz.Personal;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +25,9 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -41,6 +47,7 @@ public class PhotoDetails extends AppCompatActivity {
     int position, size;
     String[] photoId;
     TextView tvName, tvDescription;
+    TextView tvShare, tvDownload;
     ImageView iv;
 
     @Override
@@ -58,6 +65,8 @@ public class PhotoDetails extends AppCompatActivity {
         size = photoId.length;
         tvName = (TextView) findViewById(R.id.photoDetails_name);
         tvDescription = (TextView) findViewById(R.id.photoDetails_description);
+        tvShare = (TextView) findViewById(R.id.photoDetails_share);
+        tvDownload = (TextView) findViewById(R.id.photoDetails_download);
         iv = (ImageView) findViewById(R.id.photoDetails_image);
         PhotoDetailsAsync pda = new PhotoDetailsAsync();
         pda.execute(photoDetails_photoId, name);
@@ -75,18 +84,17 @@ public class PhotoDetails extends AppCompatActivity {
         PhotoDetailsAsync photoDetailsAsync = new PhotoDetailsAsync();
         switch (item.getItemId()) {
             case R.id.photo_action_previous:
-                if (position == 0) {
-                    //Toast.makeText(ctx,"No more photos",Toast.LENGTH_SHORT).show();
+                if (position == 0)
                     position = size - 1;
-                } else
+                else
                     position -= 1;
                 photoDetails_photoId = photoId[position];
                 photoDetailsAsync.execute(photoDetails_photoId, name);
                 return true;
             case R.id.photo_action_next:
-                if (position == (size - 1)) {
+                if (position == (size - 1))
                     position = 0;
-                } else
+                else
                     position += 1;
                 photoDetails_photoId = photoId[position];
                 photoDetailsAsync.execute(photoDetails_photoId, name);
@@ -180,7 +188,7 @@ public class PhotoDetails extends AppCompatActivity {
                 finish();
             } else {
                 try {
-                    String photoDetails_name, photoDetails_date, photoDetails_description;
+                    final String photoDetails_name, photoDetails_date, photoDetails_description;
                     if (name.equalsIgnoreCase("")) {
                         JSONObject jb = new JSONObject(result);
                         photoDetails_name = jb.getString("photo_name");
@@ -189,10 +197,32 @@ public class PhotoDetails extends AppCompatActivity {
                         tvName.setText(getString(R.string.photoDetails_name, photoDetails_name, photoDetails_date));
                         tvDescription.setText(photoDetails_description);
                         iv.setImageBitmap(bitmap);
-                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                        tvDownload.setOnClickListener(new TextView.OnClickListener() {
+                            public void onClick(View view) {
+                                CustomFunction cs = new CustomFunction(ctx);
+                                cs.saveImageToExternalStorage(bitmap, photoDetails_name, 4);
+                            }
+                        });
+                        tvShare.setOnClickListener(
+                                new TextView.OnClickListener() {
+                                    public void onClick(View view) {
+                                        Bitmap b=bitmap;
+                                        Intent share=new Intent(Intent.ACTION_SEND);
+                                        share.setType("image/jpeg");
+                                        ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+                                        b.compress(Bitmap.CompressFormat.JPEG,100,bytes);
+                                        String path= MediaStore.Images.Media.insertImage(getContentResolver(),b,"Title",null);
+                                        Log.v("image","path"+path);
+                                        Uri imageURi=Uri.parse(path);
+                                        Log.v("image","uri"+imageURi);
+                                        share.putExtra(Intent.EXTRA_STREAM,imageURi);
+                                        startActivity(Intent.createChooser(share,"Select"));
+                                    }
+                                }
+                        );
                     } else {
                         JSONArray jsonArray = new JSONArray(result);
-                        String[] photoDetailsDescription = new String[jsonArray.length()];
+                        final String[] photoDetailsDescription = new String[jsonArray.length()];
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jb = jsonArray.getJSONObject(i);
                             photoDetailsDescription[i] = jb.getString("photo_description");
@@ -200,7 +230,27 @@ public class PhotoDetails extends AppCompatActivity {
                         tvName.setVisibility(View.GONE);
                         tvDescription.setText(photoDetailsDescription[position]);
                         iv.setImageBitmap(bitmaps[position]);
-                        iv.setScaleType(ImageView.ScaleType.FIT_XY);
+                        tvDownload.setOnClickListener(new TextView.OnClickListener() {
+                            public void onClick(View view) {
+                                CustomFunction cs = new CustomFunction(ctx);
+                                cs.saveImageToExternalStorage(bitmaps[position], photoDetailsDescription[position].concat("-" + position + 1), 4);
+                            }
+                        });
+                        tvShare.setOnClickListener(
+                                new TextView.OnClickListener() {
+                                    public void onClick(View view) {
+                                        Bitmap b=bitmaps[position];
+                                        Intent share=new Intent(Intent.ACTION_SEND);
+                                        share.setType("image/jpeg");
+                                        ByteArrayOutputStream bytes=new ByteArrayOutputStream();
+                                        b.compress(Bitmap.CompressFormat.JPEG,100,bytes);
+                                        String path= MediaStore.Images.Media.insertImage(getContentResolver(),b,"Title",null);
+                                        Uri imageURi=Uri.parse(path);
+                                        share.putExtra(Intent.EXTRA_STREAM,imageURi);
+                                        startActivity(Intent.createChooser(share,"Select"));
+                                    }
+                                }
+                        );
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

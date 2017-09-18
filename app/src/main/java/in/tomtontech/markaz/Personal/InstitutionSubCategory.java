@@ -149,6 +149,7 @@ public class InstitutionSubCategory extends Fragment {
                     if (len == 0) {
 
                         Toast.makeText(ctx, "No Institutions under this category", Toast.LENGTH_SHORT).show();
+
                     }
                     else {
                         final String[] institution_name = new String[len];
