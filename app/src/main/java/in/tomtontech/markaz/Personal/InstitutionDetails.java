@@ -100,12 +100,17 @@ public class InstitutionDetails extends AppCompatActivity {
     }
 
     public void onImgClick(View view) {
-        Dialog dialog = new Dialog(this);
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view, null));
-        ImageView iv = (ImageView) dialog.findViewById(R.id.imagePop);
-        iv.setImageBitmap(bitmaps[0]);
-        dialog.show();
+        if(view.getTag()=="institution_photo_exist") {
+            Dialog dialog = new Dialog(this);
+            dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(getLayoutInflater().inflate(R.layout.image_pop_view, null));
+            ImageView iv = (ImageView) dialog.findViewById(R.id.imagePop);
+            iv.setImageBitmap(bitmaps[0]);
+            dialog.show();
+        }
+        else{
+            Toast.makeText(ctx,"No images for this institution",Toast.LENGTH_SHORT).show();
+        }
     }
     public void onMorePhotosClick(View view) {
         if (bitmaps == null) {
@@ -271,6 +276,7 @@ public class InstitutionDetails extends AppCompatActivity {
                     if (bitmaps != null) {
                         try {
                             img1.setImageBitmap(bitmaps[0]);
+                            img1.setTag("institution_photo_exist");
                             img1.setScaleType(ImageView.ScaleType.FIT_XY);
                             int len = bitmaps.length > 4 ? 5 : bitmaps.length;
                             Bitmap[] tempArray = new Bitmap[len - 1];
@@ -291,10 +297,10 @@ public class InstitutionDetails extends AppCompatActivity {
                             });
                         } catch (ArrayIndexOutOfBoundsException ae) {
                             ae.printStackTrace();
-                            img1.setVisibility(View.GONE);
+                            img1.setScaleType(ImageView.ScaleType.CENTER_CROP);
                         }
                     } else {
-                        img1.setVisibility(View.GONE);
+                        img1.setScaleType(ImageView.ScaleType.CENTER_CROP);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

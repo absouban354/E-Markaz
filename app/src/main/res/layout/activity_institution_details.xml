@@ -8,6 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/institutionImageHeight"
         android:onClick="onImgClick"
+        android:tag="institution_photo"
+        android:src="@drawable/ic_institution_default"
         android:background="@color/bgForListQuran"
          />
 
@@ -36,7 +38,7 @@
                 android:gravity="center"
                 android:paddingTop="16dp"
                 android:textColor="@color/text_color"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/institutionDetails_instLabel"
@@ -45,7 +47,7 @@
                 android:gravity="center"
                 android:paddingTop="16dp"
                 android:textColor="@color/text_color"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/institution_details_address"
@@ -58,7 +60,7 @@
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
                 android:textColor="@color/text_color"
-                android:textSize="17sp" />
+                android:textSize="14sp" />
 
             <in.tomtontech.markaz.Personal.ExpandableList
                 android:id="@+id/listView_contact"
@@ -83,7 +85,7 @@
                 android:paddingStart="16dp"
                 android:paddingTop="16dp"
                 android:textColor="@color/text_color"
-                android:textSize="17sp" />
+                android:textSize="14sp" />
             <TextView
                 android:id="@+id/institutionDetails_website"
                 android:layout_width="match_parent"
@@ -96,7 +98,7 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp"
                 android:textColor="@color/text_color"
-                android:textSize="17sp" />
+                android:textSize="14sp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -246,7 +248,7 @@
                     android:paddingTop="16dp"
                     android:text="More Photos"
                     android:textColor="@color/text_color"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/institutionDetails_routemap"
@@ -258,7 +260,7 @@
                     android:onClick="onRouteMapClick"
                     android:text="Route Map"
                     android:textColor="@color/text_color"
-                    android:textSize="17sp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>

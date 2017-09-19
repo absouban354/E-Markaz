@@ -1,96 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="in.tomtontech.markaz">
+    package="in.tomtontech.markaz">
 
-  <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-  <application
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme">
-    <activity
-        android:name=".Activity.MainActivity"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:windowSoftInputMode="adjustPan">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity android:name=".Activity.ChatRoom"/>
-    <activity android:name=".Activity.StaffLoginActivity"/>
-    <activity
-        android:name=".Personal.NavList"
-        android:screenOrientation="portrait"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:windowSoftInputMode="stateHidden"/>
-    <activity android:name=".Personal.EventDetails"/>
-    <activity android:name=".Personal.InstitutionDetails"/>
-    <activity android:name=".Personal.PhotoDetails"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.ChatRoom" />
+        <activity android:name=".Activity.StaffLoginActivity" />
+        <activity
+            android:name=".Personal.NavList"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Personal.EventDetails" />
+        <activity android:name=".Personal.InstitutionDetails" />
+        <activity android:name=".Personal.PhotoDetails" />
 
-    <receiver android:name=".ChatBroadcatReceiver">
-      <intent-filter>
-        <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-      </intent-filter>
-    </receiver>
+        <receiver android:name=".ChatBroadcatReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
 
-    <service
-        android:name=".ChatService"
-        android:enabled="true"
-        android:exported="true"/>
+        <service
+            android:name=".ChatService"
+            android:enabled="true"
+            android:exported="true" />
 
-    <activity
-        android:name=".Activity.ListQuranActivity"
-        android:label="@string/quranLabel">
-    </activity>
-    <activity
-        android:name=".Activity.QuranReadActivity"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
-    <activity
-        android:name=".Activity.QuranStartActivity"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
-    <activity android:name=".Activity.QuranSettingsActivity">
-    </activity>
-    <activity
-        android:name=".Admin.AdminPanel"
-        android:theme="@style/AppTheme.NoActionBar">
-    </activity>
-    <activity
-        android:name=".Admin.Activity.AddInstitutionActivity"
-        android:windowSoftInputMode="stateHidden">
-    </activity>
-    <activity
-        android:name=".Admin.Activity.AddInstituteContactActivity"
-        android:windowSoftInputMode="stateHidden">
-    </activity>
-    <activity
-        android:name=".Admin.Activity.AddInstituteCourseActivity"
-        android:windowSoftInputMode="stateHidden">
-    </activity>
-    <activity android:name=".Admin.Activity.AddEventActivity">
-    </activity>
-    <activity android:name=".Admin.Activity.AddPhotoActivity">
-    </activity>
-    <activity android:name=".Admin.Activity.AddInstPhoto">
-    </activity>
-    <activity
-        android:name=".Activity.CharityActivity"
-        android:label="@string/charity"/>
-    <activity
-        android:name=".Activity.QuickContactActivity"
-        android:label="@string/quick_contact">
-    </activity>
-    <!--
+        <activity
+            android:name=".Activity.ListQuranActivity"
+            android:label="@string/quranLabel"></activity>
+        <activity
+            android:name=".Activity.QuranReadActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activity.QuranStartActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activity.QuranSettingsActivity"></activity>
+        <activity
+            android:name=".Admin.AdminPanel"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Admin.Activity.AddInstitutionActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".Admin.Activity.AddInstituteContactActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".Admin.Activity.AddInstituteCourseActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".Admin.Activity.AddEventActivity"></activity>
+        <activity android:name=".Admin.Activity.AddPhotoActivity"></activity>
+        <activity android:name=".Admin.Activity.AddInstPhoto"></activity>
+        <activity
+            android:name=".Activity.CharityActivity"
+            android:label="@string/charity" />
+        <activity
+            android:name=".Activity.QuickContactActivity"
+            android:label="@string/quick_contact"></activity>
+        <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
              Note that the API key is linked to the encryption key used to sign the APK.
@@ -98,29 +86,25 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
-    <meta-data
-        android:name="com.google.android.geo.API_KEY"
-        android:value="@string/google_maps_key"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
 
-    <activity
-        android:name=".Activity.RouteMapActivity"
-        android:label="@string/title_activity_route_map">
-    </activity>
-    <activity
-        android:name=".Activity.RouteMapListActivity"
-        android:label="@string/route_map"/>
-    <activity android:name=".Admin.Activity.AddLiveActivity"/>
-    <activity
-        android:name=".Activity.MultiMediaActivity"
-        android:theme="@style/AppTheme.NoActionBar"/>
-    <activity android:name=".Activity.CharityWebActivity">
-    </activity>
-    <activity android:name=".Activity.BriefActivity">
-    </activity>
-    <activity android:name=".Admin.Activity.AddNoticeActivity">
-    </activity>
-    <activity android:name=".Activity.NoticeBoardActivity">
-    </activity>
-  </application>
+        <activity
+            android:name=".Activity.RouteMapActivity"
+            android:label="@string/title_activity_route_map"></activity>
+        <activity
+            android:name=".Activity.RouteMapListActivity"
+            android:label="@string/route_map" />
+        <activity android:name=".Admin.Activity.AddLiveActivity" />
+        <activity
+            android:name=".Activity.MultiMediaActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.CharityWebActivity"></activity>
+        <activity android:name=".Activity.BriefActivity"></activity>
+        <activity android:name=".Admin.Activity.AddNoticeActivity"></activity>
+        <activity android:name=".Activity.NoticeBoardActivity"></activity>
+        <activity android:name=".Personal.AboutPage"></activity>
+    </application>
 
 </manifest>
