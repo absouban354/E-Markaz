@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -74,9 +75,13 @@ public class QuickContactActivity extends AppCompatActivity {
   }
 
   private class AsyncContact extends AsyncTask<String, Void, String> {
+    ProgressDialog pd = new ProgressDialog(ctx);
+
     @Override
     protected void onPreExecute() {
       super.onPreExecute();
+      pd.setMessage("Loading");
+      pd.show();
     }
 
     @Override
@@ -107,6 +112,7 @@ public class QuickContactActivity extends AppCompatActivity {
     @Override
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
+      pd.dismiss();
       FrameLayout flLayout = new FrameLayout(ctx);
       Button btn = new Button(ctx);
       btn.setText("Load More");
@@ -180,8 +186,10 @@ public class QuickContactActivity extends AppCompatActivity {
                     Log.v(LOG_TAG, " item clicked at " + i);
                     if (lqc.getmPosition() != i) {
                       lqc.setSelectedPosition(i);
-                      lqc.notifyDataSetChanged();
+                    }else {
+                      lqc.setSelectedPosition(999);
                     }
+                    lqc.notifyDataSetChanged();
                   }
                 }
             );
@@ -190,5 +198,9 @@ public class QuickContactActivity extends AppCompatActivity {
         }
       }
     }
+  }
+  public void onRetryClick(View view)
+  {
+    new AsyncContact().execute(contactId);
   }
 }

@@ -54,7 +54,7 @@ public class RouteMapActivity extends FragmentActivity implements OnMapReadyCall
             strInstLati = data[4];
         }
         String instId = getIntent().getStringExtra("inst_id");
-        if (!instId.equalsIgnoreCase("")) {
+        if (instId!=null) {
             new AsyncLocation().execute(instId);
         } else {
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
