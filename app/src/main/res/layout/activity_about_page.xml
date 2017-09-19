@@ -4,16 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ic_bg"
     tools:context="in.tomtontech.markaz.Personal.AboutPage">
-    <in.tomtontech.markaz.Personal.SquareImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:id="@+id/about_image"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_about_icon"
+        />
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="MARKAZ"
+        android:id="@+id/about_app_name"
+        android:layout_below="@+id/about_image"
+        android:textSize="16dp"
+        />
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="V 1.0.1"
+        android:layout_below="@+id/about_app_name"
+        android:textSize="14dp"
+        />
 
 
 </RelativeLayout>
