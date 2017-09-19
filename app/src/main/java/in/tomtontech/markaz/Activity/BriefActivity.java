@@ -1,16 +1,29 @@
 package in.tomtontech.markaz.Activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.ArcMotion;
+import android.transition.AutoTransition;
 import android.transition.ChangeBounds;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.Transition;
 import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,7 +32,6 @@ import in.tomtontech.markaz.R;
 
 public class BriefActivity extends AppCompatActivity {
   private static final String LOG_TAG = "brief";
-  ImageView imMain, imRight, imLeft;
   int[] drawableImage = { R.drawable.ic_ap_usthad, R.drawable.ic_gate, R.drawable.ic_teach };
   int[] stringArray = { R.string.desc_ap_usthad, R.string.desc_markaz_gate, R.string.desc_markaz_learn };
   int[] imageView = { R.id.brief_mainImage, R.id.brief_leftImage, R.id.brief_rightImage };
@@ -34,13 +46,6 @@ public class BriefActivity extends AppCompatActivity {
     setContentView(R.layout.activity_brief);
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     tvText = (TextView) findViewById(R.id.breif_textView);
-    imMain = (ImageView) findViewById(R.id.brief_mainImage);
-    imMain.setImageResource(drawableImage[0]);
-    imLeft = (ImageView) findViewById(R.id.brief_leftImage);
-    imLeft.setImageResource(drawableImage[1]);
-    imRight = (ImageView) findViewById(R.id.brief_rightImage);
-    imRight.setImageResource(drawableImage[2]);
-    changeImageLocation(imMain, imLeft, imRight);
   }
 
   @Override
@@ -55,23 +60,25 @@ public class BriefActivity extends AppCompatActivity {
 
   public void onImageClick(View view) {
     RelativeLayout rlContainer = (RelativeLayout) findViewById(R.id.brief_image_container);
+    DisplayMetrics displayMetrics = new DisplayMetrics();
+    getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
     TransitionManager.beginDelayedTransition(rlContainer);
-    if (view == findViewById(imageView[rightPos])) {
+    if (view.getId() == imageView[rightPos]) {
       int temp = mainPos;
       mainPos = rightPos;
       rightPos = leftPos;
       leftPos = temp;
-    } else if (view == findViewById(imageView[leftPos])) {
+    } else if (view.getId() == imageView[leftPos]) {
       int temp = mainPos;
       mainPos = leftPos;
       leftPos = rightPos;
       rightPos = temp;
     }
-    ImageView imMain = (ImageView) findViewById(imageView[mainPos]);
+    final ImageView imMain = (ImageView) findViewById(imageView[mainPos]);
     ImageView imRight = (ImageView) findViewById(imageView[rightPos]);
     ImageView imLeft = (ImageView) findViewById(imageView[leftPos]);
-    changeImageLocation(imMain, imLeft, imRight);
     tvText.setText(stringArray[mainPos]);
+    changeImageLocation(imMain, imLeft, imRight);
   }
 
   private void changeImageLocation(ImageView... imageViews) {
@@ -96,9 +103,9 @@ public class BriefActivity extends AppCompatActivity {
         (mainHeight / 2));
     rlRight.addRule(RelativeLayout.BELOW, imMain.getId());
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      rlRight.addRule(RelativeLayout.ALIGN_PARENT_END);
+      rlRight.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
     } else {
-      rlRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+      rlRight.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
       rlRight.addRule(RelativeLayout.ALIGN_START, R.id.strut);
@@ -111,9 +118,9 @@ public class BriefActivity extends AppCompatActivity {
         mainHeight / 2);
     rlLeft.addRule(RelativeLayout.BELOW, imMain.getId());
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-      rlLeft.addRule(RelativeLayout.ALIGN_PARENT_START);
+      rlLeft.addRule(RelativeLayout.ALIGN_PARENT_START, RelativeLayout.TRUE);
     } else {
-      rlLeft.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+      rlLeft.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE);
     }
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
       rlLeft.addRule(RelativeLayout.ALIGN_END, R.id.strut);

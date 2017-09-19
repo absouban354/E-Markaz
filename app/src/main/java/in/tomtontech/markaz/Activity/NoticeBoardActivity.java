@@ -1,6 +1,7 @@
 package in.tomtontech.markaz.Activity;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -67,6 +68,14 @@ public class NoticeBoardActivity extends AppCompatActivity {
   }
 
   private class AsyncGetNotice extends AsyncTask<Integer, Void, String> {
+    ProgressDialog pd = new ProgressDialog(ctx);
+
+    @Override
+    protected void onPreExecute() {
+      super.onPreExecute();
+      pd.setMessage("Loading");
+      pd.show();
+    }
     @Override
     protected String doInBackground(Integer... integers) {
       try {
@@ -94,6 +103,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
     @Override
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
+      pd.dismiss();
       FrameLayout flLayout = new FrameLayout(ctx);
       Button btn = new Button(ctx);
       btn.setText("Load More");
@@ -182,5 +192,9 @@ public class NoticeBoardActivity extends AppCompatActivity {
         }
       }
     }
+  }
+  public void onRetryClick(View view)
+  {
+    new AsyncGetNotice().execute(noticeId);
   }
 }
