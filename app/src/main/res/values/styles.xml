@@ -78,6 +78,7 @@
     <item name="android:paddingBottom">4dp</item>
   </style>
   <style name="list_item_secondary_line">
+    <item name="android:drawablePadding">32dp</item>
     <item name="android:textSize">@dimen/list_item_second_line_text_size</item>
     <item name="android:paddingTop">@dimen/list_three_line_secondary_vertical_padding</item>
     <item name="android:paddingBottom">@dimen/list_three_line_secondary_vertical_padding</item>
@@ -410,5 +411,10 @@
     <item name="android:textColor">@color/black</item>
     <item name="android:lineSpacingMultiplier">1.2</item>
     <item name="android:paddingTop">@dimen/paragraph_verticalPadding</item>
+  </style>
+  <!--Notice Board Activity-->
+  <style name="activity_subHeader.Notice" parent="activity_subHeader">
+    <item name="android:paddingStart">0dp</item>
+    <item name="android:paddingLeft">0dp</item>
   </style>
 </resources>

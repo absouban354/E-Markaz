@@ -39,14 +39,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
 /**
  * constant declaration
  * Created by Mushfeeeq on 7/31/2017.
  */
 
 public class CustomFunction {
-  public static final String URL_ADDR = "http://192.168.1.105/";
+  public static final String URL_ADDR = "http://192.168.1.101/";
   //public static final String URL_ADDR = "http://103.86.176.102/";
   public static final String BUNDLE_QURAN_SURAH_ID = "surah_id";
   public static final String BUNDLE_QURAN_PAGE_ID = "page_id";

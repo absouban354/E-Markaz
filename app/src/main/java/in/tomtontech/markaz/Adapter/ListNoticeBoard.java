@@ -20,8 +20,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import in.tomtontech.markaz.ContactClass;
 import in.tomtontech.markaz.NoticeClass;
@@ -66,6 +72,7 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
       viewHolder.tvInstName = (TextView) convertView.findViewById(R.id.notice_instName);
       viewHolder.tvNoticeDesc = (TextView) convertView.findViewById(R.id.notice_desc);
       viewHolder.tvNoticeTitle = (TextView) convertView.findViewById(R.id.notice_title);
+      viewHolder.tvNoticeTime = (TextView) convertView.findViewById(R.id.notice_subHeader);
       viewHolder.llItem = (LinearLayout) convertView.findViewById(R.id.notice_llItem);
       viewHolder.imArrow = (ImageView) convertView.findViewById(R.id.notice_arrowButton);
       convertView.setTag(viewHolder);
@@ -73,6 +80,29 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
       viewHolder = (ViewHolder) convertView.getTag();
     NoticeClass ntc = listNotice.get(position);
     viewHolder.tvInstName.setText(ntc.getStrNoticeInst());
+    String strTime=ntc.getStrNoticeTime();
+    try {
+      Date date=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US).parse(strTime);
+      Calendar calendar=Calendar.getInstance();
+      calendar.setTime(date);
+      Calendar today=Calendar.getInstance();
+      Calendar yesterday=Calendar.getInstance();
+      yesterday.add(Calendar.DATE,-1);
+      DateFormat dateFormat=new SimpleDateFormat("MMM d,yyyy",Locale.US);
+      if(calendar.get(Calendar.YEAR)==today.get(Calendar.YEAR)&&calendar.get(Calendar.DAY_OF_YEAR)==today.get(Calendar.DAY_OF_YEAR))
+      {
+        strTime="Today";
+      }else if(calendar.get(Calendar.YEAR)==yesterday.get(Calendar.YEAR)&&calendar.get(Calendar.DAY_OF_YEAR)==yesterday.get(Calendar.DAY_OF_YEAR))
+      {
+        strTime="Yesterday";
+      }else
+      {
+        strTime=dateFormat.format(date);
+      }
+      viewHolder.tvNoticeTime.setText(strTime);
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
     viewHolder.tvNoticeTitle.setText(ntc.getStrNoticeTitle());
     viewHolder.tvNoticeDesc.setText(ntc.getStrNoticeDesc());
     if (mPosition == position) {
@@ -104,7 +134,7 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
 
   private static class ViewHolder {
     private ImageView imArrow;
-    private TextView tvInstName, tvNoticeDesc, tvNoticeTitle;
+    private TextView tvInstName, tvNoticeDesc, tvNoticeTitle,tvNoticeTime;
     private LinearLayout llItem;
   }
 
