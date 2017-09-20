@@ -22,7 +22,7 @@
         android:paddingTop="4dp"
         android:id="@+id/about_app_version"
         android:layout_centerInParent="true"
-        android:textColor="#80FFFFFF"
+        android:textColor="#BFFFFFFF"
         android:text="Version 1.0.1"
         android:layout_above="@+id/about_image"
         android:textSize="14dp"
@@ -43,7 +43,7 @@
         android:layout_centerInParent="true"
         android:text="&#169; 2017 TomTonTech."
         android:id="@+id/about_company_dt"
-        android:textColor="#80FFFFFF"
+        android:textColor="#BFFFFFFF"
         android:layout_below="@+id/about_image"
         android:textSize="14dp"
         />
@@ -54,7 +54,7 @@
         android:layout_centerInParent="true"
         android:text="All rights reserved."
         android:id="@+id/about_arr"
-        android:textColor="#80FFFFFF"
+        android:textColor="#BFFFFFFF"
         android:layout_below="@+id/about_company_dt"
         android:textSize="14dp"
         />
