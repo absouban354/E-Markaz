@@ -104,6 +104,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
       pd.dismiss();
+      Log.v(LOG_TAG,"string:"+s);
       FrameLayout flLayout = new FrameLayout(ctx);
       Button btn = new Button(ctx);
       btn.setText("Load More");
@@ -147,7 +148,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
               }
               NoticeClass ctc = new NoticeClass(jo.getString("noticeId"),
                   jo.getString("noticeTitle"), jo.getString("noticeDesc"),
-                  jo.getString("noticeInst"));
+                  jo.getString("noticeInst"),jo.getString("noticeTime"));
               listNotice.add(ctc);
             }
             strId = new String[listNotice.size()];

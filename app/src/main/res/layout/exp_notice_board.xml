@@ -8,6 +8,13 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
     >
+  <TextView
+      android:text="Today"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      style="@style/activity_subHeader.Notice"
+      android:id="@+id/notice_subHeader"
+      />
   <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -57,5 +64,4 @@
         android:text="Asst General Managger"
         />
   </LinearLayout>
-
 </LinearLayout>
