@@ -173,15 +173,15 @@
 
         <TextView
             style="@style/grid_title"
-            android:id="@+id/main_section_live"
+            android:id="@+id/main_section_azhkar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
             android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_live"
+            android:drawableTop="@drawable/ic_azhkar"
             android:onClick="onSectionClick"
-            android:text="@string/live"
+            android:text="@string/azhkaar"
             />
 
         <TextView
