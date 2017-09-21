@@ -337,6 +337,22 @@
     <item name="android:paddingTop">10dp</item>
     <item name="android:paddingBottom">10dp</item>
     <item name="android:minHeight">0dp</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:gravity">center</item>
+  </style>
+  <style name="button_style">
+    <item name="android:background">@drawable/custom_charity_button</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:paddingStart">25dp</item>
+    <item name="android:paddingLeft">25dp</item>
+    <item name="android:paddingRight">25dp</item>
+    <item name="android:paddingEnd">25dp</item>
+    <item name="android:paddingTop">10dp</item>
+    <item name="android:paddingBottom">10dp</item>
+    <item name="android:minHeight">0dp</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:gravity">center</item>
   </style>
 
   <style name="charity_bank_detail_label" parent="charity_label">
@@ -413,8 +429,16 @@
     <item name="android:paddingTop">@dimen/paragraph_verticalPadding</item>
   </style>
   <!--Notice Board Activity-->
-  <style name="activity_subHeader.Notice" parent="activity_subHeader">
+  <style name="activity_subHeader.Notice">
     <item name="android:paddingStart">0dp</item>
     <item name="android:paddingLeft">0dp</item>
+  </style>
+  <style name="button_style.ListFooter">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_marginTop">5dp</item>
+    <item name="android:layout_marginBottom">4dp</item>
+    <item name="android:gravity">center</item>
+    <item name="android:textAlignment">center</item>
+    <item name="android:layout_gravity">center</item>
   </style>
 </resources>

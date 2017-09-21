@@ -44,8 +44,8 @@
       android:orientation="vertical"
       >
     <TextView
-        android:drawableStart="@drawable/ic_quick_contact_people"
-        android:drawableLeft="@drawable/ic_quick_contact_people"
+        android:drawableStart="@drawable/ic_contact_person"
+        android:drawableLeft="@drawable/ic_contact_person"
         android:id="@+id/quickContact_personName"
         android:layout_width="fill_parent"
         style="@style/list_item_secondary_line_1"
@@ -56,17 +56,19 @@
         style="@style/list_item_secondary_line_1"
         android:id="@+id/quickContact_contactNumber"
         android:layout_width="fill_parent"
-        android:drawableStart="@drawable/ic_quick_contact_phone"
-        android:drawableLeft="@drawable/ic_quick_contact_phone"
+        android:autoLink="phone"
+        android:drawableStart="@drawable/ic_contact_phone"
+        android:drawableLeft="@drawable/ic_contact_phone"
         android:layout_height="wrap_content"
         android:text="Asst General Managger"
         />
     <TextView
         style="@style/list_item_secondary_line"
-        android:drawableStart="@drawable/ic_email_black_24dp"
-        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:drawableStart="@drawable/ic_contact_email"
+        android:drawableLeft="@drawable/ic_contact_email"
         android:id="@+id/quickContact_emailAddress"
         android:layout_width="fill_parent"
+        android:autoLink="email"
         android:layout_height="wrap_content"
         android:text="Asst General Managger"
         />

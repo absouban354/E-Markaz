@@ -6,14 +6,21 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ContextThemeWrapper;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -44,8 +51,10 @@ public class NoticeBoardActivity extends AppCompatActivity {
   private ListView listView;
   private int noticeId = 99999;
   private Context ctx;
+  private Boolean isEnd=false;
   private LinearLayout llError;
   private List<NoticeClass> listNotice = new ArrayList<>();
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -53,7 +62,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     ctx = this;
     listView = (ListView) findViewById(R.id.notice_listView);
-    llError=(LinearLayout)findViewById(R.id.network_llError);
+    llError = (LinearLayout) findViewById(R.id.network_llError);
     new AsyncGetNotice().execute(noticeId);
   }
 
@@ -76,6 +85,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
       pd.setMessage("Loading");
       pd.show();
     }
+
     @Override
     protected String doInBackground(Integer... integers) {
       try {
@@ -100,15 +110,17 @@ public class NoticeBoardActivity extends AppCompatActivity {
         return "failed";
       }
     }
+
     @Override
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
       pd.dismiss();
-      Log.v(LOG_TAG,"string:"+s);
+      Log.v(LOG_TAG, "string:" + s);
       FrameLayout flLayout = new FrameLayout(ctx);
-      Button btn = new Button(ctx);
-      btn.setText("Load More");
-      flLayout.addView(btn);
+      View footerView = ((LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+          .inflate(R.layout.footer_layout, null, false);
+      Button btn = (Button) footerView.findViewById(R.id.footer_button);
+      flLayout.addView(footerView);
       Log.v(LOG_TAG, s);
       if (s.equalsIgnoreCase("failed")) {
         Toast.makeText(ctx, "Network Error. Try Again", Toast.LENGTH_SHORT).show();
@@ -121,10 +133,10 @@ public class NoticeBoardActivity extends AppCompatActivity {
           JSONObject jo = new JSONObject(s);
           if (jo.has("status")) {
             Toast.makeText(ctx, "No More Information.", Toast.LENGTH_SHORT).show();
-            flLayout.removeAllViews();
-            btn.setVisibility(View.GONE);
+            footerView.setVisibility(View.GONE);
             listView.removeFooterView(flLayout);
             flLayout.setVisibility(View.GONE);
+            flLayout.removeAllViews();
           }
         } catch (JSONException ignored) {
         }
@@ -148,7 +160,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
               }
               NoticeClass ctc = new NoticeClass(jo.getString("noticeId"),
                   jo.getString("noticeTitle"), jo.getString("noticeDesc"),
-                  jo.getString("noticeInst"),jo.getString("noticeTime"));
+                  jo.getString("noticeInst"), jo.getString("noticeTime"));
               listNotice.add(ctc);
             }
             strId = new String[listNotice.size()];
@@ -156,22 +168,30 @@ public class NoticeBoardActivity extends AppCompatActivity {
               btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                  new AsyncGetNotice().execute(noticeId);
+                  if(!isEnd) {
+                    new AsyncGetNotice().execute(noticeId);
+                  }else
+                  {
+                    Toast.makeText(ctx,"No More Information",Toast.LENGTH_SHORT).show();
+                  }
                 }
               });
-              if(listView.getFooterViewsCount()==0)
+              if (listView.getFooterViewsCount() == 0)
                 listView.addFooterView(flLayout);
             } else {
               listView.removeFooterView(flLayout);
               flLayout.setVisibility(View.GONE);
-              flLayout.removeAllViews();
-              btn.setVisibility(View.GONE);
+              isEnd=true;
+              btn.setText("End Of Information");
+              btn.setClickable(false);
+              footerView.setVisibility(View.GONE);
               Toast.makeText(ctx, "End Of Information", Toast.LENGTH_SHORT).show();
+              flLayout.removeAllViews();
             }
             int current = listView.getFirstVisiblePosition();
-            final ListNoticeBoard lnb=new ListNoticeBoard((Activity) ctx, listNotice, strId);
+            final ListNoticeBoard lnb = new ListNoticeBoard((Activity) ctx, listNotice, strId);
             listView.setAdapter(lnb);
-            listView.setSelectionFromTop(current + 1, 0);
+            listView.setSelectionFromTop(current, 0);
             listView.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                   @Override
@@ -180,8 +200,7 @@ public class NoticeBoardActivity extends AppCompatActivity {
                     if (lnb.getmPosition() != i) {
                       lnb.setSelectedPosition(i);
                       lnb.notifyDataSetChanged();
-                    }else
-                    {
+                    } else {
                       lnb.setSelectedPosition(999);
                       lnb.notifyDataSetChanged();
                     }
@@ -194,8 +213,9 @@ public class NoticeBoardActivity extends AppCompatActivity {
       }
     }
   }
-  public void onRetryClick(View view)
-  {
+
+  public void onRetryClick(View view) {
     new AsyncGetNotice().execute(noticeId);
   }
+
 }

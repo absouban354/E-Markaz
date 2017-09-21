@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -50,6 +51,7 @@ public class QuickContactActivity extends AppCompatActivity {
   private static final String LOG_TAG = "quickContact";
   private ListView lvContact;
   private Context ctx;
+  private Boolean isEnd=false;
   private String contactId = "0";
   private List<ContactClass> listContact = new ArrayList<>();
   private LinearLayout llError;
@@ -114,9 +116,10 @@ public class QuickContactActivity extends AppCompatActivity {
       super.onPostExecute(s);
       pd.dismiss();
       FrameLayout flLayout = new FrameLayout(ctx);
-      Button btn = new Button(ctx);
-      btn.setText("Load More");
-      flLayout.addView(btn);
+      View footerView = ((LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+          .inflate(R.layout.footer_layout, null, false);
+      Button btn = (Button) footerView.findViewById(R.id.footer_button);
+      flLayout.addView(footerView);
       Log.v(LOG_TAG, s);
       if (s.equalsIgnoreCase("failed")) {
         Toast.makeText(ctx, "Network Error. Try Again", Toast.LENGTH_SHORT).show();
@@ -129,6 +132,7 @@ public class QuickContactActivity extends AppCompatActivity {
           JSONObject jo = new JSONObject(s);
           if (jo.has("status")) {
             Toast.makeText(ctx, "No More Information.", Toast.LENGTH_SHORT).show();
+            isEnd=true;
             flLayout.removeAllViews();
             btn.setVisibility(View.GONE);
             lvContact.removeFooterView(flLayout);
@@ -164,7 +168,12 @@ public class QuickContactActivity extends AppCompatActivity {
               btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                  new AsyncContact().execute(contactId);
+                  if(!isEnd) {
+                    new AsyncContact().execute(contactId);
+                  }else
+                  {
+                    Toast.makeText(ctx,"No More Information",Toast.LENGTH_SHORT).show();
+                  }
                 }
               });
               lvContact.addFooterView(flLayout);
@@ -172,6 +181,7 @@ public class QuickContactActivity extends AppCompatActivity {
               lvContact.removeFooterView(flLayout);
               flLayout.setVisibility(View.GONE);
               flLayout.removeAllViews();
+              isEnd=true;
               btn.setVisibility(View.GONE);
               Toast.makeText(ctx, "End Of Information", Toast.LENGTH_SHORT).show();
             }

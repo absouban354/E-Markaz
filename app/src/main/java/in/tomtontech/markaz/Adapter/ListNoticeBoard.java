@@ -5,6 +5,11 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.transition.ChangeBounds;
 import android.transition.Scene;
 import android.transition.TransitionManager;
@@ -30,12 +35,15 @@ import java.util.List;
 import java.util.Locale;
 
 import in.tomtontech.markaz.ContactClass;
+import in.tomtontech.markaz.MessageClass;
 import in.tomtontech.markaz.NoticeClass;
 import in.tomtontech.markaz.R;
 
 public class ListNoticeBoard extends ArrayAdapter<String> {
   private static final String LOG_TAG = "listContact";
   protected Activity context;
+  private List<String> nowDate = new ArrayList<>();
+  private List<String> timePositionList = new ArrayList<>();
   private List<NoticeClass> listNotice = new ArrayList<>();
   private int mPosition = 999;
   private ViewHolder viewHolder;
@@ -43,6 +51,7 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
   public int getmPrevPosition() {
     return mPrevPosition;
   }
+
   private int mPrevPosition = 998;
 
   public void setmPrevPosition(int mPrevPosition) {
@@ -80,24 +89,54 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
       viewHolder = (ViewHolder) convertView.getTag();
     NoticeClass ntc = listNotice.get(position);
     viewHolder.tvInstName.setText(ntc.getStrNoticeInst());
-    String strTime=ntc.getStrNoticeTime();
+    String strTime = ntc.getStrNoticeTime();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US);
     try {
-      Date date=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US).parse(strTime);
-      Calendar calendar=Calendar.getInstance();
+      Date date = sdf.parse(strTime);
+      Calendar calendar = Calendar.getInstance();
       calendar.setTime(date);
-      Calendar today=Calendar.getInstance();
-      Calendar yesterday=Calendar.getInstance();
-      yesterday.add(Calendar.DATE,-1);
-      DateFormat dateFormat=new SimpleDateFormat("MMM d,yyyy",Locale.US);
-      if(calendar.get(Calendar.YEAR)==today.get(Calendar.YEAR)&&calendar.get(Calendar.DAY_OF_YEAR)==today.get(Calendar.DAY_OF_YEAR))
-      {
-        strTime="Today";
-      }else if(calendar.get(Calendar.YEAR)==yesterday.get(Calendar.YEAR)&&calendar.get(Calendar.DAY_OF_YEAR)==yesterday.get(Calendar.DAY_OF_YEAR))
-      {
-        strTime="Yesterday";
-      }else
-      {
-        strTime=dateFormat.format(date);
+      Calendar today = Calendar.getInstance();
+      Calendar yesterday = Calendar.getInstance();
+      yesterday.add(Calendar.DATE, -1);
+      DateFormat dateFormat = new SimpleDateFormat("MMM d,yyyy", Locale.US);
+      if (calendar.get(Calendar.YEAR) == today.get(Calendar.YEAR) && calendar
+          .get(Calendar.DAY_OF_YEAR) == today.get(Calendar.DAY_OF_YEAR)) {
+        strTime = "Today";
+      } else if (calendar.get(Calendar.YEAR) == yesterday.get(Calendar.YEAR) && calendar
+          .get(Calendar.DAY_OF_YEAR) == yesterday.get(Calendar.DAY_OF_YEAR)) {
+        strTime = "Yesterday";
+      } else {
+        strTime = dateFormat.format(date);
+      }
+      if (position == 0) {
+        if (!nowDate.contains(strTime)) {
+          nowDate.add(strTime);
+          timePositionList.add(String.valueOf(0));
+        }
+      }
+      //check if nowdate is contains this date.
+      if (!nowDate.contains(strTime)) {
+        nowDate.add(strTime);
+        for (int i = position - 1; i >= 0; i--) {
+          NoticeClass mc2 = listNotice.get(i);
+          Date date2 = sdf.parse(mc2.getStrNoticeTime());
+          String strDate2 = dateFormat.format(date2);
+          if (!strDate2.equals(strTime)) {
+            timePositionList.add(String.valueOf(i + 1));
+            break;
+          }
+          if (i == 0) {
+            timePositionList.add(String.valueOf(i));
+            break;
+          }
+        }
+      }
+      if (timePositionList.contains(String.valueOf(position))) {
+        viewHolder.tvNoticeTime.setText(strTime);
+        viewHolder.tvNoticeTime.setVisibility(View.VISIBLE);
+      } else {
+        viewHolder.tvNoticeTime.setVisibility(View.GONE);
+        viewHolder.tvNoticeTime.setText("");
       }
       viewHolder.tvNoticeTime.setText(strTime);
     } catch (ParseException e) {
@@ -116,8 +155,7 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
       animatorSet.setDuration(300);
       animatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
       animatorSet.start();
-    }
-    else {
+    } else {
       ObjectAnimator rotateX = ObjectAnimator.ofFloat(viewHolder.imArrow, "rotation", 0f);
       ObjectAnimator translateY = ObjectAnimator
           .ofFloat(viewHolder.llItem, "translationY", 100f, 0f);
@@ -131,34 +169,9 @@ public class ListNoticeBoard extends ArrayAdapter<String> {
     }
     return convertView;
   }
-
   private static class ViewHolder {
     private ImageView imArrow;
-    private TextView tvInstName, tvNoticeDesc, tvNoticeTitle,tvNoticeTime;
+    private TextView tvInstName, tvNoticeDesc, tvNoticeTitle, tvNoticeTime;
     private LinearLayout llItem;
-  }
-
-  public static void collapse(final View v) {
-    final int initialHeight = v.getMeasuredHeight();
-    Animation a = new Animation() {
-      @Override
-      protected void applyTransformation(float interpolatedTime, Transformation t) {
-        if (interpolatedTime == 1) {
-          v.setVisibility(View.GONE);
-        } else {
-          v.getLayoutParams().height = initialHeight - (int) (initialHeight * interpolatedTime);
-          v.requestLayout();
-        }
-      }
-
-      @Override
-      public boolean willChangeBounds() {
-        return true;
-      }
-    };
-    // 1dp/ms
-    a.setDuration(
-        (int) (initialHeight / v.getContext().getResources().getDisplayMetrics().density));
-    v.startAnimation(a);
   }
 }
