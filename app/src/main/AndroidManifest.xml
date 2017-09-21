@@ -31,7 +31,14 @@
             android:name=".Personal.NavList"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity android:name=".Personal.EventDetails" />
         <activity android:name=".Personal.InstitutionDetails" />
         <activity android:name=".Personal.PhotoDetails" />
@@ -50,6 +57,7 @@
         <activity
             android:name=".Activity.ListQuranActivity"
             android:label="@string/quranLabel"/>
+            android:label="@string/quranLabel" />
         <activity
             android:name=".Activity.QuranReadActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
@@ -73,6 +81,10 @@
         <activity android:name=".Admin.Activity.AddEventActivity"/>
         <activity android:name=".Admin.Activity.AddPhotoActivity"/>
         <activity android:name=".Admin.Activity.AddInstPhoto"/>
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Admin.Activity.AddEventActivity" />
+        <activity android:name=".Admin.Activity.AddPhotoActivity" />
+        <activity android:name=".Admin.Activity.AddInstPhoto" />
         <activity
             android:name=".Activity.CharityActivity"
             android:label="@string/charity" />
@@ -109,6 +121,8 @@
         <activity android:name=".Personal.AboutPage"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
+        <activity android:name=".Personal.SearchResultActivity"></activity>
     </application>
 
 </manifest>

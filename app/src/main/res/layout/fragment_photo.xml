@@ -4,14 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="in.tomtontech.markaz.Personal.PhotoFragment">
-        <EditText
-            android:id="@+id/photoSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/ic_search"
-            android:drawableStart="@drawable/ic_search"
-            android:hint="Search" />
-
         <GridView
             android:id="@+id/photos_gridView"
             android:layout_width="match_parent"

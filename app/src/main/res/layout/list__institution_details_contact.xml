@@ -9,10 +9,11 @@
 
     <TextView
         android:id="@+id/institutionDetails_contact"
-        style="@style/institutionDetails_textView"
-        android:layout_width="match_parent"
+        style="@style/institution_drawable_text"
+        android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_contact_icon"
         android:drawableLeft="@drawable/ic_contact_icon"
-        />
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="8dp" />
 </android.support.constraint.ConstraintLayout>

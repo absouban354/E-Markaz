@@ -63,8 +63,6 @@ public class NavList extends AppCompatActivity
                 break;
         }
     }
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -105,7 +103,10 @@ public class NavList extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-
+        else if(id==R.id.action_search){
+            Log.v("search","idanne");
+            onSearchRequested();
+        }
         return super.onOptionsItemSelected(item);
     }
 

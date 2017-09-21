@@ -1,6 +1,5 @@
 package in.tomtontech.markaz.Personal;
 
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,11 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -34,7 +29,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -45,10 +39,9 @@ public class PhotoFragment extends Fragment {
     protected Context ctx;
     protected Activity avt;
     GridView gridView;
-    //LoadingDialog mLoadingDialog;
     String inst_id = "";
     String name = "";
-    EditText et;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,11 +62,11 @@ public class PhotoFragment extends Fragment {
         ctx = getActivity().getApplicationContext();
         avt = getActivity();
         gridView = (GridView) view.findViewById(R.id.photos_gridView);
-        et=(EditText)view.findViewById(R.id.photoSearch);
         PhotosAsync photosAsync = new PhotosAsync();
         photosAsync.execute(inst_id);
 
     }
+
     public class PhotosAsync extends AsyncTask<String, Void, String> {
         String result;
         Bitmap[] bitmaps = null;
@@ -148,11 +141,7 @@ public class PhotoFragment extends Fragment {
 
                 Toast.makeText(ctx, "Network Error. Please turn on Mobile data or WiFi and try again",
                         Toast.LENGTH_SHORT).show();
-                gridView.setVisibility(View.GONE);
-                et.setVisibility(View.GONE);
             } else {
-                gridView.setVisibility(View.VISIBLE);
-                et.setVisibility(View.VISIBLE);
                 try {
                     JSONArray jsonArray = new JSONArray(result);
                     final String[] photoId = new String[jsonArray.length()];
@@ -180,7 +169,7 @@ public class PhotoFragment extends Fragment {
                             intent.putExtra("photoId", photoId);
                             intent.putExtra("photoName", name);
                             startActivity(intent);
-                            avt.overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                            avt.overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                         }
                     });
 
