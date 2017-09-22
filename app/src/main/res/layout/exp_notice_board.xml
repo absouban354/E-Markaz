@@ -11,7 +11,6 @@
   <TextView
       android:text="Today"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
       style="@style/activity_subHeader.Notice"
       android:id="@+id/notice_subHeader"
       />
@@ -59,6 +58,7 @@
     <TextView
         style="@style/list_item_secondary_line_2"
         android:id="@+id/notice_desc"
+        android:autoLink="web"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Asst General Managger"

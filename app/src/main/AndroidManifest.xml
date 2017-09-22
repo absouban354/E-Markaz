@@ -56,25 +56,31 @@
 
         <activity
             android:name=".Activity.ListQuranActivity"
+            android:label="@string/quranLabel"/>
             android:label="@string/quranLabel" />
         <activity
             android:name=".Activity.QuranReadActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Activity.QuranStartActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.QuranSettingsActivity" />
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activity.QuranSettingsActivity"/>
         <activity
             android:name=".Admin.AdminPanel"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Admin.Activity.AddInstitutionActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".Admin.Activity.AddInstituteContactActivity"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".Admin.Activity.AddInstituteCourseActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Admin.Activity.AddEventActivity"/>
+        <activity android:name=".Admin.Activity.AddPhotoActivity"/>
+        <activity android:name=".Admin.Activity.AddInstPhoto"/>
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Admin.Activity.AddEventActivity" />
         <activity android:name=".Admin.Activity.AddPhotoActivity" />
@@ -84,7 +90,7 @@
             android:label="@string/charity" />
         <activity
             android:name=".Activity.QuickContactActivity"
-            android:label="@string/quick_contact" />
+            android:label="@string/quick_contact"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -99,7 +105,7 @@
 
         <activity
             android:name=".Activity.RouteMapActivity"
-            android:label="@string/title_activity_route_map" />
+            android:label="@string/title_activity_route_map"/>
         <activity
             android:name=".Activity.RouteMapListActivity"
             android:label="@string/route_map" />
@@ -107,13 +113,15 @@
         <activity
             android:name=".Activity.MultiMediaActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.CharityWebActivity" />
-        <activity android:name=".Activity.BriefActivity" />
-        <activity android:name=".Admin.Activity.AddNoticeActivity" />
-        <activity android:name=".Activity.NoticeBoardActivity" />
-        <activity
-            android:name=".Personal.AboutPage"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activity.CharityWebActivity"/>
+        <activity android:name=".Activity.BriefActivity"/>
+        <activity android:name=".Admin.Activity.AddNoticeActivity"/>
+        <activity android:name=".Activity.NoticeBoardActivity"
+            android:label="@string/notice_board"/>
+        <activity android:name=".Personal.AboutPage"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
         <activity android:name=".Personal.SearchResultActivity"></activity>
     </application>
 
