@@ -6,7 +6,8 @@
         android:orderInCategory="100"
         android:icon="@drawable/ic_search_black"
         android:title="@string/setting"
-        app:showAsAction="ifRoom" />
+        android:actionLayout="@layout/activity_search_result"
+        app:showAsAction="ifRoom|collapseActionView" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

@@ -45,6 +45,7 @@ public class InstitutionSubCategory extends Fragment {
     protected Activity avt;
     ListView listView;
     String cat_sub;
+    TextView tvSubHeader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,9 +60,10 @@ public class InstitutionSubCategory extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle(cat_sub);
         ctx = getActivity().getApplicationContext();
         avt = getActivity();
+        tvSubHeader=(TextView)view.findViewById(R.id.institution_subHeader);
+        tvSubHeader.setText(cat_sub);
         listView = (ListView) view.findViewById(R.id.inst_sub_list);
         InstCatAsyn ica = new InstCatAsyn();
         ica.execute();

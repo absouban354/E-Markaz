@@ -282,8 +282,7 @@
   <style name="institutionSubCatImage">
     <item name="android:paddingTop">8dp</item>
     <item name="android:paddingBottom">8dp</item>
-    <item name="android:paddingRight">10dp</item>
-    <item name="android:paddingLeft">16dp</item>
+    <item name="android:paddingRight">32dp</item>
   </style>
 
   <style name="institutionDetails_textView">
@@ -421,7 +420,7 @@
   <!--institution details-->
   <style name="institution_drawable_text">
     <item name="android:textColor">@color/black</item>
-    <item name="android:textSize">@dimen/activityBody_textSize</item>
+    <item name="android:textSize">14sp</item>
     <item name="android:paddingTop">8dp</item>
     <item name="android:gravity">start</item>
     <item name="android:drawablePadding">32dp</item>
@@ -430,4 +429,5 @@
     <item name="android:paddingLeft">16dp</item>
     <item name="android:typeface">sans</item>
   </style>
+
 </resources>

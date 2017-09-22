@@ -7,11 +7,11 @@
         android:id="@+id/institution_details_image_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/institutionImageHeight"
-        android:onClick="onImgClick"
-        android:tag="institution_photo"
-        android:src="@drawable/ic_institution_default"
+        android:scaleType="centerCrop"
         android:background="@color/bgForListQuran"
-         />
+        android:onClick="onImgClick"
+        android:src="@drawable/ic_institution_default"
+        android:tag="institution_photo" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,24 +21,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <GridView
                 android:id="@+id/institutionDetails_gridView"
                 android:layout_width="match_parent"
-                android:numColumns="4"
-                android:verticalSpacing="0dp"
-                android:horizontalSpacing="0dp"
-                android:stretchMode="columnWidth"
                 android:layout_height="wrap_content"
-                />
+                android:horizontalSpacing="0dp"
+                android:numColumns="4"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="0dp" />
 
             <TextView
                 android:id="@+id/institutionDetails_instName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="RESIDENTIAL SCHOOL FOR GIRLS"
-                android:paddingTop="16dp"
                 android:paddingBottom="4dp"
+                android:paddingTop="16dp"
+                android:text="RESIDENTIAL SCHOOL FOR GIRLS"
                 android:textColor="@color/text_color"
                 android:textSize="18sp" />
 
@@ -47,67 +47,83 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="KARANTHUR"
-                android:paddingTop="4dp"
                 android:paddingBottom="24dp"
+                android:paddingTop="4dp"
+                android:text="KARANTHUR"
                 android:textColor="@color/text_color"
                 android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/institution_details_address"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:drawableLeft="@drawable/ic_address_icon"
-                android:drawableStart="@drawable/ic_address_icon"
-                android:lineSpacingMultiplier="1.5"
-                android:textAllCaps="true"
-                style="@style/institution_drawable_text"
-                />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="16dp"
+                    android:paddingStart="16dp"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="12dp"
+                    android:src="@drawable/ic_address_icon" />
+
+                <TextView
+                    android:id="@+id/institution_details_address"
+                    style="@style/institution_drawable_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="32dp"
+                    android:paddingStart="32dp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:textAllCaps="true" />
+            </LinearLayout>
 
             <in.tomtontech.markaz.Personal.ExpandableList
                 android:id="@+id/listView_contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:cacheColorHint="#00000000"
-                android:dividerHeight="0dp"
                 android:divider="@null"
+                android:dividerHeight="0dp"
                 android:fadingEdge="none"
                 android:focusable="false"
-                android:scrollbars="none"
-                />
+                android:scrollbars="none" />
 
             <TextView
                 android:id="@+id/institutionDetails_email"
+                style="@style/institution_drawable_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:autoLink="email"
                 android:drawableLeft="@drawable/ic_email_icon"
-                android:drawableStart="@drawable/ic_email_icon"
-                style="@style/institution_drawable_text"
-                />
+                android:drawableStart="@drawable/ic_email_icon" />
+
             <TextView
                 android:id="@+id/institutionDetails_website"
+                style="@style/institution_drawable_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:autoLink="web"
                 android:drawableLeft="@drawable/ic_website_icon"
-                android:drawableStart="@drawable/ic_website_icon"
-                style="@style/institution_drawable_text"
-                />
+                android:drawableStart="@drawable/ic_website_icon" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/bgForListQuran"
                 android:orientation="vertical">
+
                 <in.tomtontech.markaz.Personal.ExpandableList
                     android:id="@+id/listView_individual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:cacheColorHint="#00000000"
-                    android:dividerHeight="0dp"
                     android:divider="@null"
+                    android:dividerHeight="0dp"
                     android:fadingEdge="none"
                     android:focusable="false"
-                    android:scrollbars="none"
-                    />
+                    android:scrollbars="none" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -118,12 +134,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/institutionDetails_studentCount"
                             style="@style/institutionDetails_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center" />
+
                         <TextView
                             android:id="@+id/institutionDetails_students"
                             style="@style/institutionDetails_textView"
@@ -146,6 +164,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center" />
+
                         <TextView
                             android:id="@+id/institutionDetails_staff"
                             style="@style/institutionDetails_textView"
@@ -174,8 +193,8 @@
                             style="@style/institutionDetails_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            />
+                            android:gravity="center" />
+
                         <TextView
                             android:id="@+id/institutionDetails_nonTeach"
                             style="@style/institutionDetails_textView"
@@ -198,8 +217,8 @@
                             style="@style/institutionDetails_textView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            />
+                            android:gravity="center" />
+
                         <TextView
                             android:id="@+id/institutionDetails_alumni"
                             style="@style/institutionDetails_textView"
@@ -214,11 +233,13 @@
 
 
             </LinearLayout>
+
             <TextView
                 android:id="@+id/institutionDetails_description"
                 style="@style/institutionDetails_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/institutionDetails_course"
                 style="@style/institutionDetails_textView"
@@ -226,16 +247,16 @@
                 android:layout_height="wrap_content" />
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:gravity="end"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/institutionDetails_morepics"
-                    android:onClick="onMorePhotosClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onMorePhotosClick"
                     android:paddingBottom="16dp"
                     android:paddingRight="16dp"
                     android:paddingTop="16dp"
@@ -247,10 +268,10 @@
                     android:id="@+id/institutionDetails_routemap"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onRouteMapClick"
                     android:paddingBottom="16dp"
                     android:paddingRight="16dp"
                     android:paddingTop="16dp"
-                    android:onClick="onRouteMapClick"
                     android:text="Route Map"
                     android:textColor="@color/text_color"
                     android:textSize="16sp" />
