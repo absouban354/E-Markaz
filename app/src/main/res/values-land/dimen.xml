@@ -2,4 +2,5 @@
 <resources>
     <dimen name="brand_heading_textSize">32dp</dimen>
     <dimen name="brand_subheading_textSize">15dp</dimen>
+    <dimen name="activityBody_textSize">20sp</dimen>
 </resources>

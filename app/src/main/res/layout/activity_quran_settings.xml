@@ -27,4 +27,20 @@
         android:layout_alignParentRight="true"
         android:id="@+id/quranSettings_quranDialog_checkbox"
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_about"
+        android:text="@string/about"
+        style="@style/settings_text_style"
+        android:layout_below="@+id/quranSettings_quranDialog"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_version"
+        android:text="@string/version"
+        style="@style/settings_text_style"
+        android:layout_below="@+id/settings_about"
+        />
 </RelativeLayout>

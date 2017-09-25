@@ -21,12 +21,12 @@
       >
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/brand_image_size"
         android:layout_weight="1"
+        android:background="@drawable/brief_tv_bg"
         android:contentDescription="@string/app_header"
-        android:minHeight="80dp"
-        android:src="@mipmap/ic_markaz"
+        android:src="@drawable/ic_launcher"
         />
 
     <LinearLayout
@@ -60,6 +60,7 @@
   </LinearLayout>
   <ScrollView
       android:id="@+id/mainScrollView"
+      android:background="@color/bgForListQuran"
       android:layout_below="@+id/mainLinear_header"
       android:layout_width="match_parent"
       android:layout_above="@+id/mainLinear_footer"
@@ -70,56 +71,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:background="@color/bgForSearchBar"
-          android:orientation="horizontal"
-          android:paddingBottom="10dp"
-          android:paddingEnd="10dp"
-          android:paddingLeft="10dp"
-          android:paddingRight="10dp"
-          android:paddingStart="10dp"
-          android:paddingTop="10dp"
-          >
-
-        <EditText
-            android:id="@+id/main_searchEditText"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_toLeftOf="@+id/main_searchButton"
-            android:layout_toStartOf="@+id/main_searchButton"
-            android:background="@drawable/custom_edittext"
-            android:hint="@string/search"
-            android:nextFocusLeft="@id/main_searchEditText"
-            android:nextFocusUp="@id/main_searchEditText"
-            android:paddingBottom="@dimen/paddingOnSearchEdit"
-            android:paddingEnd="@dimen/paddingOnSearchEdit"
-            android:paddingLeft="@dimen/paddingOnSearchEdit"
-            android:paddingRight="@dimen/paddingOnSearchEdit"
-            android:paddingStart="@dimen/paddingOnSearchEdit"
-            android:paddingTop="@dimen/paddingOnSearchEdit"
-            />
-
-        <ImageButton
-            android:id="@+id/main_searchButton"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:layout_alignBottom="@+id/main_searchEditText"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/main_searchEditText"
-            android:background="@drawable/custom_button"
-            android:contentDescription="@string/search"
-            android:padding="5dp"
-            android:paddingEnd="@dimen/paddingOnImageButton"
-            android:paddingLeft="@dimen/paddingOnImageButton"
-            android:paddingRight="@dimen/paddingOnImageButton"
-            android:paddingStart="@dimen/paddingOnImageButton"
-            android:src="@drawable/ic_search_black"
-            />
-      </RelativeLayout>
-
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -173,19 +124,6 @@
 
         <TextView
             style="@style/grid_title"
-            android:id="@+id/main_section_azhkar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_azhkar"
-            android:onClick="onSectionClick"
-            android:text="@string/azhkaar"
-            />
-
-        <TextView
-            style="@style/grid_title"
             android:id="@+id/main_section_photo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -208,6 +146,19 @@
             android:drawableTop="@drawable/ic_charity"
             android:onClick="onSectionClick"
             android:text="@string/charity"
+            />
+
+        <TextView
+            style="@style/grid_title"
+            android:id="@+id/main_section_contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="8dp"
+            android:drawableTop="@drawable/ic_contact"
+            android:onClick="onSectionClick"
+            android:text="@string/contact"
             />
       </LinearLayout>
       <LinearLayout
@@ -236,22 +187,21 @@
             android:layout_weight="1"
             android:clickable="true"
             android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_azhkar"
+            android:drawableTop="@drawable/ic_bookmark"
             android:onClick="onSectionClick"
             android:text="@string/dawrathul_quran"
             />
-
         <TextView
             style="@style/grid_title"
-            android:id="@+id/main_section_contact"
+            android:id="@+id/main_section_azhkar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
             android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_contact"
+            android:drawableTop="@drawable/ic_azhkar"
             android:onClick="onSectionClick"
-            android:text="@string/contact"
+            android:text="@string/azhkaar"
             />
       </LinearLayout>
 

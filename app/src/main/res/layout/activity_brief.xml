@@ -15,6 +15,7 @@
       android:paddingRight="@dimen/activity_horizontal_margin"
       android:paddingEnd="@dimen/activity_horizontal_margin"
       android:paddingTop="@dimen/activity_vertical_margin"
+      android:paddingBottom="20dp"
       >
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,7 +35,8 @@
           android:layout_width="0dp"
           android:layout_height="0dp"
           android:id="@+id/strut"
-          android:layout_centerHorizontal="true"/>
+          android:layout_centerHorizontal="true"
+          />
       <ImageView
           android:layout_width="match_parent"
           android:layout_below="@id/brief_mainImage"
@@ -65,5 +67,124 @@
         style="@style/brief_text"
         android:text="@string/desc_ap_usthad"
         />
+    <TextView
+        android:text="Contact Details"
+        style="@style/activity_subHeader.Brief"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_location_city_black_24dp"
+        android:drawableLeft="@drawable/ic_location_city_black_24dp"
+        android:paddingTop="16dp"
+        android:textSize="16sp"
+        android:drawablePadding="32dp"
+        android:textColor="@color/darkMediumBlack"
+        android:text="Jamia Markazu SSaquafathi Ssunniyya,\nKaranthur Kozhikode- Kerala 673 571"
+        android:textAllCaps="true"
+        />
+    <TextView
+        android:textSize="16sp"
+        android:drawablePadding="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_email_black_24dp"
+        android:drawableLeft="@drawable/ic_email_black_24dp"
+        android:paddingTop="16dp"
+        android:autoLink="email"
+        android:text="info@markazonline.com "
+        />
+    <TextView
+        android:textSize="16sp"
+        android:drawablePadding="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_web_black"
+        android:drawableLeft="@drawable/ic_web_black"
+        android:paddingTop="16dp"
+        android:autoLink="web"
+        android:text="www.markazonline.org"
+        />
+    <TextView
+        android:textSize="16sp"
+        android:drawablePadding="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_phone_iphone_black_24dp"
+        android:drawableLeft="@drawable/ic_phone_iphone_black_24dp"
+        android:paddingTop="16dp"
+        android:autoLink="phone"
+        android:text="4952800427,2800421"
+        />
+    <TextView
+        android:textSize="16sp"
+        android:drawablePadding="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_brief_fax"
+        android:drawableLeft="@drawable/ic_brief_fax"
+        android:paddingTop="16dp"
+        android:textColor="@color/darkMediumBlack"
+        android:text="Fax : 0495 2801831 "
+        />
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:background="@color/bgForSearchBar"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+      <ImageView
+          style="@style/brief_social_image"
+          android:onClick="onSocialButtonClick"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/brief_social_facebook"
+          android:src="@drawable/ic_facebook_logo"
+          />
+      <ImageView
+          style="@style/brief_social_image"
+          android:onClick="onSocialButtonClick"
+          android:id="@+id/brief_social_insta"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_instagram_logo"
+          />
+      <ImageView
+          style="@style/brief_social_image"
+          android:onClick="onSocialButtonClick"
+          android:id="@+id/brief_social_twitter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_twitter_logo"
+          />
+      <ImageView
+          android:layout_width="wrap_content"
+          style="@style/brief_social_image"
+          android:onClick="onSocialButtonClick"
+          android:id="@+id/brief_social_google"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_google_plus_logo"
+          />
+      <ImageView
+          style="@style/brief_social_image"
+          android:layout_width="wrap_content"
+          android:onClick="onSocialButtonClick"
+          android:id="@+id/brief_social_pinterest"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_pinterest_logo"
+          />
+      <ImageView
+          style="@style/brief_social_image"
+          android:onClick="onSocialButtonClick"
+          android:id="@+id/brief_social_youtube"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/ic_youtube_logo"
+          />
+    </LinearLayout>
   </LinearLayout>
 </ScrollView>

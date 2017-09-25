@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="brand_image_size">150dp</dimen>
+    <dimen name="brand_heading_textSize">60dp</dimen>
+    <dimen name="brand_subheading_textSize">26dp</dimen>
+    <dimen name="activityBody_textSize">24sp</dimen>
+    <dimen name="main_footer_textSize">20sp</dimen>
+</resources>

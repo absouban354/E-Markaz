@@ -58,6 +58,14 @@
     <item name="android:paddingEnd">@dimen/activity_horizontal_margin</item>
     <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
   </style>
+  <style name="activity_subHeader.Brief">
+    <item name="android:background">@drawable/brief_tv_bg</item>
+    <item name="android:layout_marginEnd">48dp</item>
+    <item name="android:layout_marginRight">48dp</item>
+    <item name="android:textColor">@color/white</item>
+    <item name="android:layout_marginTop">20dp</item>
+    <item name="android:textSize">18sp</item>
+  </style>
   <!-- List Item Style-->
   <style name="listItem_title">
     <item name="android:textColor">@color/black</item>
@@ -146,13 +154,12 @@
     <item name="android:drawablePadding">8dp</item>
     <item name="android:paddingBottom">16dp</item>
     <item name="android:typeface">sans</item>
-    <item name="android:background">@drawable/main_act_button</item>
   </style>
 
   <style name="grid_title_footer" parent="grid_title">
     <item name="android:textColor">@color/white</item>
     <item name="android:textAlignment">center</item>
-    <item name="android:textSize">16sp</item>
+    <item name="android:textSize">@dimen/main_footer_textSize</item>
     <item name="android:clickable">true</item>
     <item name="android:drawablePadding">4dp</item>
     <item name="android:paddingTop">8dp</item>
@@ -416,7 +423,7 @@
     <item name="android:paddingLeft">40dp</item>
     <item name="android:paddingRight">40dp</item>
     <item name="android:paddingEnd">40dp</item>
-    <item name="android:background">@drawable/custom_button</item>
+    <item name="android:background">@drawable/custom_charity_button</item>
     <item name="android:textColor">@color/white</item>
     <item name="android:textSize">16sp</item>
   </style>
@@ -453,5 +460,18 @@
     <item name="android:paddingStart">16dp</item>
     <item name="android:paddingLeft">16dp</item>
     <item name="android:typeface">sans</item>
+  </style>
+  <style name="settings_text_style">
+    <item name="android:paddingTop">16dp</item>
+    <item name="android:paddingBottom">16dp</item>
+  </style>
+  <style name="brief_social_image">
+    <item name="android:paddingStart">6dp</item>
+    <item name="android:paddingLeft">6dp</item>
+    <item name="android:paddingRight">6dp</item>
+    <item name="android:paddingEnd">6dp</item>
+  </style>
+  <style name="elevation_block">
+    <item name="android:background">@drawable/bg_azhkar_linear</item>
   </style>
 </resources>

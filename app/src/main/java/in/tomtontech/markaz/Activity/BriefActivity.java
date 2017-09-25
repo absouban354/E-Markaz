@@ -3,6 +3,8 @@ package in.tomtontech.markaz.Activity;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -128,5 +130,34 @@ public class BriefActivity extends AppCompatActivity {
       rlLeft.addRule(RelativeLayout.ALIGN_RIGHT, R.id.strut);
     }
     imLeft.setLayoutParams(rlLeft);
+  }
+
+  public void onSocialButtonClick(View view) {
+    int id = view.getId();
+    Intent sharingIntent=new Intent();
+    String url = "";
+    switch (id) {
+      case R.id.brief_social_facebook:
+        url = "https://www.facebook.com/MarkazOnline/";
+        break;
+      case R.id.brief_social_insta:
+        url = "https://www.instagram.com/markazonline/";
+        sharingIntent.setPackage("com.instagram.android");
+        break;
+      case R.id.brief_social_twitter:
+        url = "https://twitter.com/markaz_online";
+        break;
+      case R.id.brief_social_google:
+        url = "https://plus.google.com/+markazonline";
+        break;
+      case R.id.brief_social_pinterest:
+        url = "https://www.pinterest.com/markazonline/";
+        break;
+      case R.id.brief_social_youtube:
+        url = "https://www.youtube.com/markazonline";
+        break;
+    }
+    sharingIntent.setData(Uri.parse(url));
+    startActivity(sharingIntent);
   }
 }

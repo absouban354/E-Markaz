@@ -11,7 +11,7 @@
     <dimen name="itemTopPadding">10dp</dimen>
     <dimen name="appBar_minHeight">64dp</dimen>
     <dimen name="appBar_subTitle">16sp</dimen>
-    <dimen name="appBar_titleSize">20sp</dimen>
+    <dimen name="appBar_titleSize">20dp</dimen>
     <dimen name="nullValue">0dp</dimen>
     <dimen name="paragraph_textSize">14sp</dimen>
     <dimen name="paragraph_verticalPadding">10dp</dimen>
@@ -28,7 +28,11 @@
     <dimen name="list_three_line_secondary_right_padding">16dp</dimen>
     <dimen name="activity_subtitle_height">48dp</dimen>
     <dimen name="list_single_min_height">48dp</dimen>
+    <dimen name="main_footer_textSize">16sp</dimen>
+    <integer name="gridview_count">2</integer>
+    <dimen name="azhkar_type_size">48dp</dimen>
 
+    <dimen name="brand_image_size">80dp</dimen>
     <dimen name="brand_heading_textSize">37dp</dimen>
     <dimen name="brand_subheading_textSize">17dp</dimen>
     <dimen name="chatRoom_messageUser_textSize">14sp</dimen>
