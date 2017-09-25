@@ -65,6 +65,12 @@ public class RouteMapActivity extends FragmentActivity implements OnMapReadyCall
 
     }
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+    }
+
     private class AsyncLocation extends AsyncTask<String, Void, String> {
         @Override
         protected void onPostExecute(String s) {

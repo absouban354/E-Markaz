@@ -22,27 +22,27 @@
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <activity android:name=".Activity.ChatRoom"/>
-    <activity android:name=".Activity.StaffLoginActivity"/>
-    <activity
-        android:name=".Personal.NavList"
-        android:screenOrientation="portrait"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:windowSoftInputMode="stateHidden">
-      <intent-filter>
-        <action android:name="android.intent.action.SEARCH"/>
-      </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.ChatRoom" />
+        <activity android:name=".Activity.StaffLoginActivity" />
+        <activity
+            android:name=".Personal.NavList"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
 
-      <meta-data
-          android:name="android.app.searchable"
-          android:resource="@xml/searchable"/>
-    </activity>
-    <activity android:name=".Personal.EventDetails"/>
-    <activity android:name=".Personal.InstitutionDetails"/>
-    <activity android:name=".Personal.PhotoDetails"/>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity android:name=".Personal.EventDetails" />
+        <activity android:name=".Personal.InstitutionDetails" />
+        <activity android:name=".Personal.PhotoDetails" />
 
     <receiver android:name=".ChatBroadcatReceiver">
       <intent-filter>
