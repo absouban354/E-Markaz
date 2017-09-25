@@ -1,9 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="in.tomtontech.markaz.Personal.SearchResultActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgForSearchBar"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:id="@+id/searchResult_searchLl"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/navList_searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@+id/navList_searchButton"
+            android:layout_toStartOf="@+id/navList_searchButton"
+            android:background="@drawable/custom_edittext"
+            android:hint="@string/search"
+            android:nextFocusLeft="@id/main_searchEditText"
+            android:nextFocusUp="@id/main_searchEditText"
+            android:paddingBottom="@dimen/paddingOnSearchEdit"
+            android:paddingEnd="@dimen/paddingOnSearchEdit"
+            android:paddingLeft="@dimen/paddingOnSearchEdit"
+            android:paddingRight="@dimen/paddingOnSearchEdit"
+            android:paddingStart="@dimen/paddingOnSearchEdit"
+            android:paddingTop="@dimen/paddingOnSearchEdit"
+            />
+
+        <ImageButton
+            android:id="@+id/navList_searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/navList_searchEditText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/navList_searchEditText"
+            android:background="@drawable/custom_button"
+            android:contentDescription="@string/search"
+            android:padding="5dp"
+            android:paddingEnd="@dimen/paddingOnImageButton"
+            android:paddingLeft="@dimen/paddingOnImageButton"
+            android:paddingRight="@dimen/paddingOnImageButton"
+            android:paddingStart="@dimen/paddingOnImageButton"
+            android:src="@drawable/ic_search_black"
+            android:onClick="onSearchPressed"
+            />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        style="@style/activity_subHeader"
+        android:text="Search Result"
+        android:layout_below="@+id/searchResult_searchLl"
+        android:id="@+id/searchResult_subHeader"
+        />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchResult_subHeader"
+        android:id="@+id/searchResult_list"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        >
+    </ListView>
+</RelativeLayout>

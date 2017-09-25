@@ -11,6 +11,6 @@
         android:layout_height="match_parent"
         android:id="@+id/imageView"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_bg" />
+        />
 
 </FrameLayout>

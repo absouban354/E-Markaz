@@ -20,7 +20,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import in.tomtontech.markaz.Activity.MainActivity;
 import in.tomtontech.markaz.R;
@@ -31,6 +35,8 @@ public class NavList extends AppCompatActivity
     String inst_id = "";
     Context ctx;
     Activity avt;
+    EditText et;
+    RelativeLayout rl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,8 @@ public class NavList extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        rl=(RelativeLayout)findViewById(R.id.navList_searchLl);
+        et=(EditText)findViewById(R.id.navList_searchEditText);
         ctx = getApplicationContext();
         switch (category) {
             case "Institution":
@@ -85,6 +93,24 @@ public class NavList extends AppCompatActivity
         }
     }
 
+    public void onSearchPressed(View view){
+        String searchKey=et.getText().toString().replace(" ","");
+        String key = et.getText().toString().trim();
+        Log.v("search","keyword"+searchKey);
+        Log.v("search","keyword : "+key);
+        if(searchKey.equalsIgnoreCase("")){
+            Toast.makeText(ctx,"Sorry, please enter a search keyword and try again",Toast.LENGTH_SHORT).show();
+        }
+        else if(searchKey.length()<4){
+            Toast.makeText(ctx,"Sorry, search keyword must be 4 letters long",Toast.LENGTH_SHORT).show();
+        }else{
+            Intent intent = new Intent(ctx,SearchResultActivity.class);
+            intent.putExtra("category",category);
+            intent.putExtra("search_key",key);
+            startActivity(intent);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -103,9 +129,12 @@ public class NavList extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
-        else if(id==R.id.action_search){
-            Log.v("search","idanne");
-            onSearchRequested();
+        else if (id==R.id.action_search){
+            if(rl.getVisibility()==View.VISIBLE){
+                rl.setVisibility(View.GONE);
+            }else if(rl.getVisibility()==View.GONE){
+                rl.setVisibility(View.VISIBLE);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -127,13 +156,16 @@ public class NavList extends AppCompatActivity
                 break;
             case R.id.nav_inst:
                 inst_id = "";
+                category="Institution";
                 fragment = new InstitutionCategory();
                 break;
             case R.id.nav_eve:
                 inst_id = "";
+                category="Events";
                 fragment = new EventCategory();
                 break;
             case R.id.nav_pho:
+                category="Photos";
                 fragment = new PhotoFragment();
                 if (inst_id != null) {
                     Bundle bundle = new Bundle();

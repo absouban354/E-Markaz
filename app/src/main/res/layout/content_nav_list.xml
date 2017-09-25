@@ -7,9 +7,64 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="in.tomtontech.markaz.Personal.NavList"
     tools:showIn="@layout/app_bar_nav_list">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bgForSearchBar"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:id="@+id/navList_searchLl"
+        android:visibility="gone"
+        >
+
+        <EditText
+            android:id="@+id/navList_searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_toLeftOf="@+id/navList_searchButton"
+            android:layout_toStartOf="@+id/navList_searchButton"
+            android:background="@drawable/custom_edittext"
+            android:hint="@string/search"
+            android:nextFocusLeft="@id/main_searchEditText"
+            android:nextFocusUp="@id/main_searchEditText"
+            android:paddingBottom="@dimen/paddingOnSearchEdit"
+            android:paddingEnd="@dimen/paddingOnSearchEdit"
+            android:paddingLeft="@dimen/paddingOnSearchEdit"
+            android:paddingRight="@dimen/paddingOnSearchEdit"
+            android:paddingStart="@dimen/paddingOnSearchEdit"
+            android:paddingTop="@dimen/paddingOnSearchEdit"
+            />
+
+        <ImageButton
+            android:id="@+id/navList_searchButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignBottom="@+id/navList_searchEditText"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/navList_searchEditText"
+            android:background="@drawable/custom_button"
+            android:contentDescription="@string/search"
+            android:padding="5dp"
+            android:paddingEnd="@dimen/paddingOnImageButton"
+            android:paddingLeft="@dimen/paddingOnImageButton"
+            android:paddingRight="@dimen/paddingOnImageButton"
+            android:paddingStart="@dimen/paddingOnImageButton"
+            android:src="@drawable/ic_search_black"
+            android:onClick="onSearchPressed"
+            />
+    </RelativeLayout>
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/navList_searchLl"
         android:name="in.tomtontech.markaz.Personal.BlankFragment"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
