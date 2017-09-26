@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/settings_version"
         android:text="@string/version"
+        android:onClick="onVersionPress"
         style="@style/settings_text_style"
         android:layout_below="@+id/settings_about"
         />

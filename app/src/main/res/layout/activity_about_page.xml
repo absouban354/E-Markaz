@@ -23,7 +23,6 @@
         android:id="@+id/about_app_version"
         android:layout_centerInParent="true"
         android:textColor="#BFFFFFFF"
-        android:text="Version 1.0.1"
         android:layout_above="@+id/about_image"
         android:textSize="14dp"
         />
