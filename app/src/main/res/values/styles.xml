@@ -87,6 +87,8 @@
   </style>
   <style name="list_item_secondary_line">
     <item name="android:drawablePadding">32dp</item>
+    <item name="android:paddingStart">32dp</item>
+    <item name="android:paddingLeft">32dp</item>
     <item name="android:textSize">@dimen/list_item_second_line_text_size</item>
     <item name="android:paddingTop">@dimen/list_three_line_secondary_vertical_padding</item>
     <item name="android:paddingBottom">@dimen/list_three_line_secondary_vertical_padding</item>
@@ -151,6 +153,7 @@
     <item name="android:textAlignment">center</item>
     <item name="android:textSize">@dimen/activityBody_textSize</item>
     <item name="android:paddingTop">8dp</item>
+    <item name="android:background">@drawable/main_act_button</item>
     <item name="android:drawablePadding">8dp</item>
     <item name="android:paddingBottom">16dp</item>
     <item name="android:typeface">sans</item>

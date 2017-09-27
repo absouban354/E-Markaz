@@ -1,60 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1"
-    android:paddingStart="@dimen/activity_horizontal_margin"
-    android:paddingEnd="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingStart="@dimen/activity_horizontal_margin"
+              android:paddingEnd="@dimen/activity_horizontal_margin"
+              android:paddingRight="@dimen/activity_horizontal_margin"
+              android:paddingLeft="@dimen/activity_horizontal_margin"
     >
-    <TextView
-        android:id="@+id/event_time"
-        style="@style/activity_subHeader.Notice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+  <TextView
+      android:id="@+id/event_time"
+      android:text="22/09/2017"
+      style="@style/activity_subHeader.Notice"
+      android:layout_gravity="center_horizontal"
+      />
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="72dp"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      >
+    <ImageView
+        android:id="@+id/event_icon"
+        android:src="@mipmap/ic_markaz"
+        android:layout_width="48dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="48dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-            <ImageView
-                android:id="@+id/event_icon"
-                android:layout_width="72dp"
-                android:layout_height="72dp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+      <TextView
+          android:id="@+id/event_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="New Markaz Islamic Class"
+          style="@style/list_item_secondary_line_1"
+          />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/event_place"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1">
-
-            <TextView
-                android:id="@+id/event_name"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.01"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/event_place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_weight="0.02"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </LinearLayout>
-
+            android:layout_height="wrap_content"
+            android:text="Markaz Compound"
+            style="@style/list_item_secondary_line_2"
+            />
+      </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

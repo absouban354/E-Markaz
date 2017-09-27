@@ -3,6 +3,7 @@ package in.tomtontech.markaz.Activity;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -30,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import in.tomtontech.markaz.CustomFunction;
 import in.tomtontech.markaz.R;
 
 public class BriefActivity extends AppCompatActivity {
@@ -41,11 +43,14 @@ public class BriefActivity extends AppCompatActivity {
   int leftPos = 1;
   int rightPos = 2;
   private TextView tvText;
-
+  private Context ctx;
+  private CustomFunction cf;
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_brief);
+    ctx=this;
+    cf=new CustomFunction(ctx);;
     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     tvText = (TextView) findViewById(R.id.breif_textView);
   }
@@ -139,25 +144,51 @@ public class BriefActivity extends AppCompatActivity {
     switch (id) {
       case R.id.brief_social_facebook:
         url = "https://www.facebook.com/MarkazOnline/";
+        if(cf.isPackageExisted(ctx,"com.facebook.katana"))
+          sharingIntent.setPackage("com.facebook.katana");
+        else if(cf.isPackageExisted(ctx,"com.facebook.orca"))
+          sharingIntent.setPackage("com.facebook.orca");
+        else
+          Intent.createChooser(sharingIntent,"Insta");
         break;
       case R.id.brief_social_insta:
         url = "https://www.instagram.com/markazonline/";
-        sharingIntent.setPackage("com.instagram.android");
+        if(cf.isPackageExisted(ctx,"com.instagram.android"))
+          sharingIntent.setPackage("com.instagram.android");
+        else
+          Intent.createChooser(sharingIntent,"Insta");
         break;
       case R.id.brief_social_twitter:
         url = "https://twitter.com/markaz_online";
+        if(cf.isPackageExisted(ctx,"com.twitter.android"))
+          sharingIntent.setPackage("com.twitter.android");
+        else
+          Intent.createChooser(sharingIntent,"Twitter");
         break;
       case R.id.brief_social_google:
         url = "https://plus.google.com/+markazonline";
+        if(cf.isPackageExisted(ctx,"com.google.android.apps.plus"))
+          sharingIntent.setPackage("com.google.android.apps.plus");
+        else
+          Intent.createChooser(sharingIntent,"Google Plus");
         break;
       case R.id.brief_social_pinterest:
         url = "https://www.pinterest.com/markazonline/";
+        if(cf.isPackageExisted(ctx,"com.pinterest"))
+          sharingIntent.setPackage("com.pinterest");
+        else
+          Intent.createChooser(sharingIntent,"Pinterest");
         break;
       case R.id.brief_social_youtube:
         url = "https://www.youtube.com/markazonline";
+        if(cf.isPackageExisted(ctx,"com.google.android.youtube"))
+          sharingIntent.setPackage("com.google.android.youtube");
+        else
+          Intent.createChooser(sharingIntent,"Youtube");
         break;
     }
     sharingIntent.setData(Uri.parse(url));
+    sharingIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
     startActivity(sharingIntent);
   }
 }

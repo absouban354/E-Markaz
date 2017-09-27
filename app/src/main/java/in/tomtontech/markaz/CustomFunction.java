@@ -3,6 +3,8 @@ package in.tomtontech.markaz;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,13 +41,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
 /**
  * constant declaration
  * Created by Mushfeeeq on 7/31/2017.
  */
 
 public class CustomFunction {
-  //public static final String URL_ADDR = "http://192.168.1.102/";
+  //public static final String URL_ADDR = "http://192.168.43.14/";
   public static final String URL_ADDR = "http://103.86.176.102/";
   //public static final String SERVER_ADDR = URL_ADDR.concat("markaz/");
   public static final String SERVER_ADDR = URL_ADDR;
@@ -601,5 +604,16 @@ public class CustomFunction {
   public boolean isText(String s) {
     String pattern = "^[0-9a-zA-Z \n\\-\\.&,]*$";
     return s.matches(pattern);
+  }
+
+  public boolean isPackageExisted(Context c, String targetPackage) {
+    PackageManager pm = c.getPackageManager();
+    try {
+      PackageInfo info = pm.getPackageInfo(targetPackage,
+          PackageManager.GET_META_DATA);
+    } catch (PackageManager.NameNotFoundException e) {
+      return false;
+    }
+    return true;
   }
 }

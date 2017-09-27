@@ -110,7 +110,8 @@
         android:name=".Activity.MultiMediaActivity"
         android:theme="@style/AppTheme.NoActionBar"/>
     <activity android:name=".Activity.CharityWebActivity"/>
-    <activity android:name=".Activity.BriefActivity"/>
+    <activity android:name=".Activity.BriefActivity"
+        android:exported="true"/>
     <activity android:name=".Admin.Activity.AddNoticeActivity"/>
     <activity
         android:name=".Activity.NoticeBoardActivity"

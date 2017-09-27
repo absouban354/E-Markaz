@@ -58,198 +58,200 @@
           />
     </LinearLayout>
   </LinearLayout>
-  <ScrollView
-      android:id="@+id/mainScrollView"
-      android:background="@color/bgForListQuran"
-      android:layout_below="@+id/mainLinear_header"
+  <LinearLayout
       android:layout_width="match_parent"
-      android:layout_above="@+id/mainLinear_footer"
       android:layout_height="wrap_content"
+      android:layout_below="@+id/mainLinear_header"
+      android:layout_above="@+id/mainLinear_footer"
+      android:orientation="vertical"
       >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+
         >
-      <LinearLayout
-          android:layout_width="match_parent"
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_institution"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:baselineAligned="false"
-          android:orientation="horizontal"
-          android:paddingTop="15dp"
-          >
+          android:layout_weight="1"
+          android:onClick="onSectionClick"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_institution"
+          android:text="@string/institution"
+          />
 
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_institution"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onSectionClick"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_institution"
-            android:text="@string/institution"
-            />
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_event"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="8dp"
-            android:onClick="onSectionClick"
-            android:drawableTop="@drawable/ic_event"
-            android:text="@string/events"
-            />
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_multimedia"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onSectionClick"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_multimedia"
-            android:text="@string/multimedia"
-            />
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_event"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:baselineAligned="false"
-          >
+          android:layout_weight="1"
+          android:drawablePadding="8dp"
+          android:onClick="onSectionClick"
+          android:drawableTop="@drawable/ic_event"
+          android:text="@string/events"
+          />
 
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_photo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_photo"
-            android:onClick="onSectionClick"
-            android:text="@string/photos"
-            />
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_charity"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_charity"
-            android:onClick="onSectionClick"
-            android:text="@string/charity"
-            />
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_contact"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_contact"
-            android:onClick="onSectionClick"
-            android:text="@string/contact"
-            />
-      </LinearLayout>
-      <LinearLayout
-          android:layout_width="match_parent"
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_multimedia"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          >
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_quran"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_quran"
-            android:onClick="onSectionClick"
-            android:text="@string/quran_text"
-            />
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_dawra"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_bookmark"
-            android:onClick="onSectionClick"
-            android:text="@string/dawrathul_quran"
-            />
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_azhkar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_azhkar"
-            android:onClick="onSectionClick"
-            android:text="@string/azhkaar"
-            />
-      </LinearLayout>
-
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:baselineAligned="false"
-          >
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_noticeBoard"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawableTop="@drawable/ic_noticeboard"
-            android:onClick="onSectionClick"
-            android:text="@string/notice_board"
-            />
-
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_brief"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_briefcase"
-            android:onClick="onSectionClick"
-            android:text="@string/brief"
-            />
-        <TextView
-            style="@style/grid_title"
-            android:id="@+id/main_section_routeMap"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:drawablePadding="8dp"
-            android:drawableTop="@drawable/ic_routemap"
-            android:onClick="onSectionClick"
-            android:text="@string/route_map"
-            />
-      </LinearLayout>
+          android:layout_weight="1"
+          android:onClick="onSectionClick"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_multimedia"
+          android:text="@string/multimedia"
+          />
     </LinearLayout>
-  </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        >
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_photo"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_photo"
+          android:onClick="onSectionClick"
+          android:text="@string/photos"
+          />
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_charity"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_charity"
+          android:onClick="onSectionClick"
+          android:text="@string/charity"
+          />
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_contact"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_contact"
+          android:onClick="onSectionClick"
+          android:text="@string/contact"
+          />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_quran"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_quran"
+          android:onClick="onSectionClick"
+          android:text="@string/quran_text"
+          />
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_dawra"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_bookmark"
+          android:onClick="onSectionClick"
+          android:text="@string/dawrathul_quran"
+          />
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_azhkar"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_azhkar"
+          android:onClick="onSectionClick"
+          android:text="@string/azhkaar"
+          />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:baselineAligned="false"
+        >
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_noticeBoard"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawableTop="@drawable/ic_noticeboard"
+          android:onClick="onSectionClick"
+          android:text="@string/notice_board"
+          />
+
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_brief"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_briefcase"
+          android:onClick="onSectionClick"
+          android:text="@string/brief"
+          />
+      <TextView
+          style="@style/grid_title"
+          android:id="@+id/main_section_routeMap"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:clickable="true"
+          android:drawablePadding="8dp"
+          android:drawableTop="@drawable/ic_routemap"
+          android:onClick="onSectionClick"
+          android:text="@string/route_map"
+          />
+    </LinearLayout>
+  </LinearLayout>
   <LinearLayout
       android:id="@+id/mainLinear_footer"
       android:layout_width="match_parent"
@@ -287,6 +289,7 @@
         android:layout_weight="1"
         android:drawableTop="@drawable/ic_settings"
         android:text="@string/setting"
+
         />
   </LinearLayout>
 </RelativeLayout>

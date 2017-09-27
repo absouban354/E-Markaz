@@ -112,9 +112,9 @@ public class EventCategory extends android.app.Fragment {
                         Log.v("pic", "url:" + urlImg);
                         InputStream is = (InputStream) urlImg.getContent();
                         bp[j] = BitmapFactory.decodeStream(is);
-                    }catch (JSONException ignored)
+                    }catch (JSONException e)
                     {
-
+                        bp[j]=null;
                     }
                 }
             } catch (JSONException | NullPointerException | IOException e) {

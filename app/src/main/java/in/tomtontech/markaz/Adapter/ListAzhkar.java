@@ -2,6 +2,7 @@ package in.tomtontech.markaz.Adapter;
 
 import android.app.Activity;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +70,7 @@ public class ListAzhkar extends ArrayAdapter<String> {
     viewHolder.tvType.setText(strType);
     Integer size=Integer.parseInt(ntc.getStrAzhkarSize());
     int i=0;
-    String strSizeModifier[]={"Byte","Kb","Mb","Gb","Tb"};
+    String strSizeModifier[]={" Bytes"," KB"," MB"," GB"," TB"};
     float tempSize=size;
     while (tempSize>1024)
     {
@@ -91,7 +92,7 @@ public class ListAzhkar extends ArrayAdapter<String> {
     imageView.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-
+        Log.v(LOG_TAG,"download clicked for "+viewHolder.tvName.getText().toString());
       }
     });
   }
