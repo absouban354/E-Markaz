@@ -1,6 +1,9 @@
 package in.tomtontech.markaz;
 
 import android.app.Activity;
+
+import in.tomtontech.markaz.BuildConfig;
+
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -41,7 +44,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
 /**
  * constant declaration
  * Created by Mushfeeeq on 7/31/2017.
@@ -56,82 +58,85 @@ public class CustomFunction {
   public static final String BUNDLE_QURAN_PAGE_ID = "page_id";
   public static final String BUNDLE_DAWRA_PAGE_NUM = "page_num";
 
-  public static final String SQL_DATABASE = SERVER_ADDR.concat("quran_db/");
-  public static final String SP_ADDR = "staff";
-  public static final String SP_PERSONAL = "personal";
-  public static final String SP_SHOW_QURAN_DIALOG = "is_quran_dialog_visible";
-  public static final String SP_QURAN_TEXT_SIZE = "quran_text_size";
-  public static final String SP_DAWRA_PAGE_ID = "dawra_page_id";
-  public static final String SP_DAWRA_PAGE_DATE = "dawra_page_date";
-  public static final String URL_CHAT_IMAGE_LOCATION = "node/media/images/IMG-";
-  public static final String SP_USER = "staffName";
-  public static final String SP_PRIVILAGE = "staffPrivilage";
-  public static final String SP_STATUS = "staffStatus";
-  public static final int READ_TIMEOUT = 10000;
-  public static final int CONNECTION_TIMEOUT = 15000;
-  public static final String JSON_MESSAGE = "message";
-  public static final String JSON_TYPE_IMAGE = "IMAGE";
-  public static final String JSON_TYPE_TEXT = "TEXT";
-  public static final String JSON_TYPE = "message_type";
-  public static final String JSON_USER = "username";
-  public static final String JSON_TIME = "date";
-  public static final String JSON_ID = "id";
-  public static final String JSON_TEMP_ID = "temp_id";
-  public static final String JSON_DB_MESSAGE = "MESSAGE_TEXT";
-  public static final String JSON_DB_USER = "MESSAGE_USER";
-  public static final String JSON_DB_TYPE = "MESSAGE_TYPE";
-  public static final String JSON_DB_TIME = "MESSAGE_TIME";
-  public static final String JSON_DB_ID = "MESSAGE_ID";
-  public static final String SOCKET_NEW_CONNECTION = "new connection";
-  public static final String SOCKET_NEW_MESSAGES = "new messages";
-  public static final String SOCKET_NEW_MESSAGE = "new message";
-  public static final String SOCKET_CLIENT_GET_MESSAGE = "client get message";
-  private final static String APP_PATH_SD_CARD = "/Markaz/";
-  private final static String CHAT_PATH_SD_CARD = "chat/";
-  private final static String QURAN_PATH_SD_CARD = "quran/";
-  private final static String APP_THUMBNAIL_PATH_SD_CARD = "images/";
-  private final static String APP_SENT_PATH_SD_CARD = "sent/";
-  final static String APP_SDCARD_LOCATION = Environment.getExternalStorageDirectory()
-      .getAbsolutePath() + APP_PATH_SD_CARD;
-  private final static String APP_CHAT_IMAGE_SENT_LOCATION = Environment
-      .getExternalStorageDirectory()
-      .getAbsolutePath() + APP_PATH_SD_CARD + CHAT_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD + APP_SENT_PATH_SD_CARD;
-  private final static String APP_CHAT_IMAGE_LOCATION = Environment.getExternalStorageDirectory()
-      .getAbsolutePath() + APP_PATH_SD_CARD + CHAT_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
-  public final static String APP_QURAN_IMAGE = Environment.getExternalStorageDirectory()
-      .getAbsolutePath() + APP_PATH_SD_CARD + QURAN_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
-  private Context ctx;
-  private DatabaseHelper dbh;
-  private final String LOG_TAG = "customFunction";
-  public static final String photoCaption = "Shared via E-Markaz by TomTon";
+    public static final String SQL_DATABASE = SERVER_ADDR.concat("quran_db/");
+    public static final String SP_ADDR = "staff";
+    public static final String SP_PERSONAL = "personal";
+    public static final String SP_SHOW_QURAN_DIALOG = "is_quran_dialog_visible";
+    public static final String SP_QURAN_TEXT_SIZE = "quran_text_size";
+    public static final String SP_DAWRA_PAGE_ID = "dawra_page_id";
+    public static final String SP_DAWRA_PAGE_DATE = "dawra_page_date";
+    public static final String URL_CHAT_IMAGE_LOCATION = "node/media/images/IMG-";
+    public static final String SP_USER = "staffName";
+    public static final String SP_PRIVILAGE = "staffPrivilage";
+    public static final String SP_STATUS = "staffStatus";
+    public static final int READ_TIMEOUT = 10000;
+    public static final int CONNECTION_TIMEOUT = 15000;
+    public static final String JSON_MESSAGE = "message";
+    public static final String JSON_TYPE_IMAGE = "IMAGE";
+    public static final String JSON_TYPE_TEXT = "TEXT";
+    public static final String JSON_TYPE = "message_type";
+    public static final String JSON_USER = "username";
+    public static final String JSON_TIME = "date";
+    public static final String JSON_ID = "id";
+    public static final String JSON_TEMP_ID = "temp_id";
+    public static final String JSON_DB_MESSAGE = "MESSAGE_TEXT";
+    public static final String JSON_DB_USER = "MESSAGE_USER";
+    public static final String JSON_DB_TYPE = "MESSAGE_TYPE";
+    public static final String JSON_DB_TIME = "MESSAGE_TIME";
+    public static final String JSON_DB_ID = "MESSAGE_ID";
+    public static final String SOCKET_NEW_CONNECTION = "new connection";
+    public static final String SOCKET_NEW_MESSAGES = "new messages";
+    public static final String SOCKET_NEW_MESSAGE = "new message";
+    public static final String SOCKET_CLIENT_GET_MESSAGE = "client get message";
+    private final static String APP_PATH_SD_CARD = "/Markaz/";
+    private final static String CHAT_PATH_SD_CARD = "chat/";
+    private final static String QURAN_PATH_SD_CARD = "quran/";
+    private final static String APP_THUMBNAIL_PATH_SD_CARD = "images/";
+    private final static String APP_SENT_PATH_SD_CARD = "sent/";
+    final static String APP_SDCARD_LOCATION = Environment.getExternalStorageDirectory()
+            .getAbsolutePath() + APP_PATH_SD_CARD;
+    private final static String APP_CHAT_IMAGE_SENT_LOCATION = Environment
+            .getExternalStorageDirectory()
+            .getAbsolutePath() + APP_PATH_SD_CARD + CHAT_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD + APP_SENT_PATH_SD_CARD;
+    private final static String APP_CHAT_IMAGE_LOCATION = Environment.getExternalStorageDirectory()
+            .getAbsolutePath() + APP_PATH_SD_CARD + CHAT_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
+    public final static String APP_QURAN_IMAGE = Environment.getExternalStorageDirectory()
+            .getAbsolutePath() + APP_PATH_SD_CARD + QURAN_PATH_SD_CARD + APP_THUMBNAIL_PATH_SD_CARD;
+    private Context ctx;
+    private DatabaseHelper dbh;
+    private final String LOG_TAG = "customFunction";
+    public static final String photoCaption = "Shared via E-Markaz by TomTon";
 
-  public CustomFunction(Context ctx) {
-    this.ctx = ctx;
-    dbh = new DatabaseHelper(ctx);
-  }
+    int versionCode = BuildConfig.VERSION_CODE;
+    public static String versionName = BuildConfig.VERSION_NAME;
 
-  public Boolean checkInternetConnection() {
-    ConnectivityManager connec
-        = (ConnectivityManager) ctx
-        .getSystemService(((Activity) ctx).getBaseContext().CONNECTIVITY_SERVICE);
-    // Check for network connections
-    if (connec.getNetworkInfo(0).getState() ==
-        android.net.NetworkInfo.State.CONNECTED ||
-        connec.getNetworkInfo(0).getState() ==
-            android.net.NetworkInfo.State.CONNECTING ||
-        connec.getNetworkInfo(1).getState() ==
-            android.net.NetworkInfo.State.CONNECTING ||
-        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED) {
-      return true;
-    } else if (
-        connec.getNetworkInfo(0).getState() ==
-            android.net.NetworkInfo.State.DISCONNECTED ||
-            connec.getNetworkInfo(1).getState() ==
-                android.net.NetworkInfo.State.DISCONNECTED) {
-      return false;
+    public CustomFunction(Context ctx) {
+        this.ctx = ctx;
+        dbh = new DatabaseHelper(ctx);
     }
-    return false;
-  }
+
+    public Boolean checkInternetConnection() {
+        ConnectivityManager connec
+                = (ConnectivityManager) ctx
+                .getSystemService(((Activity) ctx).getBaseContext().CONNECTIVITY_SERVICE);
+        // Check for network connections
+        if (connec.getNetworkInfo(0).getState() ==
+                android.net.NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() ==
+                        android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() ==
+                        android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED) {
+            return true;
+        } else if (
+                connec.getNetworkInfo(0).getState() ==
+                        android.net.NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() ==
+                                android.net.NetworkInfo.State.DISCONNECTED) {
+            return false;
+        }
+        return false;
+    }
 
   //hi kitya noakabe
   public boolean saveImageToExternalStorage(Bitmap image, String imageName, int flag) {
@@ -601,11 +606,10 @@ public class CustomFunction {
     return s.matches(pattern);
   }
 
-  public boolean isText(String s) {
-    String pattern = "^[0-9a-zA-Z \n\\-\\.&,]*$";
-    return s.matches(pattern);
-  }
-
+    public boolean isText(String s) {
+        String pattern = "^[0-9a-zA-Z \n\\-\\.&,]*$";
+        return s.matches(pattern);
+    }
   public boolean isPackageExisted(Context c, String targetPackage) {
     PackageManager pm = c.getPackageManager();
     try {
